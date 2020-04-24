@@ -2,12 +2,12 @@ package Objects;
 
 import Interfaces_Abstract.ControlableObject;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Player extends ControlableObject implements KeyListener {
-    public Player(String filename) {
-        super(filename);
+    public Player() {
         setName("player");
     }
 

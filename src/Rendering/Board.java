@@ -2,26 +2,27 @@ package Rendering;
 
 
 
+import Handlers.AnimationHandler;
 import Handlers.MobSpawningHandler;
 import Handlers.MovingObjectHandler;
 import Interfaces_Abstract.ControlableObject;
-import Interfaces_Abstract.MoveableObject;
 import Interfaces_Abstract.StandardObject;
 import Objects.Player;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-//todo start to work on geting objects to move
+
 public class Board extends JFrame{
     private ArrayList<ControlableObject> MovingEntity= new ArrayList<>();
     private ArrayList<StandardObject> StaticEntity = new ArrayList<>();
     private MovingObjectHandler motionController = new MovingObjectHandler();
     private MobSpawningHandler mobSpawner = new MobSpawningHandler(MovingEntity);
+    private AnimationHandler animationController = new AnimationHandler(MovingEntity);
     private Rendering rend;
     public Board(){
-        MovingEntity.add(new Player("test.png"));
-        MovingEntity.get(0).setloc(300,300);
+        MovingEntity.add(new Player());
+        MovingEntity.get(0).setTexture("test.png");
         motionController.setObjects(MovingEntity);
         setSize(600,600);
         setVisible(true);
@@ -30,7 +31,8 @@ public class Board extends JFrame{
         this.getContentPane().setLayout(null);
         rend = new Rendering(this);
         rend.setObject((ArrayList)MovingEntity);
-        rend.renderObjects();
+        rend.addToScreen();
+        animationController.setDelay(6);
         Timer time = new Timer( 10,new TimerHandler());
         time.start();
     }
@@ -44,10 +46,11 @@ public class Board extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
             motionController.moveObjects();
+            animationController.animateObject();
             if(!mobSpawner.getSpawned()) {
                 mobSpawner.spawnMobs();
+                rend.addToScreen();
             }
-            rend.renderObjects();
             repaint();
         }
     }
