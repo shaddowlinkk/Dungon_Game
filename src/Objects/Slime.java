@@ -2,8 +2,8 @@ package Objects;
 
 import Interfaces_Abstract.ControlableObject;
 
-public class slime extends ControlableObject {
-    public slime(String filename) {
+public class Slime extends ControlableObject {
+    public Slime(String filename) {
         super(filename);
         setName("Mob");
     }
