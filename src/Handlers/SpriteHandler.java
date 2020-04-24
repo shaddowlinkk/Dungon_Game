@@ -22,7 +22,6 @@ public class SpriteHandler {
             e.printStackTrace();
         }
 // The above line throws an checked IOException which must be caught.
-
         final int width = Integer.parseInt(con.getProp(Filename.split("-")[0]+".w"));
         final int height = Integer.parseInt(con.getProp(Filename.split("-")[0]+".h"));;
         final int rows = Integer.parseInt(con.getProp(Filename.split("-")[0]+".r"));;

@@ -1,13 +1,15 @@
 package Objects;
 
+import Interfaces_Abstract.AnimatedObject;
 import Interfaces_Abstract.ControlableObject;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Player extends ControlableObject implements KeyListener {
+public class Player extends AnimatedObject implements KeyListener {
     public Player() {
+        super("Player-Sheet.png");
         setName("player");
     }
 

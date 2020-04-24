@@ -5,10 +5,11 @@ import Handlers.SpriteHandler;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
 
-public abstract class AnimatedObject extends ControlableObject {
-    int delay,numFrame=0;
+public abstract class AnimatedObject extends ControlableObject implements ObjectAnimation {
+    int delay=6,numFrame=0;
     private BufferedImage[] frames;
     private SpriteHandler sp = new SpriteHandler();
+
     public AnimatedObject(String filename) {
         frames=sp.getCutSheet(filename);
         setTexture(new ImageIcon(frames[0]));
@@ -25,4 +26,8 @@ public abstract class AnimatedObject extends ControlableObject {
         }
     }
 
+    @Override
+    public int getDelay() {
+        return delay;
+    }
 }

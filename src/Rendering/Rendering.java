@@ -1,5 +1,6 @@
 package Rendering;
 
+import Interfaces_Abstract.AnimatedObject;
 import Interfaces_Abstract.ControlableObject;
 import Interfaces_Abstract.StandardObject;
 import Objects.Player;
@@ -32,7 +33,7 @@ public class Rendering {
     protected void runAnimation(){
         for (int i =0; i<mainFrame.getContentPane().getComponentCount();i++) {
             if (mainFrame.getContentPane().getComponent(i).getName().equals("slime")) {
-                ((ControlableObject)mainFrame.getContentPane().getComponent(i)).nextFrame();
+                ((AnimatedObject)mainFrame.getContentPane().getComponent(i)).nextFrame();
             }
         }
     }

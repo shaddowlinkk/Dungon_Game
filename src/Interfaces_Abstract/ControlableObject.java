@@ -15,8 +15,6 @@ import java.io.IOException;
 
 public  abstract  class ControlableObject extends StandardObject implements  MoveableObject{
     private int x,direction,y,dx,dy;
-
-
     public ControlableObject(String filename){
         super(filename);
     }

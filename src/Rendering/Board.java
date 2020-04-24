@@ -5,6 +5,7 @@ package Rendering;
 import Handlers.AnimationHandler;
 import Handlers.MobSpawningHandler;
 import Handlers.MovingObjectHandler;
+import Interfaces_Abstract.AnimatedObject;
 import Interfaces_Abstract.ControlableObject;
 import Interfaces_Abstract.StandardObject;
 import Objects.Player;
@@ -18,11 +19,10 @@ public class Board extends JFrame{
     private ArrayList<StandardObject> StaticEntity = new ArrayList<>();
     private MovingObjectHandler motionController = new MovingObjectHandler();
     private MobSpawningHandler mobSpawner = new MobSpawningHandler(MovingEntity);
-    private AnimationHandler animationController = new AnimationHandler(MovingEntity);
+    private AnimationHandler animationController = new AnimationHandler((ArrayList)MovingEntity);
     private Rendering rend;
     public Board(){
         MovingEntity.add(new Player());
-        MovingEntity.get(0).setTexture("test.png");
         motionController.setObjects(MovingEntity);
         setSize(600,600);
         setVisible(true);
