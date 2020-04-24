@@ -10,6 +10,7 @@ import java.awt.event.KeyListener;
 public class Player extends AnimatedObject implements KeyListener {
     public Player() {
         super("Player-Sheet.png");
+        super.setFrameState(0,9);
         setName("player");
     }
 
@@ -27,11 +28,13 @@ public class Player extends AnimatedObject implements KeyListener {
         }
 
         if (key == KeyEvent.VK_LEFT) {
+            setFrameState(1,9);
             super.setDX(-1);
 
         }
 
         if (key == KeyEvent.VK_RIGHT) {
+            super.setFrameState(0,9);
             super.setDX(1);
         }
 

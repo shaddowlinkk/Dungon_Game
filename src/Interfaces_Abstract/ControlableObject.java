@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.IOException;
 
 public  abstract  class ControlableObject extends StandardObject implements  MoveableObject{
-    private int x,direction,y,dx,dy;
+    private int x,direction,y,dx,dy,state;
     public ControlableObject(String filename){
         super(filename);
     }
@@ -55,4 +55,11 @@ public  abstract  class ControlableObject extends StandardObject implements  Mov
 
     }
 
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
 }

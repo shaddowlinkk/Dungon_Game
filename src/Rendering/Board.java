@@ -32,7 +32,6 @@ public class Board extends JFrame{
         rend = new Rendering(this);
         rend.setObject((ArrayList)MovingEntity);
         rend.addToScreen();
-        animationController.setDelay(6);
         Timer time = new Timer( 10,new TimerHandler());
         time.start();
     }

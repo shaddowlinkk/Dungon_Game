@@ -3,16 +3,19 @@ package Handlers;
 import Utils.Configeration;
 
 import javax.imageio.ImageIO;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 public class SpriteHandler {
-    public SpriteHandler (){
+    String Filename;
+    public SpriteHandler (String f){
+        Filename=f;
     }
 
 
-    public BufferedImage[] getCutSheet(String Filename){
+    public BufferedImage[] getCutSheet(int State,int Frames){
         Configeration con = new Configeration("Game.config");
 
         BufferedImage bigImg = null;
@@ -24,22 +27,18 @@ public class SpriteHandler {
 // The above line throws an checked IOException which must be caught.
         final int width = Integer.parseInt(con.getProp(Filename.split("-")[0]+".w"));
         final int height = Integer.parseInt(con.getProp(Filename.split("-")[0]+".h"));;
-        final int rows = Integer.parseInt(con.getProp(Filename.split("-")[0]+".r"));;
-        final int cols = Integer.parseInt(con.getProp(Filename.split("-")[0]+".c"));;
-        BufferedImage[] sprites = new BufferedImage[rows * cols];
+        BufferedImage[] sprites = new BufferedImage[Frames];
 
-        for (int i = 0; i < rows; i++)
-        {
-            for (int j = 0; j < cols; j++)
+
+            for (int j = 0; j < Frames; j++)
             {
-                sprites[(i * cols) + j] = bigImg.getSubimage(
+                sprites[j] = bigImg.getSubimage(
                         j * width,
-                        i * height,
+                        State * height,
                         width,
                         height
                 );
             }
-        }
         return sprites;
     }
 }
