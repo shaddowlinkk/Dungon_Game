@@ -1,6 +1,7 @@
 package Rendering;
 
 import Interfaces_Abstract.StandardObject;
+import Objects.Player;
 
 import javax.swing.*;
 import java.awt.event.KeyListener;
@@ -15,8 +16,16 @@ public class Rendering {
     public void addObject(StandardObject obj){
         object.add(obj);
     }
+    public void setObject(ArrayList<StandardObject> object) {
+        this.object = object;
+    }
     protected void renderObjects(){
-        mainFrame.addKeyListener((KeyListener) object.get(0));
-        mainFrame.getContentPane().add(object.get(0));
+        for (int i=mainFrame.getContentPane().getComponentCount(); i <object.size();i++) {
+            if (object.get(i).getName().equals("player")) {
+                System.out.println("found");
+                mainFrame.addKeyListener((Player) object.get(i));
+            }
+            mainFrame.getContentPane().add(object.get(i));
+        }
     }
 }

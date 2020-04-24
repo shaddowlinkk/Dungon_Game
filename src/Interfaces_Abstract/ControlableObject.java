@@ -18,9 +18,11 @@ public  abstract  class ControlableObject extends StandardObject implements  Mov
     }
     @Override
     public void move() {
+        x=getX();
+        y=getY();
         x = x + dx;
         y = y + dy;
-        super.setLocation(x, y);
+        super.setloc(x, y);
     }
 
     @Override

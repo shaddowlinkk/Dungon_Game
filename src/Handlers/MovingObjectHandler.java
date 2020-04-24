@@ -1,24 +1,27 @@
 package Handlers;
 
-import Interfaces_Abstract.MoveableObject;
+import Interfaces_Abstract.ControlableObject;
 
 import java.util.ArrayList;
 
 //to do find out why objects not rendering rightK
 public class MovingObjectHandler {
 
-     public ArrayList<MoveableObject> objects = new ArrayList<MoveableObject>();
+     public ArrayList<ControlableObject> objects = new ArrayList<ControlableObject>();
     public MovingObjectHandler(){
     }
-    public void addObject(MoveableObject obj){
+    public void addObject(ControlableObject obj){
         objects.add(obj);
     }
+    public void setObjects(ArrayList<ControlableObject> M){
+        objects=M;
+    }
     public void moveObjects(){
-        for (MoveableObject o: objects) {
+        for (ControlableObject o: objects) {
             o.move();
         }
     }
-    public MoveableObject getObject( int i) {
+    public ControlableObject getObject( int i) {
         return objects.get(i);
     }
 }

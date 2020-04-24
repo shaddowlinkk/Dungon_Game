@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 public class Player extends ControlableObject implements KeyListener {
     public Player(String filename) {
         super(filename);
+        setName("player");
     }
 
     @Override
@@ -19,6 +20,7 @@ public class Player extends ControlableObject implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
         if (key==KeyEvent.VK_ENTER){
+            System.out.println("test");
             super.move();
         }
 
