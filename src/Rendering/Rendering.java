@@ -13,7 +13,7 @@ public class Rendering {
     public Rendering(JFrame frame){
         mainFrame=frame;
     }
-    public void addImage(String FileName){
+    public void addImage(String FileName,String type){
         Icon im = null;
         try {
             im = new ImageIcon( ImageIO.read(new File(FileName)));
@@ -21,8 +21,10 @@ public class Rendering {
             e.printStackTrace();
         }
         images.add(new JLabel());
+        images.get(images.size()-1).setSize(im.getIconWidth(),im.getIconHeight());
         images.get(images.size()-1).setIcon(im);
         images.get(images.size()-1).setVisible(true);
+        images.get(images.size()-1).setName(type);
         //images.get(images.size()-1).setLocation(((images.size()-1)*100),((images.size()-1)*100));
     }
     public void render(){
@@ -31,8 +33,6 @@ public class Rendering {
         }
     }
     public void setLocation(int index, int x, int y){
-
-
     }
 
 }

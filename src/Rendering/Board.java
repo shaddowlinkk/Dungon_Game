@@ -1,45 +1,56 @@
 package Rendering;
 
-import EventHandlers.TimerHandler;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.Arrays;
+import java.awt.event.*;
 
 public class Board extends JFrame{
     private Boolean closing;
-//todo fix rendering images to frame
+    private Rendering rend;
+//todoworking on over all desine
     public Board(){
         closing=false;
         setSize(600,600);
         setVisible(true);
-        this.getContentPane().setLayout(null);
-        this.getContentPane().setSize(600,600);
-        this.getContentPane().setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        /*main.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                System.out.println("test");
-                closing=true;
-                main.dispose();
-            }
-        });*/
-
-        Rendering rend = new Rendering(this);
-        rend.addImage("test.png");
-        rend.addImage("TEST2.bmp");
+        this.getContentPane().setLayout(null);
+        addKeyListener (new KeyEventHandler());
+        rend = new Rendering(this);
+        rend.addImage("test.png","player");
         rend.render();
-       //this.getContentPane().getComponent(0).setLocation(0,0);
-       //this.getContentPane().getComponent(1).setLocation(100,100);
-        repaint();
-
-        Timer time = new Timer( 10,new TimerHandler(this));
+        Timer time = new Timer( 10,new TimerHandler());
         time.start();
+    }
+
+    /*
+    Used for tick action control rate
+     */
+    private class TimerHandler implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+
+        }
+    }
+
+    /*
+    Key Event hadneler foe key based events
+     */
+
+    public class KeyEventHandler implements KeyListener {
+        @Override
+        public void keyTyped(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+
+        }
     }
     public Boolean getClosing(){
         return closing;
