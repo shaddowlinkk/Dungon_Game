@@ -1,38 +1,22 @@
 package Rendering;
 
-import javax.imageio.ImageIO;
+import Interfaces_Abstract.StandardObject;
+
 import javax.swing.*;
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
-//to do find out why images not rendering rightK
+//TODO update this class to use object based rendering with new interfaces
 public class Rendering {
     JFrame mainFrame;
-    ArrayList<JLabel> images = new ArrayList<JLabel>();
+    ArrayList<StandardObject> object = new ArrayList<StandardObject>();
     public Rendering(JFrame frame){
         mainFrame=frame;
     }
-    public void addImage(String FileName,String type){
-        Icon im = null;
-        try {
-            im = new ImageIcon( ImageIO.read(new File(FileName)));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        images.add(new JLabel());
-        images.get(images.size()-1).setSize(im.getIconWidth(),im.getIconHeight());
-        images.get(images.size()-1).setIcon(im);
-        images.get(images.size()-1).setVisible(true);
-        images.get(images.size()-1).setName(type);
-        //images.get(images.size()-1).setLocation(((images.size()-1)*100),((images.size()-1)*100));
+    public void addObject(StandardObject obj){
+        object.add(obj);
     }
-    public void render(){
-        for (int i =0; i<images.size();i++) {
-            mainFrame.getContentPane().add(images.get(i));
-        }
+    protected void renderObjects(){
+        mainFrame.addKeyListener((KeyListener) object.get(0));
+        mainFrame.getContentPane().add(object.get(0));
     }
-    public void setLocation(int index, int x, int y){
-    }
-
 }

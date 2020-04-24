@@ -1,26 +1,31 @@
 package Rendering;
 
 
+import Interfaces_Abstract.BaseObject;
+import Objects.Player;
+
 import javax.swing.*;
 import java.awt.event.*;
 
 public class Board extends JFrame{
-    private Boolean closing;
     private Rendering rend;
-//todoworking on over all desine
+    private BaseObject[] test ={new Player("test.png")};
+
+    //todoworking on over all desine
     public Board(){
-        closing=false;
+
         setSize(600,600);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.getContentPane().setLayout(null);
-        addKeyListener (new KeyEventHandler());
         rend = new Rendering(this);
-        rend.addImage("test.png","player");
-        rend.render();
+        rend.addObject(new Player("test.png"));
+        rend.renderObjects();
         Timer time = new Timer( 10,new TimerHandler());
         time.start();
     }
+
+
 
     /*
     Used for tick action control rate
@@ -29,7 +34,6 @@ public class Board extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
 
-
         }
     }
 
@@ -37,7 +41,7 @@ public class Board extends JFrame{
     Key Event hadneler foe key based events
      */
 
-    public class KeyEventHandler implements KeyListener {
+/*    private class KeyEventHandler implements KeyListener {
         @Override
         public void keyTyped(KeyEvent e) {
 
@@ -45,6 +49,9 @@ public class Board extends JFrame{
 
         @Override
         public void keyPressed(KeyEvent e) {
+            if(e.getKeyCode()==KeyEvent.VK_ENTER){
+                System.out.println("tesyt");
+            }
         }
 
         @Override
@@ -54,5 +61,5 @@ public class Board extends JFrame{
     }
     public Boolean getClosing(){
         return closing;
-    }
+    }*/
 }
