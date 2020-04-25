@@ -19,8 +19,10 @@ public abstract class AnimatedObject extends ControlableObject implements Object
             if (numFrame % animationLength == 0) {
                 numFrame = 0;
             }
-            setTexture(new ImageIcon(frames[numFrame]));
-            numFrame++;
+            if(numFrame<frames.length) {
+                setTexture(new ImageIcon(frames[numFrame]));
+                numFrame++;
+            }
         }
     }
 
@@ -54,6 +56,8 @@ public abstract class AnimatedObject extends ControlableObject implements Object
         this.animationLength = animationLength;
     }
     public void setFrameState(int state,int fram){
+        count=0;
+        numFrame=0;
         animationLength=fram;
         frames=sp.getCutSheet(state,fram);
     }
