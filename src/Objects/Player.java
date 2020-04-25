@@ -1,9 +1,7 @@
 package Objects;
 
 import Interfaces_Abstract.AnimatedObject;
-import Interfaces_Abstract.ControlableObject;
 
-import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -76,7 +74,7 @@ public class Player extends AnimatedObject implements KeyListener {
         if (key == KeyEvent.VK_LEFT) {
             if(state>=2) {
                 state = state - 2;
-                super.setDelay(6);
+                super.setDelay(7);
                 super.setFrameState(state,9);
             }
 
@@ -86,7 +84,7 @@ public class Player extends AnimatedObject implements KeyListener {
         if (key == KeyEvent.VK_RIGHT) {
             if(state>=2) {
                 state = state - 2;
-                super.setDelay(6);
+                super.setDelay(7);
                 super.setFrameState(state,9);
             }
 
@@ -96,7 +94,7 @@ public class Player extends AnimatedObject implements KeyListener {
         if (key == KeyEvent.VK_UP) {
             if(state>=2) {
                 state = state - 2;
-                super.setDelay(6);
+                super.setDelay(7);
                 super.setFrameState(state,9);
             }
 
@@ -106,7 +104,7 @@ public class Player extends AnimatedObject implements KeyListener {
         if (key == KeyEvent.VK_DOWN) {
             if(state>=2) {
                 state = state - 2;
-                super.setDelay(6);
+                super.setDelay(7);
                 super.setFrameState(state,9);
             }
 

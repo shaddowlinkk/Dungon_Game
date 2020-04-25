@@ -3,12 +3,14 @@ package Rendering;
 
 
 import Handlers.AnimationHandler;
+import Handlers.CollisionHandler;
 import Handlers.MobSpawningHandler;
 import Handlers.MovingObjectHandler;
-import Interfaces_Abstract.AnimatedObject;
 import Interfaces_Abstract.ControlableObject;
-import Interfaces_Abstract.StandardObject;
+import Interfaces_Abstract.StandardCollidableObject;
 import Objects.Player;
+import Utils.Point;
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -16,7 +18,7 @@ import java.util.ArrayList;
 
 public class Board extends JFrame{
     private ArrayList<ControlableObject> MovingEntity= new ArrayList<>();
-    private ArrayList<StandardObject> StaticEntity = new ArrayList<>();
+    private ArrayList<StandardCollidableObject> StaticEntity = new ArrayList<>();
     private MovingObjectHandler motionController = new MovingObjectHandler();
     private MobSpawningHandler mobSpawner = new MobSpawningHandler(MovingEntity);
     private AnimationHandler animationController = new AnimationHandler((ArrayList)MovingEntity);
@@ -44,12 +46,15 @@ public class Board extends JFrame{
     private class TimerHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            motionController.moveObjects();
-            animationController.animateObject();
+            /*spawning and rendering*/
             if(!mobSpawner.getSpawned()) {
                 mobSpawner.spawnMobs();
                 rend.addToScreen();
             }
+
+            /*Action controllers*/
+            motionController.moveObjects();
+            animationController.animateObject();
             repaint();
         }
     }

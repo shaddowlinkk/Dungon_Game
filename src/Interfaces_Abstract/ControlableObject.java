@@ -1,22 +1,9 @@
 package Interfaces_Abstract;
 
-import Handlers.SpriteHandler;
-import Interfaces_Abstract.BaseObject;
-import Interfaces_Abstract.MoveableObject;
-import Objects.BoundingBox;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-public  abstract  class ControlableObject extends StandardObject implements  MoveableObject{
+public  abstract  class ControlableObject extends StandardCollidableObject implements  MoveableObject{
     private int x,direction,y,dx,dy,state;
     public ControlableObject(String filename){
-        super(filename);
+        //super(filename);
     }
     public ControlableObject(){
     }
@@ -27,11 +14,6 @@ public  abstract  class ControlableObject extends StandardObject implements  Mov
         x = x + dx;
         y = y + dy;
         super.setloc(x, y);
-    }
-
-    @Override
-    public Boolean collison(BaseObject obj) {
-        return null;
     }
 
     @Override

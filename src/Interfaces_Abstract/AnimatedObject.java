@@ -2,7 +2,6 @@ package Interfaces_Abstract;
 
 import Handlers.SpriteHandler;
 
-import javax.swing.*;
 import java.awt.image.BufferedImage;
 
 public abstract class AnimatedObject extends ControlableObject implements ObjectAnimation {
@@ -20,7 +19,7 @@ public abstract class AnimatedObject extends ControlableObject implements Object
                 numFrame = 0;
             }
             if(numFrame<frames.length) {
-                setTexture(new ImageIcon(frames[numFrame]));
+                setTexture((frames[numFrame]));
                 numFrame++;
             }
         }

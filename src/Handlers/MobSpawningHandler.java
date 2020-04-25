@@ -19,7 +19,6 @@ public class MobSpawningHandler {
             Slime s = new Slime("Slime-Sheet.png");
             s.setloc(rand.nextInt(520),rand.nextInt(520));
             entity.add(s);
-            System.out.println("test");
         }
         spawned=true;
     }

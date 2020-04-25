@@ -21,7 +21,7 @@ public class MovingObjectHandler {
             o.move();
         }
     }
-    public ControlableObject getObject( int i) {
+    public ControlableObject getObject(int i) {
         return objects.get(i);
     }
 }

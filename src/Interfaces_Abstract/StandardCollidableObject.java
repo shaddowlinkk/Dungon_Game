@@ -1,17 +1,21 @@
 package Interfaces_Abstract;
 
 import Objects.BoundingBox;
+import Utils.Point;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public abstract class StandardObject extends JLabel implements BaseObject {
+public abstract class StandardCollidableObject extends JLabel implements BaseCollidableObject {
     private int _x,_y;
     private String file;
-   public StandardObject(String filename){
+    private BoundingBox box;
+    private Image im;
+  /* public StandardObject(String filename){
         file=filename;
         Icon im = null;
         try {
@@ -23,17 +27,27 @@ public abstract class StandardObject extends JLabel implements BaseObject {
        setIcon(im);
        setVisible(true);
 
-    }
-    public StandardObject(){setVisible(true);}
+    }*/
+    public StandardCollidableObject(){setVisible(true);}
     @Override
     public BoundingBox getBoundingbox() {
-        return null;
+        return box;
+    }
+
+    @Override
+    public void setBoundingbox(String fileName) {
+        box= new BoundingBox(fileName);
     }
 
     @Override
     public void setTexture(Icon img) {
         setSize(img.getIconWidth(),img.getIconHeight());
         setIcon(img);
+
+    }
+    public void setTexture(BufferedImage i) {
+        im=i;
+        setSize(i.getWidth(),i.getHeight());
     }
     public void setTexture(String fileName) {
         Icon im = null;
@@ -60,15 +74,24 @@ public abstract class StandardObject extends JLabel implements BaseObject {
     public int getY(){
         return _y;
     }
-    //TODO work on drawing bounding box
-/*    public void paint(Graphics g) {
-        g.setColor(Color.blue);
-        g.drawRect (0, 0, 79, 79);
-        try {
-            g.drawImage(ImageIO.read(new File(file)),0,0,null);
-        } catch (IOException e) {
-            e.printStackTrace();
+
+    protected void paintComponent(Graphics g) {
+        if(im!=null) {
+            g.drawImage(im,0,0,null);
         }
+        if(box!=null){
+            Polygon hitbox = new Polygon();
+            for (Point p : box.getPolygon()){
+                hitbox.addPoint(p.getX(),p.getY());
+            }
+            g.drawPolygon(hitbox);
+        }
+        super.paintComponent(g);
+    }
+/*    @Override
+    public void paintComponent(Graphics g) {
+        g.drawImage(im,_x,_y,null);
+        repaint();
 
     }*/
 }
