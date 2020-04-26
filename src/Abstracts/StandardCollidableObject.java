@@ -14,7 +14,6 @@ import java.io.IOException;
 
 public abstract class StandardCollidableObject extends JLabel implements BaseCollidableObject {
     private int _x,_y;
-    private String collisionType;
     private BoundingBox box;
     private CollisionDetectorHandler Collision= new CollisionDetectorHandler();
     private Image im;
@@ -47,11 +46,8 @@ public abstract class StandardCollidableObject extends JLabel implements BaseCol
         return Collision.checkCollition(this,obj);
     }
     public void collision(String type){
-        collisionType=type;
     }
-    public String collidedWith(){
-        return collisionType;
-    }
+
 
     @Override
     public void setTexture(Icon img) {
@@ -88,7 +84,6 @@ public abstract class StandardCollidableObject extends JLabel implements BaseCol
     public int getY(){
         return _y;
     }
-    public void collision(){}
 
     protected void paintComponent(Graphics g) {
         if(im!=null) {

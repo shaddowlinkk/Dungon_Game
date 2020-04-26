@@ -11,6 +11,7 @@ import Abstracts.StandardCollidableObject;
 import Objects.Player;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
@@ -48,6 +49,10 @@ public class Board extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
             /*spawning and rendering*/
+            if(!((Player)MovingEntitys.get(0)).isAlive()){
+                //player has hit a mob or attack
+
+            }
             if(!mobSpawner.getSpawned()) {
                 mobSpawner.spawnMobs();
                 rend.addToScreen();

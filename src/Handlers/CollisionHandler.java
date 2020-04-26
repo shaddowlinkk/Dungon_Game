@@ -14,7 +14,7 @@ public class CollisionHandler {
             for (StandardCollidableObject b : objects){
                 if(o!=b){
                     if(o.hasCollided(b)) {
-                        System.out.println(o.getName() + " has collided with " + b.getName());
+                        o.collision(b.getName());
                     }
                 }
             }

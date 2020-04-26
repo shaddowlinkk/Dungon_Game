@@ -7,6 +7,8 @@ import java.awt.event.KeyListener;
 
 public class Player extends AnimatedObject implements KeyListener {
      private int state=0;
+     private Boolean alive=true;
+
     public Player() {
         super("Player-Sheet.png");
         setBoundingbox("Player-Points.png");
@@ -18,6 +20,15 @@ public class Player extends AnimatedObject implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
 
+    }
+    @Override
+    public void collision(String type){
+        if(type.equals("Mob")){
+            alive=false;
+        }
+    }
+    public Boolean isAlive(){
+        return alive;
     }
 
     @Override

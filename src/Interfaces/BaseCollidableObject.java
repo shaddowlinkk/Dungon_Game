@@ -11,7 +11,6 @@ public interface BaseCollidableObject {
     public void setloc(int x, int y);
     public Boolean hasCollided(StandardCollidableObject obj);
     public void collision(String type);
-    public String collidedWith();
     public int getX();
     public int getY();
 }
