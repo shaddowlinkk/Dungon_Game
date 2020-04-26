@@ -1,8 +1,10 @@
-package Interfaces_Abstract;
+package Abstracts;
+
+import Interfaces.BaseUncollidableObject;
 
 import javax.swing.*;
 
-public abstract class GroundObject implements BaseUncollidableObject{
+public abstract class GroundObject implements BaseUncollidableObject {
     @Override
     public void setTexture(Icon img) {
 

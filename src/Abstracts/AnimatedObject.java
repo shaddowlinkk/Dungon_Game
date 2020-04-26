@@ -1,6 +1,7 @@
-package Interfaces_Abstract;
+package Abstracts;
 
 import Handlers.SpriteHandler;
+import Interfaces.ObjectAnimation;
 
 import java.awt.image.BufferedImage;
 

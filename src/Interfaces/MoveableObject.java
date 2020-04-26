@@ -1,4 +1,4 @@
-package Interfaces_Abstract;
+package Interfaces;
 
 public interface MoveableObject {
     public void move();

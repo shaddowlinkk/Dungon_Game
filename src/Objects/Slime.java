@@ -1,11 +1,10 @@
 package Objects;
 
-import Interfaces_Abstract.AnimatedObject;
-import Interfaces_Abstract.BaseMob;
+import Abstracts.BaseMob;
 
 public class Slime extends BaseMob {
-    public Slime(String filename) {
-        super(filename);
+    public Slime() {
+        super("Slime-Sheet.png");
         super.setFrameState(0,9);
     }
 }

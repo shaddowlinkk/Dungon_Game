@@ -1,6 +1,6 @@
 package Handlers;
 
-import Interfaces_Abstract.AnimatedObject;
+import Abstracts.AnimatedObject;
 
 import java.util.ArrayList;
 

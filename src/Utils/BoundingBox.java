@@ -1,4 +1,4 @@
-package Objects;
+package Utils;
 
 import Utils.Point;
 

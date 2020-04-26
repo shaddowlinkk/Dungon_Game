@@ -1,7 +1,6 @@
 package Rendering;
 
-import Interfaces_Abstract.AnimatedObject;
-import Interfaces_Abstract.StandardCollidableObject;
+import Abstracts.StandardCollidableObject;
 import Objects.Player;
 
 import javax.swing.*;
@@ -27,11 +26,11 @@ public class Rendering {
             mainFrame.getContentPane().add(object.get(i));
         }
     }
-    protected void runAnimation(){
+/*    protected void runAnimation(){
         for (int i =0; i<mainFrame.getContentPane().getComponentCount();i++) {
             if (mainFrame.getContentPane().getComponent(i).getName().equals("slime")) {
                 ((AnimatedObject)mainFrame.getContentPane().getComponent(i)).nextFrame();
             }
         }
-    }
+    }*/
 }

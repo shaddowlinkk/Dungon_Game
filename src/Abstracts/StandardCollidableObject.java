@@ -1,6 +1,8 @@
-package Interfaces_Abstract;
+package Abstracts;
 
-import Objects.BoundingBox;
+import Handlers.CollisionDetectorHandler;
+import Interfaces.BaseCollidableObject;
+import Utils.BoundingBox;
 import Utils.Point;
 
 import javax.imageio.ImageIO;
@@ -12,8 +14,9 @@ import java.io.IOException;
 
 public abstract class StandardCollidableObject extends JLabel implements BaseCollidableObject {
     private int _x,_y;
-    private String file;
+    private String collisionType;
     private BoundingBox box;
+    private CollisionDetectorHandler Collision= new CollisionDetectorHandler();
     private Image im;
   /* public StandardObject(String filename){
         file=filename;
@@ -37,6 +40,17 @@ public abstract class StandardCollidableObject extends JLabel implements BaseCol
     @Override
     public void setBoundingbox(String fileName) {
         box= new BoundingBox(fileName);
+    }
+
+    @Override
+    public Boolean hasCollided(StandardCollidableObject obj){
+        return Collision.checkCollition(this,obj);
+    }
+    public void collision(String type){
+        collisionType=type;
+    }
+    public String collidedWith(){
+        return collisionType;
     }
 
     @Override
@@ -74,6 +88,7 @@ public abstract class StandardCollidableObject extends JLabel implements BaseCol
     public int getY(){
         return _y;
     }
+    public void collision(){}
 
     protected void paintComponent(Graphics g) {
         if(im!=null) {
@@ -84,6 +99,7 @@ public abstract class StandardCollidableObject extends JLabel implements BaseCol
             for (Point p : box.getPolygon()){
                 hitbox.addPoint(p.getX(),p.getY());
             }
+            g.setColor(Color.blue);
             g.drawPolygon(hitbox);
         }
         super.paintComponent(g);

@@ -1,6 +1,8 @@
-package Interfaces_Abstract;
+package Abstracts;
 
-public  abstract class BaseMob extends AnimatedObject{
+import Abstracts.AnimatedObject;
+
+public  abstract class BaseMob extends AnimatedObject {
     public BaseMob(String filename) {
         super(filename);
         setBoundingbox(filename.split("-")[0]+"-Points.png");

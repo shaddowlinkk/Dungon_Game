@@ -6,10 +6,9 @@ import Handlers.AnimationHandler;
 import Handlers.CollisionHandler;
 import Handlers.MobSpawningHandler;
 import Handlers.MovingObjectHandler;
-import Interfaces_Abstract.ControlableObject;
-import Interfaces_Abstract.StandardCollidableObject;
+import Abstracts.ControlableObject;
+import Abstracts.StandardCollidableObject;
 import Objects.Player;
-import Utils.Point;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -17,22 +16,24 @@ import java.util.ArrayList;
 
 
 public class Board extends JFrame{
-    private ArrayList<ControlableObject> MovingEntity= new ArrayList<>();
+    private ArrayList<ControlableObject> MovingEntitys= new ArrayList<>();
+    private ArrayList<ControlableObject> collidableEntitys= new ArrayList<>();
     private ArrayList<StandardCollidableObject> StaticEntity = new ArrayList<>();
     private MovingObjectHandler motionController = new MovingObjectHandler();
-    private MobSpawningHandler mobSpawner = new MobSpawningHandler(MovingEntity);
-    private AnimationHandler animationController = new AnimationHandler((ArrayList)MovingEntity);
+    private MobSpawningHandler mobSpawner = new MobSpawningHandler(MovingEntitys);
+    private AnimationHandler animationController = new AnimationHandler((ArrayList) MovingEntitys);
+    private CollisionHandler collisionControler = new CollisionHandler((ArrayList) MovingEntitys);
     private Rendering rend;
     public Board(){
-        MovingEntity.add(new Player());
-        motionController.setObjects(MovingEntity);
+        MovingEntitys.add(new Player());
+        motionController.setObjects(MovingEntitys);
         setSize(600,600);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(null);
         this.getContentPane().setLayout(null);
         rend = new Rendering(this);
-        rend.setObject((ArrayList)MovingEntity);
+        rend.setObject((ArrayList) MovingEntitys);
         rend.addToScreen();
         Timer time = new Timer( 10,new TimerHandler());
         time.start();
@@ -55,6 +56,7 @@ public class Board extends JFrame{
             /*Action controllers*/
             motionController.moveObjects();
             animationController.animateObject();
+            collisionControler.checkCollisions();
             repaint();
         }
     }

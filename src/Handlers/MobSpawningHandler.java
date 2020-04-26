@@ -1,6 +1,6 @@
 package Handlers;
 
-import Interfaces_Abstract.ControlableObject;
+import Abstracts.ControlableObject;
 import Objects.Slime;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class MobSpawningHandler {
     public void spawnMobs(){
         int g= rand.nextInt(6);
         for (int i=0;i<=g;i++){
-            Slime s = new Slime("Slime-Sheet.png");
+            Slime s = new Slime();
             s.setloc(rand.nextInt(520),rand.nextInt(520));
             entity.add(s);
         }

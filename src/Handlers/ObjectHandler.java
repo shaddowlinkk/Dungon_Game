@@ -1,6 +1,6 @@
 package Handlers;
 
-import Interfaces_Abstract.BaseCollidableObject;
+import Interfaces.BaseCollidableObject;
 
 import java.util.ArrayList;
 

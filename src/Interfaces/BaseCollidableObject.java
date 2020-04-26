@@ -1,6 +1,7 @@
-package Interfaces_Abstract;
+package Interfaces;
 
-import Objects.BoundingBox;
+import Abstracts.StandardCollidableObject;
+import Utils.BoundingBox;
 import javax.swing.*;
 
 public interface BaseCollidableObject {
@@ -8,6 +9,9 @@ public interface BaseCollidableObject {
     public void setBoundingbox(String fileName);
     public void setTexture(Icon img);
     public void setloc(int x, int y);
+    public Boolean hasCollided(StandardCollidableObject obj);
+    public void collision(String type);
+    public String collidedWith();
     public int getX();
     public int getY();
 }

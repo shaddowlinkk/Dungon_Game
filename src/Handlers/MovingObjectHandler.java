@@ -1,6 +1,6 @@
 package Handlers;
 
-import Interfaces_Abstract.ControlableObject;
+import Abstracts.ControlableObject;
 
 import java.util.ArrayList;
 

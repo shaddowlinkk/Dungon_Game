@@ -1,6 +1,6 @@
 package Objects;
 
-import Interfaces_Abstract.AnimatedObject;
+import Abstracts.AnimatedObject;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -9,6 +9,7 @@ public class Player extends AnimatedObject implements KeyListener {
      private int state=0;
     public Player() {
         super("Player-Sheet.png");
+        setBoundingbox("Player-Points.png");
         super.setDelay(6);
         super.setFrameState(state,9);
         setName("player");

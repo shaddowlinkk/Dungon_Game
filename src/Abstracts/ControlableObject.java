@@ -1,6 +1,8 @@
-package Interfaces_Abstract;
+package Abstracts;
 
-public  abstract  class ControlableObject extends StandardCollidableObject implements  MoveableObject{
+import Interfaces.MoveableObject;
+
+public  abstract  class ControlableObject extends StandardCollidableObject implements MoveableObject {
     private int x,direction,y,dx,dy,state;
     public ControlableObject(String filename){
         //super(filename);
