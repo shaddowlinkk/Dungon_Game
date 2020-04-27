@@ -12,10 +12,11 @@ public class MobHandler {
         screen=F;
     }
     public void checkMobDeath(ArrayList<ControlableObject> obj){
-        for (ControlableObject o: obj ) {
-            if (o.getName().equals("Mob")){
-                if(!((BaseMob)o).isAlive()){
-                    screen.getContentPane().remove(o);
+        for (int i =0; i<obj.size();i++ ) {
+            if (obj.get(i).getName().equals("Mob")){
+                if(!((BaseMob)obj.get(i)).isAlive()){
+                    screen.getContentPane().remove(obj.get(i));
+                    obj.remove(i);
                 }
             }
         }
