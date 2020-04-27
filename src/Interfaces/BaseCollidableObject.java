@@ -9,7 +9,7 @@ public interface BaseCollidableObject {
     public void setBoundingbox(String fileName);
     public void setTexture(Icon img);
     public void setloc(int x, int y);
-    public Boolean hasCollided(StandardCollidableObject obj);
+    public Boolean hasCollided(Abstracts.StandardCollidableObject obj);
     public void collision(String type);
     public int getX();
     public int getY();

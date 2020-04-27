@@ -2,12 +2,10 @@ package Rendering;
 
 
 
-import Handlers.AnimationHandler;
-import Handlers.CollisionHandler;
-import Handlers.MobSpawningHandler;
-import Handlers.MovingObjectHandler;
+import Handlers.*;
 import Abstracts.ControlableObject;
 import Abstracts.StandardCollidableObject;
+import Objects.Dagger;
 import Objects.Player;
 
 import javax.swing.*;
@@ -18,13 +16,16 @@ import java.util.ArrayList;
 
 public class Board extends JFrame{
     private ArrayList<ControlableObject> MovingEntitys= new ArrayList<>();
-    private ArrayList<ControlableObject> collidableEntitys= new ArrayList<>();
     private ArrayList<StandardCollidableObject> StaticEntity = new ArrayList<>();
     private MovingObjectHandler motionController = new MovingObjectHandler();
     private MobSpawningHandler mobSpawner = new MobSpawningHandler(MovingEntitys);
     private AnimationHandler animationController = new AnimationHandler((ArrayList) MovingEntitys);
-    private CollisionHandler collisionControler = new CollisionHandler((ArrayList) MovingEntitys);
-    private Rendering rend;
+    private CollisionHandler collisionController = new CollisionHandler((ArrayList) MovingEntitys,StaticEntity);
+    private ObjectHandler objectController = new ObjectHandler();
+    private MobHandler mobController = new MobHandler(this);
+
+    private Rendering rend = new Rendering(this);
+    private Rendering srend = new Rendering(this);
     public Board(){
         MovingEntitys.add(new Player());
         motionController.setObjects(MovingEntitys);
@@ -33,24 +34,39 @@ public class Board extends JFrame{
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(null);
         this.getContentPane().setLayout(null);
-        rend = new Rendering(this);
-        rend.setObject((ArrayList) MovingEntitys);
-        rend.addToScreen();
+        rend.setObject((ArrayList) MovingEntitys,StaticEntity);
+        rend.addToScreen();;
+        Component g= this.getContentPane();
         Timer time = new Timer( 10,new TimerHandler());
         time.start();
     }
 
+    protected ArrayList<ControlableObject> getMovingEntitys() {
+        return MovingEntitys;
+    }
 
+    protected ArrayList<StandardCollidableObject> getStaticEntity() {
+        return StaticEntity;
+    }
 
     /*
-    Used for tick action control rate
-     */
+            Used for tick action control rate
+             */
     private class TimerHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             /*spawning and rendering*/
             if(!((Player)MovingEntitys.get(0)).isAlive()){
-                //player has hit a mob or attack
+                MovingEntitys.clear();
+                StaticEntity.clear();
+                JPanel endScreen = new JPanel();
+                getContentPane().removeAll();
+                getContentPane().add(endScreen);
+                revalidate();
+                endScreen.setSize(600,600);
+                endScreen.setBackground(Color.black);
+                endScreen.setVisible(true);
+                repaint();
 
             }
             if(!mobSpawner.getSpawned()) {
@@ -60,8 +76,10 @@ public class Board extends JFrame{
 
             /*Action controllers*/
             motionController.moveObjects();
+            objectController.socketToBall((ArrayList) MovingEntitys);
             animationController.animateObject();
-            collisionControler.checkCollisions();
+            collisionController.checkCollisions();
+            mobController.checkMobDeath((ArrayList) MovingEntitys);
             repaint();
         }
     }

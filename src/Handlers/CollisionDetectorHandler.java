@@ -72,6 +72,7 @@ public class CollisionDetectorHandler {
                  found=doIntersect(p1,q1,p2,q2);
                  if(found){
                      return found;
+
                  }
             }
         }

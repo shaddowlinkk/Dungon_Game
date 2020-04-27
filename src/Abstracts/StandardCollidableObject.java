@@ -8,28 +8,17 @@ import Utils.Point;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 public abstract class StandardCollidableObject extends JLabel implements BaseCollidableObject {
-    private int _x,_y;
+    private int _x,_y,angle;
     private BoundingBox box;
     private CollisionDetectorHandler Collision= new CollisionDetectorHandler();
     private Image im;
-  /* public StandardObject(String filename){
-        file=filename;
-        Icon im = null;
-        try {
-            im = new ImageIcon( ImageIO.read(new File(filename)));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-       setSize(im.getIconWidth(),im.getIconHeight());
-       setIcon(im);
-       setVisible(true);
 
-    }*/
     public StandardCollidableObject(){setVisible(true);}
     @Override
     public BoundingBox getBoundingbox() {
@@ -86,7 +75,19 @@ public abstract class StandardCollidableObject extends JLabel implements BaseCol
     }
 
     protected void paintComponent(Graphics g) {
-        if(im!=null) {
+/*        Graphics2D gx = (Graphics2D) g;
+        gx.rotate(0.6,  getWidth()/2, getHeight()/2);*/
+            Graphics2D g2 = (Graphics2D)g;
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                    RenderingHints.VALUE_ANTIALIAS_ON);
+            AffineTransform aT = g2.getTransform();
+            Shape oldshape = g2.getClip();
+            double x = getWidth()/2.0;
+            double y = getHeight()/2.0;
+            aT.rotate(Math.toRadians(angle), x, y);
+            g2.setTransform(aT);
+            g2.setClip(oldshape);
+       if(im!=null) {
             g.drawImage(im,0,0,null);
         }
         if(box!=null){
@@ -97,6 +98,7 @@ public abstract class StandardCollidableObject extends JLabel implements BaseCol
             g.setColor(Color.blue);
             g.drawPolygon(hitbox);
         }
+
         super.paintComponent(g);
     }
 /*    @Override

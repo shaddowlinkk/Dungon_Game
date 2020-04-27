@@ -1,12 +1,14 @@
 package Objects;
 
 import Abstracts.AnimatedObject;
+import Abstracts.StandardCollidableObject;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Player extends AnimatedObject implements KeyListener {
      private int state=0;
+     private StandardCollidableObject heldItem = new Dagger();
      private Boolean alive=true;
 
     public Player() {
@@ -29,6 +31,18 @@ public class Player extends AnimatedObject implements KeyListener {
     }
     public Boolean isAlive(){
         return alive;
+    }
+
+    public void setHeldItem(StandardCollidableObject heldItem) {
+        this.heldItem = heldItem;
+    }
+
+    public StandardCollidableObject getHeldItem() {
+        return heldItem;
+    }
+
+    public Boolean hasItem(){
+        return heldItem != null;
     }
 
     @Override
