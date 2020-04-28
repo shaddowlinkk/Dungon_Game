@@ -42,7 +42,6 @@ public class Player extends AnimatedObject implements KeyListener {
                 if (clr == -7185274) {
                     Sockets.add(new Point(i, j));
                 }
-
             }
         }
     }
