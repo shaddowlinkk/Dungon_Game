@@ -1,6 +1,7 @@
 package Handlers;
 
 
+import Objects.BaseItem;
 import Abstracts.StandardCollidableObject;
 import Objects.Player;
 import Utils.Point;
@@ -13,11 +14,13 @@ import java.util.ArrayList;
 //to do find out why images not rendering rightK
 // Socket color - 925c86 : -7185274
 // ball color - 55304d : -11194291
-public class ObjectHandler {
-    public ObjectHandler(){
-    }
+public class ItemSocketingHandler {
+    private ArrayList<StandardCollidableObject> MovingObj;
+    public ItemSocketingHandler(ArrayList<StandardCollidableObject> MovingObj){
+        this.MovingObj=MovingObj;
 
-    public void socketToBall( ArrayList<StandardCollidableObject> MovingObj) {
+    }
+    public void AttachToSocket() {
         StandardCollidableObject object;
         Point socket = null, ball =null;
         for (StandardCollidableObject obj : MovingObj) {
@@ -40,7 +43,7 @@ public class ObjectHandler {
                         }
                     }
                     try {
-                        img = ImageIO.read(new File(object.getName() + "-Points.png"));
+                        img = ImageIO.read(new File(((BaseItem)object).getItemName() + "-Points.png"));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

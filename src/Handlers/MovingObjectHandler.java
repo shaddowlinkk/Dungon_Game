@@ -8,13 +8,11 @@ import java.util.ArrayList;
 public class MovingObjectHandler {
 
      private ArrayList<ControlableObject> objects = new ArrayList<ControlableObject>();
-    public MovingObjectHandler(){
+    public MovingObjectHandler(ArrayList<ControlableObject> objects){
+        this.objects=objects;
     }
     public void addObject(ControlableObject obj){
         objects.add(obj);
-    }
-    public void setObjects(ArrayList<ControlableObject> M){
-        objects=M;
     }
     public void moveObjects(){
         for (ControlableObject o: objects) {

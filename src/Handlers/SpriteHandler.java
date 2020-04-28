@@ -1,5 +1,6 @@
 package Handlers;
 
+import Enums.SpriteConfig;
 import Utils.Configeration;
 
 import javax.imageio.ImageIO;
@@ -9,9 +10,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class SpriteHandler {
-    String Filename;
-    public SpriteHandler (String f){
-        Filename=f;
+    String SpriteName;
+    public SpriteHandler (String SpriteName){
+        this.SpriteName=SpriteName;
     }
 
 
@@ -20,13 +21,13 @@ public class SpriteHandler {
 
         BufferedImage bigImg = null;
         try {
-            bigImg = ImageIO.read(new File(Filename));
+            bigImg = ImageIO.read(new File(SpriteName+"-Sheet.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
 // The above line throws an checked IOException which must be caught.
-        final int width = Integer.parseInt(con.getProp(Filename.split("-")[0]+".w"));
-        final int height = Integer.parseInt(con.getProp(Filename.split("-")[0]+".h"));;
+        final int width = SpriteConfig.valueOf(SpriteName).getWidth();
+        final int height =SpriteConfig.valueOf(SpriteName).getHight();
         BufferedImage[] sprites = new BufferedImage[Frames];
 
 

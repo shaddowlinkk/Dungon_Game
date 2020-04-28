@@ -2,27 +2,25 @@ package Objects;
 
 import Abstracts.AnimatedObject;
 import Abstracts.StandardCollidableObject;
+import Enums.Items;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Player extends AnimatedObject implements KeyListener {
      private int state=0;
-     private StandardCollidableObject heldItem = new Dagger();
-     private Boolean alive=true;
+     private StandardCollidableObject heldItem = null;
+     private Boolean alive=true,pickingUpItem=false;
 
     public Player() {
-        super("Player-Sheet.png");
+        super("Player");
         setBoundingbox("Player-Points.png");
         super.setDelay(6);
         super.setFrameState(state,9);
         setName("player");
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
 
-    }
     @Override
     public void collision(String type){
         if(type.equals("Mob")){
@@ -31,6 +29,10 @@ public class Player extends AnimatedObject implements KeyListener {
     }
     public Boolean isAlive(){
         return alive;
+    }
+
+    public Boolean isPickingUpItem() {
+        return pickingUpItem;
     }
 
     public void setHeldItem(StandardCollidableObject heldItem) {
@@ -43,6 +45,11 @@ public class Player extends AnimatedObject implements KeyListener {
 
     public Boolean hasItem(){
         return heldItem != null;
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
     }
 
     @Override
@@ -82,14 +89,18 @@ public class Player extends AnimatedObject implements KeyListener {
         }
 
         if (key == KeyEvent.VK_DOWN) {
-            if(state<2) {
+            if (state < 2) {
                 state = state + 2;
                 super.setDelay(2);
-                super.setFrameState(state,22);
+                super.setFrameState(state, 22);
             }
             super.setDY(1);
 
         }
+        if(key==KeyEvent.VK_F){
+            pickingUpItem=true;
+        }
+
 
     }
 
@@ -135,6 +146,12 @@ public class Player extends AnimatedObject implements KeyListener {
             }
 
             super.setDY(0);
+        }
+        if(key==KeyEvent.VK_F){
+            pickingUpItem=false;
+        }
+        if(key==KeyEvent.VK_Q){
+            heldItem=null;
         }
     }
 }

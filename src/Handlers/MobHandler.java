@@ -1,6 +1,6 @@
 package Handlers;
 
-import Abstracts.BaseMob;
+import Objects.BaseMob;
 import Abstracts.ControlableObject;
 
 import javax.swing.*;

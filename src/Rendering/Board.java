@@ -2,10 +2,11 @@ package Rendering;
 
 
 
+import Enums.Items;
 import Handlers.*;
 import Abstracts.ControlableObject;
 import Abstracts.StandardCollidableObject;
-import Objects.Dagger;
+import Objects.BaseItem;
 import Objects.Player;
 
 import javax.swing.*;
@@ -17,18 +18,19 @@ import java.util.ArrayList;
 public class Board extends JFrame{
     private ArrayList<ControlableObject> MovingEntitys= new ArrayList<>();
     private ArrayList<StandardCollidableObject> StaticEntity = new ArrayList<>();
-    private MovingObjectHandler motionController = new MovingObjectHandler();
+    private MovingObjectHandler motionController = new MovingObjectHandler((ArrayList) MovingEntitys);
     private MobSpawningHandler mobSpawner = new MobSpawningHandler(MovingEntitys);
     private AnimationHandler animationController = new AnimationHandler((ArrayList) MovingEntitys);
     private CollisionHandler collisionController = new CollisionHandler((ArrayList) MovingEntitys,StaticEntity);
-    private ObjectHandler objectController = new ObjectHandler();
+    private ItemSocketingHandler SocketController = new ItemSocketingHandler((ArrayList) MovingEntitys);
     private MobHandler mobController = new MobHandler(this);
 
     private Rendering rend = new Rendering(this);
     private Rendering srend = new Rendering(this);
     public Board(){
         MovingEntitys.add(new Player());
-        motionController.setObjects(MovingEntitys);
+        StaticEntity.add(new BaseItem(Items.Dagger));
+        StaticEntity.get(0).setloc(100,100);
         setSize(600,600);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -76,7 +78,7 @@ public class Board extends JFrame{
 
             /*Action controllers*/
             motionController.moveObjects();
-            objectController.socketToBall((ArrayList) MovingEntitys);
+            SocketController.AttachToSocket();
             animationController.animateObject();
             collisionController.checkCollisions();
             mobController.checkMobDeath((ArrayList) MovingEntitys);

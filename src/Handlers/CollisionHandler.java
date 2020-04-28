@@ -1,6 +1,10 @@
 package Handlers;
 
 import Abstracts.StandardCollidableObject;
+import Enums.ItemTypes;
+import Enums.Items;
+import Objects.BaseItem;
+import Objects.Player;
 
 import java.util.ArrayList;
 
@@ -26,7 +30,12 @@ public class CollisionHandler {
             for (StandardCollidableObject b : staticEntitys){
                 if(o!=b){
                     if(o.hasCollided(b)) {
-                        o.collision(b.getName());
+                        if(ItemTypes.valueOf(b.getName())!=null && o.getName().equals("player")){
+                            ((BaseItem)b).collision((Player) o);
+                        }else {
+                            System.out.println(o.getName()+":"+b.getName());
+                            o.collision(b.getName());
+                        }
                     }
                 }
             }

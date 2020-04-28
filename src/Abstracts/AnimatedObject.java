@@ -9,10 +9,9 @@ public abstract class AnimatedObject extends ControlableObject implements Object
     int delay=6,numFrame=0,animationLength=0,count=0;
     private BufferedImage[] frames;
     private SpriteHandler sp;
-    public AnimatedObject(String filename) {
-        sp = new SpriteHandler(filename);
+    public AnimatedObject(String name) {
+        sp = new SpriteHandler(name);
         setVisible(true);
-
     }
     public void nextFrame(){
         if(frames!=null) {
