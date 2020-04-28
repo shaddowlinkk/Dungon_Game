@@ -2,12 +2,19 @@ package Objects;
 
 import Abstracts.AnimatedObject;
 import Abstracts.StandardCollidableObject;
-import Enums.Items;
+import Utils.Point;
 
+import javax.imageio.ImageIO;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class Player extends AnimatedObject implements KeyListener {
+    private ArrayList<Point> Sockets=new ArrayList<>();
+    private Point activeSocket;
      private int state=0;
      private StandardCollidableObject heldItem = null;
      private Boolean alive=true,pickingUpItem=false;
@@ -15,9 +22,36 @@ public class Player extends AnimatedObject implements KeyListener {
     public Player() {
         super("Player");
         setBoundingbox("Player-Points.png");
+        getSockets();
+        activeSocket=Sockets.get(0);
         super.setDelay(6);
         super.setFrameState(state,9);
         setName("player");
+    }
+
+    private void getSockets(){
+        BufferedImage img =null;
+        try {
+            img = ImageIO.read(new File(".\\Assets\\Player-Points.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (int i = 0; i < img.getWidth(); i++) {
+            for (int j = img.getHeight() - 1; j >= 0; j--) {
+                int clr = img.getRGB(i, j);
+                if (clr == -7185274) {
+                    Sockets.add(new Point(i, j));
+                }
+
+            }
+        }
+    }
+
+    public Point getActiveSocket() {
+        return activeSocket;
+    }
+    public Point gePos() {
+        return new Point(this.getX(),this.getY());
     }
 
 

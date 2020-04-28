@@ -26,38 +26,7 @@ public class ItemSocketingHandler {
         for (StandardCollidableObject obj : MovingObj) {
             if (obj.getName().equals("player")) {
                 if (((Player)obj).hasItem()) {
-                    object = ((Player) obj).getHeldItem();
-                    BufferedImage img = null;
-                    try {
-                        img = ImageIO.read(new File(".\\Assets\\"+"Player-Points.png"));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    for (int i = 0; i < img.getWidth(); i++) {
-                        for (int j = img.getHeight() - 1; j >= 0; j--) {
-                            int clr = img.getRGB(i, j);
-                            if (clr == -7185274) {
-                                socket = new Point(i, j);
-                            }
-
-                        }
-                    }
-                    try {
-                        img = ImageIO.read(new File(".\\Assets\\"+((BaseItem)object).getItemName() + "-Points.png"));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    for (int i = 0; i < img.getWidth(); i++) {
-                        for (int j = img.getHeight() - 1; j >= 0; j--) {
-                            int clr = img.getRGB(i, j);
-                            if (clr == -11194291) {
-                                ball = new Point(i, j);
-                            }
-
-                        }
-                    }
-                    ((Player)obj).getHeldItem().setloc((socket.getX() - ball.getX() + (obj).getX()), (socket.getY() - ball.getY() + (obj).getY()));
-                    //end of if
+                    ((BaseItem)((Player)obj).getHeldItem()).attachToSocket(((Player)obj).gePos(),((Player)obj).getActiveSocket());
                 }
             }
         }
