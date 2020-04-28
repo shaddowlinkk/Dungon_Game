@@ -14,4 +14,7 @@ public class Point {
     public int getY() {
         return y;
     }
+    public java.awt.Point getAwt(){
+        return new java.awt.Point(x,y);
+    }
 }

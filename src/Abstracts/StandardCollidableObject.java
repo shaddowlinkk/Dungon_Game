@@ -12,6 +12,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public abstract class StandardCollidableObject extends JLabel implements BaseCollidableObject {
     private int _x,_y,angle;
@@ -37,7 +38,12 @@ public abstract class StandardCollidableObject extends JLabel implements BaseCol
     public void collision(String type){
     }
 
-
+/*    public void setAngle(int angle) {
+        this.angle = angle;
+        if(box!=null){
+            box.rotate(angle);
+        }
+    }*/
     @Override
     public void setTexture(Icon img) {
         setSize(img.getIconWidth(),img.getIconHeight());
@@ -73,6 +79,7 @@ public abstract class StandardCollidableObject extends JLabel implements BaseCol
     public int getY(){
         return _y;
     }
+
 
     protected void paintComponent(Graphics g) {
 /*        Graphics2D gx = (Graphics2D) g;
