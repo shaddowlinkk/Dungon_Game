@@ -13,7 +13,7 @@ public class BoundingBox {
     public BoundingBox(String fileName){
         BufferedImage img;
         try {
-             img = ImageIO.read(new File(fileName));
+             img = ImageIO.read(new File(".\\Assets\\"+fileName));
             for (int i =0;i< img.getWidth()/2;i++){
                 for (int j = img.getHeight()-1;j>=0;j--){
 

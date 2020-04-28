@@ -20,7 +20,7 @@ public class BaseItem extends StandardCollidableObject {
         setBoundingbox(item.name()+"-Points.png");
         setVisible(true);
         try {
-            setTexture(new ImageIcon(ImageIO.read(new File(item.name()+".png"))));
+            setTexture(new ImageIcon(ImageIO.read(new File(".\\Assets\\"+item.name()+".png"))));
         } catch (IOException e) {
             e.printStackTrace();
         }

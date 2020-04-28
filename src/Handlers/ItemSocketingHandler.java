@@ -29,7 +29,7 @@ public class ItemSocketingHandler {
                     object = ((Player) obj).getHeldItem();
                     BufferedImage img = null;
                     try {
-                        img = ImageIO.read(new File("Player-Points.png"));
+                        img = ImageIO.read(new File(".\\Assets\\"+"Player-Points.png"));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -43,7 +43,7 @@ public class ItemSocketingHandler {
                         }
                     }
                     try {
-                        img = ImageIO.read(new File(((BaseItem)object).getItemName() + "-Points.png"));
+                        img = ImageIO.read(new File(".\\Assets\\"+((BaseItem)object).getItemName() + "-Points.png"));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

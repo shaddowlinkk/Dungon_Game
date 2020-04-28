@@ -33,7 +33,6 @@ public class CollisionHandler {
                         if(ItemTypes.valueOf(b.getName())!=null && o.getName().equals("player")){
                             ((BaseItem)b).collision((Player) o);
                         }else {
-                            System.out.println(o.getName()+":"+b.getName());
                             o.collision(b.getName());
                         }
                     }

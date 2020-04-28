@@ -51,7 +51,7 @@ public abstract class StandardCollidableObject extends JLabel implements BaseCol
     public void setTexture(String fileName) {
         Icon im = null;
         try {
-            im = new ImageIcon( ImageIO.read(new File(fileName)));
+            im = new ImageIcon( ImageIO.read(new File(".\\Assets\\"+fileName)));
         } catch (IOException e) {
             e.printStackTrace();
         }

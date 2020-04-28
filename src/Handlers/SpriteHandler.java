@@ -21,7 +21,7 @@ public class SpriteHandler {
 
         BufferedImage bigImg = null;
         try {
-            bigImg = ImageIO.read(new File(SpriteName+"-Sheet.png"));
+            bigImg = ImageIO.read(new File(".\\Assets\\"+SpriteName+"-Sheet.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
