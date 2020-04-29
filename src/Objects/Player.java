@@ -5,6 +5,7 @@ import Abstracts.StandardCollidableObject;
 import Utils.Point;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -23,10 +24,11 @@ public class Player extends AnimatedObject implements KeyListener {
         super("Player");
         setBoundingbox("Player-Points.png");
         getSockets();
-        activeSocket=Sockets.get(0);
+        activeSocket=Sockets.get(1);
         super.setDelay(6);
         super.setFrameState(state,9);
         setName("player");
+        setBackground(new Color(0,0,0,200));
     }
 
     private void getSockets(){
@@ -97,6 +99,12 @@ public class Player extends AnimatedObject implements KeyListener {
                 state = 3;
                 super.setDelay(2);
                 super.setFrameState(state, 22);
+                activeSocket=Sockets.get(0);
+                if(hasItem()) {
+                    heldItem.setAngle(180);
+                    ((BaseItem)heldItem).setActiveBall(1);
+                }
+
             }
             super.setDX(-1);
 
@@ -107,6 +115,12 @@ public class Player extends AnimatedObject implements KeyListener {
                 state = 2;
                 super.setDelay(2);
                 super.setFrameState(state, 22);
+                activeSocket=Sockets.get(1);
+                if(hasItem()) {
+                    heldItem.setAngle(0);
+                    ((BaseItem)heldItem).setActiveBall(0);
+                }
+
             }
             super.setDX(1);
         }

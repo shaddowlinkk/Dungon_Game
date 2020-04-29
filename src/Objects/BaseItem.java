@@ -6,6 +6,8 @@ import Utils.Point;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -49,7 +51,12 @@ public class BaseItem extends StandardCollidableObject {
             }
         }
     }
-    public void attachToSocket(Point Object,Point socket) {
+
+    public void setActiveBall(int index) {
+        this.activeBall = balls.get(index);
+    }
+
+    public void attachToSocket(Point Object, Point socket) {
         if (Object!=null&&socket!=null){
             setloc((socket.getX() - activeBall.getX() + Object.getX()), (socket.getY() - activeBall.getY() + Object.getY()));
         }

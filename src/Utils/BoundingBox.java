@@ -57,7 +57,7 @@ public class BoundingBox {
     public void setPolygon(ArrayList<Point> polygon) {
         Polygon = polygon;
     }
-/*    public void rotate(int angle){
+    public void rotate(int angle){
         Polygon=setrbox(rotatePointMatrix(convert(Polygon),angle));
     }
     private java.awt.Point[] rotatePointMatrix(java.awt.Point[] origPoints, double angle){
@@ -80,5 +80,6 @@ public class BoundingBox {
             out[i]=new java.awt.Point(ps.get(i).getX(),ps.get(i).getY());
         }
         return out;
-    }*/
+    }
+
 }

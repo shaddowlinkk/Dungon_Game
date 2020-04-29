@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 
 public class Board extends JFrame{
+    Timer time;
     private ArrayList<ControlableObject> MovingEntitys= new ArrayList<>();
     private ArrayList<StandardCollidableObject> StaticEntity = new ArrayList<>();
     private MovingObjectHandler motionController = new MovingObjectHandler((ArrayList) MovingEntitys);
@@ -28,8 +29,9 @@ public class Board extends JFrame{
     private Rendering rend = new Rendering(this);
     private Rendering srend = new Rendering(this);
     public Board(){
-        MovingEntitys.add(new Player());
         StaticEntity.add(new BaseItem(Items.Dagger));
+        MovingEntitys.add(new Player());
+
         StaticEntity.get(0).setloc(100,100);
         setSize(600,600);
         setVisible(true);
@@ -39,7 +41,7 @@ public class Board extends JFrame{
         rend.setObject((ArrayList) MovingEntitys,StaticEntity);
         rend.addToScreen();;
         Component g= this.getContentPane();
-        Timer time = new Timer( 10,new TimerHandler());
+        time = new Timer( 10,new TimerHandler());
         time.start();
     }
 
@@ -69,7 +71,7 @@ public class Board extends JFrame{
                 endScreen.setBackground(Color.black);
                 endScreen.setVisible(true);
                 repaint();
-
+                time.stop();
             }
             if(!mobSpawner.getSpawned()) {
                 mobSpawner.spawnMobs();

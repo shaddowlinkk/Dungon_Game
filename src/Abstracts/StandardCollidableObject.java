@@ -16,7 +16,8 @@ import java.util.ArrayList;
 
 public abstract class StandardCollidableObject extends JLabel implements BaseCollidableObject {
     private int _x,_y,angle;
-    private BoundingBox box;
+    private BoundingBox  box;
+    private BoundingBox  drawbox;
     private CollisionDetectorHandler Collision= new CollisionDetectorHandler();
     private Image im;
 
@@ -29,6 +30,7 @@ public abstract class StandardCollidableObject extends JLabel implements BaseCol
     @Override
     public void setBoundingbox(String fileName) {
         box= new BoundingBox(fileName);
+        drawbox= new BoundingBox(fileName);
     }
 
     @Override
@@ -38,12 +40,10 @@ public abstract class StandardCollidableObject extends JLabel implements BaseCol
     public void collision(String type){
     }
 
-/*    public void setAngle(int angle) {
+   public void setAngle(int angle) {
         this.angle = angle;
-        if(box!=null){
-            box.rotate(angle);
-        }
-    }*/
+        box.rotate(angle);
+    }
     @Override
     public void setTexture(Icon img) {
         setSize(img.getIconWidth(),img.getIconHeight());
@@ -99,7 +99,7 @@ public abstract class StandardCollidableObject extends JLabel implements BaseCol
         }
         if(box!=null){
             Polygon hitbox = new Polygon();
-            for (Point p : box.getPolygon()){
+            for (Point p : drawbox.getPolygon()){
                 hitbox.addPoint(p.getX(),p.getY());
             }
             g.setColor(Color.blue);
