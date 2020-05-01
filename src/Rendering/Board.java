@@ -26,7 +26,9 @@ public class Board extends JFrame{
     private ArrayList<ControlableObject> MovingEntitys= new ArrayList<>();
     private ArrayList<StandardCollidableObject> StaticEntity = new ArrayList<>();
     private EnviromentGenerator enviromentController = new EnviromentGenerator();
-    private ArrayList<StandardCollidableObject> GroundEntity = enviromentController.genGround("lay01");
+
+    private RoomHandler roomController = new RoomHandler();
+    private ArrayList<StandardCollidableObject> GroundEntity = roomController.getEnvironment();
 
     private MovingObjectHandler motionController = new MovingObjectHandler((ArrayList) MovingEntitys);
     private MobSpawningHandler mobSpawner = new MobSpawningHandler(MovingEntitys);
@@ -38,15 +40,16 @@ public class Board extends JFrame{
 
     private Rendering rend = new Rendering(this);
     public Board(){
-/*        BufferedImage i = null;
+        BufferedImage i = null;
         try {
             i = ImageIO.read(new File("test.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(i.getRGB(0,0));*/
+        System.out.println(i.getRGB(0,0));
 /*        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         setUndecorated(true);*/
+        addKeyListener(new KeyEventHandler());
         StaticEntity.add(new BaseItem(Items.Dagger));
         StaticEntity.add(new BaseItem(Items.Claymore));
         StaticEntity.add(new BaseItem(Items.Key));
@@ -81,10 +84,11 @@ public class Board extends JFrame{
     private class TimerHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            /*spawning and rendering*/
+            /*game states*/
             if(!((Player)MovingEntitys.get(0)).isAlive()){
                 MovingEntitys.clear();
                 StaticEntity.clear();
+                GroundEntity.clear();
                 JPanel endScreen = new JPanel();
                 getContentPane().removeAll();
                 getContentPane().add(endScreen);
@@ -95,6 +99,16 @@ public class Board extends JFrame{
                 repaint();
                 time.stop();
             }
+            if(((Player)MovingEntitys.get(0)).getIndoor()>=0){
+                GroundEntity.clear();
+                getContentPane().removeAll();
+                GroundEntity=roomController.getEndvironment(((Player)MovingEntitys.get(0)).getIndoor());
+                ((Player)MovingEntitys.get(0)).setloc(roomController.getSpawn().getX(),roomController.getSpawn().getY());
+                ((Player)MovingEntitys.get(0)).resetIndoor();
+                rend.addToScreen();
+                getContentPane().revalidate();
+            }
+            /*spawning and rendering*/
             if(!mobSpawner.getSpawned()) {
                 mobSpawner.spawnMobs();
                 rend.addToScreen();
@@ -104,8 +118,9 @@ public class Board extends JFrame{
             motionController.moveObjects();
             SocketController.AttachToSocket();
             animationController.animateObject();
-            collisionController.checkCollisions();
             mobController.checkMobDeath((ArrayList) MovingEntitys);
+            //collisions need to be last
+            collisionController.checkCollisions();
             repaint();
         }
     }
@@ -114,7 +129,7 @@ public class Board extends JFrame{
     Key Event hadneler foe key based events
      */
 
-/*    private class KeyEventHandler implements KeyListener {
+ private class KeyEventHandler implements KeyListener {
         @Override
         public void keyTyped(KeyEvent e) {
 
@@ -122,8 +137,20 @@ public class Board extends JFrame{
 
         @Override
         public void keyPressed(KeyEvent e) {
-            if(e.getKeyCode()==KeyEvent.VK_ENTER){
-                System.out.println("tesyt");
+            if(e.getKeyCode()==KeyEvent.VK_F1){
+                GroundEntity.clear();
+                getContentPane().removeAll();
+                GroundEntity=roomController.getEndvironment(0);
+                rend.addToScreen();
+                getContentPane().revalidate();
+            }
+            if(e.getKeyCode()==KeyEvent.VK_F2){
+                GroundEntity.clear();
+                GroundEntity=roomController.getEndvironment(2);
+                getContentPane().removeAll();
+                rend.addToScreen();
+                getContentPane().revalidate();
+
             }
         }
 
@@ -132,7 +159,5 @@ public class Board extends JFrame{
 
         }
     }
-    public Boolean getClosing(){
-        return closing;
-    }*/
+
 }

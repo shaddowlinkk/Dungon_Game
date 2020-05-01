@@ -19,6 +19,7 @@ public class Player extends AnimatedObject implements KeyListener {
      private int state=0;
      private StandardCollidableObject heldItem = null;
      private Boolean alive=true,pickingUpItem=false;
+     private int indor =-1;
 
     public Player() {
         super("Player");
@@ -72,8 +73,28 @@ public class Player extends AnimatedObject implements KeyListener {
             super.move();
             super.setDY((super.getDY()*(-1)));
             super.setDX((super.getDX()*(-1)));
+    }
+    }
+
+   public void collision(Door d){
+        if(heldItem==null||!(((BaseItem)heldItem).getName().equals("Key"))){
+            super.setDY((super.getDY()*(-1)));
+            super.setDX((super.getDX()*(-1)));
+            super.move();
+            super.setDY((super.getDY()*(-1)));
+            super.setDX((super.getDX()*(-1)));
+        } else {
+            indor=d.getDoorNum();
         }
     }
+
+    public int getIndoor() {
+        return indor;
+    }
+    public void resetIndoor(){
+        indor=-1;
+    }
+
     public Boolean isAlive(){
         return alive;
     }
@@ -103,7 +124,6 @@ public class Player extends AnimatedObject implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
         if (key==KeyEvent.VK_ENTER){
-            System.out.println(state);
         }
 
         if (key == KeyEvent.VK_LEFT) {

@@ -1,4 +1,4 @@
-package Utils;
+package RoomGeneration;
 
 import java.util.Random;
 
@@ -16,6 +16,7 @@ public class Room {
     private int[] doorCon = {2, 3, 0, 1};
     private Room[] rooms = new Room[4];
     private int[] door = new int[4];
+    private Boolean cleard;
 
     public Room() {
         this.genRoom(4);
@@ -81,4 +82,7 @@ public class Room {
         return rooms[door];
     }
 
+    public int[] getDoorCon() {
+        return doorCon;
+    }
 }

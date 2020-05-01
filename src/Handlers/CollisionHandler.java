@@ -5,6 +5,7 @@ import Enums.ItemTypes;
 import Enums.Items;
 import Objects.BaseGround;
 import Objects.BaseItem;
+import Objects.Door;
 import Objects.Player;
 
 import java.util.ArrayList;
@@ -48,6 +49,9 @@ public class CollisionHandler {
                 if(o!=b){
                     if(b.getBoundingbox()!=null) {
                         if (o.hasCollided(b)) {
+                            if(o.getName().equals("player")&&b.getName().equals("Door")){
+                                ((Player)o).collision((Door)b);
+                            }
                                 o.collision(b.getName());
                         }
                     }
