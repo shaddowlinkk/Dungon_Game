@@ -16,6 +16,12 @@ public  class BaseMob extends AnimatedObject {
     public void collision(String type) {
         if(type.equals("Weapon")){
             alive=false;
+        }else if(type.equals("Wall")){
+            super.setDY((super.getDY()*(-1)));
+            super.setDX((super.getDX()*(-1)));
+            super.move();
+            super.setDY((super.getDY()*(-1)));
+            super.setDX((super.getDX()*(-1)));
         }
     }
 

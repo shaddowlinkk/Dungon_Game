@@ -30,7 +30,9 @@ public class Rendering {
             mainFrame.getContentPane().add(staticObject.get(i-movingObject.size()));
         }
         for (int i = mainFrame.getContentPane().getComponentCount(); i < (movingObject.size()+staticObject.size()+GroundObject.size()); i++) {
-            mainFrame.getContentPane().add(GroundObject.get(i-(movingObject.size()+staticObject.size())));
+            StandardCollidableObject c =GroundObject.get(i-(movingObject.size()+staticObject.size()));
+           // c.setScale(mainFrame.getWidth(),mainFrame.getHeight());
+            mainFrame.getContentPane().add(c);
         }
     }
 /*    protected void runAnimation(){

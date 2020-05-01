@@ -25,18 +25,18 @@ public class Board extends JFrame{
     Timer time;
     private ArrayList<ControlableObject> MovingEntitys= new ArrayList<>();
     private ArrayList<StandardCollidableObject> StaticEntity = new ArrayList<>();
+    private EnviromentGenerator enviromentController = new EnviromentGenerator();
+    private ArrayList<StandardCollidableObject> GroundEntity = enviromentController.genGround("lay01");
 
     private MovingObjectHandler motionController = new MovingObjectHandler((ArrayList) MovingEntitys);
     private MobSpawningHandler mobSpawner = new MobSpawningHandler(MovingEntitys);
     private AnimationHandler animationController = new AnimationHandler((ArrayList) MovingEntitys);
-    private CollisionHandler collisionController = new CollisionHandler((ArrayList) MovingEntitys,StaticEntity);
+    private CollisionHandler collisionController = new CollisionHandler((ArrayList) MovingEntitys,StaticEntity,GroundEntity);
     private ItemSocketingHandler SocketController = new ItemSocketingHandler((ArrayList) MovingEntitys);
-    private EnviromentGenerator enviromentController = new EnviromentGenerator();
-    private ArrayList<StandardCollidableObject> GroundEntity = enviromentController.genGround("lay01");
+
     private MobHandler mobController = new MobHandler(this);
 
     private Rendering rend = new Rendering(this);
-    private Rendering srend = new Rendering(this);
     public Board(){
 /*        BufferedImage i = null;
         try {
@@ -45,11 +45,16 @@ public class Board extends JFrame{
             e.printStackTrace();
         }
         System.out.println(i.getRGB(0,0));*/
+/*        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setUndecorated(true);*/
         StaticEntity.add(new BaseItem(Items.Dagger));
         StaticEntity.add(new BaseItem(Items.Claymore));
+        StaticEntity.add(new BaseItem(Items.Key));
         MovingEntitys.add(new Player());
+        MovingEntitys.get(0).setloc(50,50);
         StaticEntity.get(0).setloc(100,100);
         StaticEntity.get(1).setloc(100,150);
+        StaticEntity.get(2).setloc(150,150);
         setSize(622,642);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -84,7 +89,7 @@ public class Board extends JFrame{
                 getContentPane().removeAll();
                 getContentPane().add(endScreen);
                 revalidate();
-                endScreen.setSize(608,608);
+                endScreen.setSize(622,642);
                 endScreen.setBackground(Color.black);
                 endScreen.setVisible(true);
                 repaint();

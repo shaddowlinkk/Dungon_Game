@@ -16,6 +16,8 @@ import java.util.ArrayList;
 
 public abstract class StandardCollidableObject extends JLabel implements BaseCollidableObject {
     private int _x,_y,angle;
+    private int scaledWidth=0;
+    private int scaledHeight=0;
     private BoundingBox  box;
     private BoundingBox  drawbox;
     private CollisionDetectorHandler Collision= new CollisionDetectorHandler();
@@ -44,25 +46,25 @@ public abstract class StandardCollidableObject extends JLabel implements BaseCol
         this.angle = angle;
         box.rotate(angle);
     }
-    @Override
-    public void setTexture(Icon img) {
+    @Override public void setTexture(Icon img) {
         setSize(img.getIconWidth(),img.getIconHeight());
         setIcon(img);
+        //System.out.println("need to del call");
 
     }
     public void setTexture(BufferedImage i) {
         im=i;
+        //setScale(im.getWidth(null),im.getHeight(null));
         setSize(i.getWidth(),i.getHeight());
     }
     public void setTexture(String fileName) {
-        Icon im = null;
         try {
-            im = new ImageIcon( ImageIO.read(new File(".\\Assets\\"+fileName)));
+            im = ImageIO.read(new File(".\\Assets\\"+fileName));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        setSize(im.getIconWidth(),im.getIconHeight());
-        setIcon(im);
+        setSize(im.getWidth(null),im.getHeight(null));
+        //setScale(im.getWidth(null),im.getHeight(null));
     }
 
     @Override
@@ -79,8 +81,15 @@ public abstract class StandardCollidableObject extends JLabel implements BaseCol
     public int getY(){
         return _y;
     }
+    public void setScale(double f){
+        scaledWidth = (int) (im.getWidth(null) * f);
+         scaledHeight = (int) (im.getHeight(null) * f);
+    }
+    public void setScale(int w, int h){
+        scaledHeight=h;
+        scaledWidth=w;
 
-
+    }
     protected void paintComponent(Graphics g) {
 /*        Graphics2D gx = (Graphics2D) g;
         gx.rotate(0.6,  getWidth()/2, getHeight()/2);*/

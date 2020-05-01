@@ -60,6 +60,18 @@ public class Player extends AnimatedObject implements KeyListener {
     public void collision(String type){
         if(type.equals("Mob")){
             alive=false;
+        }else if(type.equals("Wall")){
+            super.setDY((super.getDY()*(-1)));
+            super.setDX((super.getDX()*(-1)));
+            super.move();
+            super.setDY((super.getDY()*(-1)));
+            super.setDX((super.getDX()*(-1)));
+        }else if(type.equals("Door") && (heldItem==null||!(((BaseItem)heldItem).getName().equals("Key")))){
+            super.setDY((super.getDY()*(-1)));
+            super.setDX((super.getDX()*(-1)));
+            super.move();
+            super.setDY((super.getDY()*(-1)));
+            super.setDX((super.getDX()*(-1)));
         }
     }
     public Boolean isAlive(){

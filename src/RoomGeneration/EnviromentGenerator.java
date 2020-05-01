@@ -33,6 +33,8 @@ public class EnviromentGenerator {
                     roomLayout.add(b);
                 }else if (clr == -10498588) {
                     BaseGround b = new BaseGround("Wall01.png");
+                    b.setName("Wall");
+                    b.setBoundingbox("\\Ground\\Wall01-Points.png");
                     b.setloc((i * 32), (j * 32));
                     roomLayout.add(b);
                 }else if (clr == -616056) {
@@ -51,7 +53,6 @@ public class EnviromentGenerator {
                     BaseGround b = new BaseGround("GroundEdge04.png");
                     b.setloc((i * 32), (j * 32));
                     roomLayout.add(b);
-                    //start corner
                 }else if (clr == -13184) {
                     BaseGround b = new BaseGround("GroundCorner01.png");
                     b.setloc((i * 32), (j * 32));
@@ -66,6 +67,32 @@ public class EnviromentGenerator {
                     roomLayout.add(b);
                 }else if (clr == -26624) {
                     BaseGround b = new BaseGround("GroundCorner04.png");
+                    b.setloc((i * 32), (j * 32));
+                    roomLayout.add(b);
+                }else if (clr == -5194043) {
+                    BaseGround b = new BaseGround("Door01.png");
+                    b.setName("Door");
+                    b.setBoundingbox("\\Ground\\Door-Points01.png");
+                    b.setloc((i * 32), (j * 32));
+                    roomLayout.add(b);
+                }else if (clr == -7297874) {
+                    BaseGround b = new BaseGround("Door02.png");
+                    b.setName("Door");
+                    b.setBoundingbox("\\Ground\\Door-Points02.png");
+                    j--;
+                    b.setloc((i * 32), (j * 32));
+                    roomLayout.add(b);
+                }else if (clr == -8875876) {
+                    BaseGround b = new BaseGround("Door03.png");
+                    b.setName("Door");
+                    b.setBoundingbox("\\Ground\\Door-Points01.png");
+                    b.setloc((i * 32), (j * 32));
+                    roomLayout.add(b);
+                }else if (clr == -10453621) {
+                    BaseGround b = new BaseGround("Door04.png");
+                    b.setName("Door");
+                    b.setBoundingbox("\\Ground\\Door-Points02.png");
+                    j--;
                     b.setloc((i * 32), (j * 32));
                     roomLayout.add(b);
                 }else {

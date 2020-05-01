@@ -19,9 +19,14 @@ public class MobSpawningHandler {
         int high = 6;
         int g= rand.nextInt(high-low) + low;
         System.out.println(g);
+        low=35;
+        high=565;
         for (int i=0;i<=g;i++){
             BaseMob s = new BaseMob(Mobs.Slime);
-            s.setloc(rand.nextInt(520),rand.nextInt(520));
+            s.setloc(rand.nextInt(high-low)+low,rand.nextInt(high-low)+low);
+            if(entity.get(0).hasCollided(s)){
+                s.setloc(rand.nextInt(high-low)+low,rand.nextInt(high-low)+low);
+            }
             entity.add(s);
         }
         spawned=true;

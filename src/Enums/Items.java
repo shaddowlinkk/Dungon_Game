@@ -2,7 +2,8 @@ package Enums;
 
 public enum Items {
     Dagger("Weapon"),
-    Claymore("Weapon");
+    Claymore("Weapon"),
+    Key("Key");
 
 
     /*Used for geting item value*/
