@@ -38,13 +38,13 @@ public class Board extends JFrame{
     private Rendering rend = new Rendering(this);
     private Rendering srend = new Rendering(this);
     public Board(){
-        BufferedImage i = null;
+/*        BufferedImage i = null;
         try {
             i = ImageIO.read(new File("test.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(i.getRGB(0,0));
+        System.out.println(i.getRGB(0,0));*/
         StaticEntity.add(new BaseItem(Items.Dagger));
         StaticEntity.add(new BaseItem(Items.Claymore));
         MovingEntitys.add(new Player());
