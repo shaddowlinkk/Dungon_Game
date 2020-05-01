@@ -40,13 +40,13 @@ public class Board extends JFrame{
 
     private Rendering rend = new Rendering(this);
     public Board(){
-        BufferedImage i = null;
+/*        BufferedImage i = null;
         try {
             i = ImageIO.read(new File("test.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(i.getRGB(0,0));
+        System.out.println(i.getRGB(0,0));*/
 /*        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         setUndecorated(true);*/
         addKeyListener(new KeyEventHandler());
