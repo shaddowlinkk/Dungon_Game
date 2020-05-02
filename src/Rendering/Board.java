@@ -52,12 +52,11 @@ public class Board extends JFrame{
         addKeyListener(new KeyEventHandler());
         StaticEntity.add(new BaseItem(Items.Dagger));
         StaticEntity.add(new BaseItem(Items.Claymore));
-        StaticEntity.add(new BaseItem(Items.Key));
         MovingEntitys.add(new Player());
         MovingEntitys.get(0).setloc(50,50);
         StaticEntity.get(0).setloc(100,100);
         StaticEntity.get(1).setloc(100,150);
-        StaticEntity.get(2).setloc(150,150);
+
         setSize(622,642);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -84,7 +83,45 @@ public class Board extends JFrame{
     private class TimerHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+
+            if(((Player)MovingEntitys.get(0)).getIndoor()>=0){
+                GroundEntity.clear();
+                getContentPane().removeAll();
+                GroundEntity=roomController.getEndvironment(((Player)MovingEntitys.get(0)).getIndoor());
+                ((Player)MovingEntitys.get(0)).setloc(roomController.getSpawn().getX(),roomController.getSpawn().getY());
+                ((Player)MovingEntitys.get(0)).resetIndoor();
+                rend.addAllToScreen();
+                getContentPane().revalidate();
+            }
+            /*spawning and rendering*/
+            if(!mobSpawner.getSpawned()&& !roomController.getCleard()) {
+                mobSpawner.spawnMobs();
+                getContentPane().removeAll();
+                rend.addAllToScreen();
+                getContentPane().revalidate();
+            }
+
+            /*Action controllers*/
+            motionController.moveObjects();
+            SocketController.AttachToSocket();
+            animationController.animateObject();
+            mobController.checkMobDeath((ArrayList) MovingEntitys);
+            //collisions need to be last
+            collisionController.checkCollisions();
+            repaint();
+
             /*game states*/
+            if(mobController.getMobCount()==0 && !roomController.getCleard()){
+                System.out.println("test");
+                roomController.setCleard(true);
+                mobSpawner.resetSpawned();
+                BaseItem item = new BaseItem(Items.Key);
+                item.setloc(getHeight()/2,getWidth()/2);
+                StaticEntity.add(item);
+                getContentPane().removeAll();
+                rend.addAllToScreen();
+                getContentPane().revalidate();
+            }
             if(!((Player)MovingEntitys.get(0)).isAlive()){
                 MovingEntitys.clear();
                 StaticEntity.clear();
@@ -99,29 +136,6 @@ public class Board extends JFrame{
                 repaint();
                 time.stop();
             }
-            if(((Player)MovingEntitys.get(0)).getIndoor()>=0){
-                GroundEntity.clear();
-                getContentPane().removeAll();
-                GroundEntity=roomController.getEndvironment(((Player)MovingEntitys.get(0)).getIndoor());
-                ((Player)MovingEntitys.get(0)).setloc(roomController.getSpawn().getX(),roomController.getSpawn().getY());
-                ((Player)MovingEntitys.get(0)).resetIndoor();
-                rend.addToScreen();
-                getContentPane().revalidate();
-            }
-            /*spawning and rendering*/
-            if(!mobSpawner.getSpawned()) {
-                mobSpawner.spawnMobs();
-                rend.addToScreen();
-            }
-
-            /*Action controllers*/
-            motionController.moveObjects();
-            SocketController.AttachToSocket();
-            animationController.animateObject();
-            mobController.checkMobDeath((ArrayList) MovingEntitys);
-            //collisions need to be last
-            collisionController.checkCollisions();
-            repaint();
         }
     }
 
@@ -141,14 +155,14 @@ public class Board extends JFrame{
                 GroundEntity.clear();
                 getContentPane().removeAll();
                 GroundEntity=roomController.getEndvironment(0);
-                rend.addToScreen();
+                rend.addAllToScreen();
                 getContentPane().revalidate();
             }
             if(e.getKeyCode()==KeyEvent.VK_F2){
                 GroundEntity.clear();
                 GroundEntity=roomController.getEndvironment(2);
                 getContentPane().removeAll();
-                rend.addToScreen();
+                rend.addAllToScreen();
                 getContentPane().revalidate();
 
             }

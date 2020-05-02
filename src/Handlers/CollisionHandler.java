@@ -51,6 +51,7 @@ public class CollisionHandler {
                         if (o.hasCollided(b)) {
                             if(o.getName().equals("player")&&b.getName().equals("Door")){
                                 ((Player)o).collision((Door)b);
+                                staticEntitys.remove(((Player)o).getHeldItem());
                             }
                                 o.collision(b.getName());
                         }

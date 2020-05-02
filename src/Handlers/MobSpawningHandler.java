@@ -16,7 +16,7 @@ public class MobSpawningHandler {
     }
     public void spawnMobs(){
         int low = 1;
-        int high = 6;
+        int high = 2;
         int g= rand.nextInt(high-low) + low;
         System.out.println(g);
         low=35;
@@ -34,5 +34,8 @@ public class MobSpawningHandler {
 
     public Boolean getSpawned() {
         return spawned;
+    }
+    public void resetSpawned(){
+        spawned=false;
     }
 }

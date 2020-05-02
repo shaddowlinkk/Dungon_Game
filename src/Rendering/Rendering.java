@@ -19,7 +19,7 @@ public class Rendering {
         this.staticObject =staticObject;
         this.GroundObject= GroundObject;
     }
-    protected void addToScreen(){
+    protected void addAllToScreen(){
         for (int i = mainFrame.getContentPane().getComponentCount(); i < movingObject.size(); i++) {
             if (movingObject.get(i).getName().equals("player")) {
                 mainFrame.addKeyListener((Player) movingObject.get(i));
@@ -34,6 +34,16 @@ public class Rendering {
            // c.setScale(mainFrame.getWidth(),mainFrame.getHeight());
             mainFrame.getContentPane().add(c);
         }
+    }
+    protected void addSingleToScreen(StandardCollidableObject o){
+        mainFrame.getContentPane().add(o);
+
+    }
+    protected void addMovingToScreen(){
+
+    }
+    protected void addGroundToScreen(){
+
     }
 /*    protected void runAnimation(){
         for (int i =0; i<mainFrame.getContentPane().getComponentCount();i++) {

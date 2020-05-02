@@ -16,7 +16,15 @@ public class Room {
     private int[] doorCon = {2, 3, 0, 1};
     private Room[] rooms = new Room[4];
     private int[] door = new int[4];
-    private Boolean cleard;
+    private Boolean cleard =false;
+
+    public void setCleard(Boolean cleard) {
+        this.cleard = cleard;
+    }
+
+    public Boolean getCleard() {
+        return cleard;
+    }
 
     public Room() {
         this.genRoom(4);

@@ -1,10 +1,12 @@
 package Objects;
 
 import Abstracts.AnimatedObject;
+import Abstracts.ControlableObject;
 import Enums.Mobs;
 
 public  class BaseMob extends AnimatedObject {
     Boolean alive= true;
+    int targetX,targetY;
     public BaseMob(Mobs mob) {
         super(mob.name());
         setBoundingbox(mob.name()+"-Points.png");
@@ -27,5 +29,11 @@ public  class BaseMob extends AnimatedObject {
 
     public Boolean isAlive() {
         return alive;
+    }
+    public void pathTo(ControlableObject object){
+        targetX=object.getX();
+        targetY=object.getY();
+        super.setDX((int)Math.signum((targetX-getX())*1.0));
+        super.setDY((int)Math.signum((targetY-getY())*1.0));
     }
 }

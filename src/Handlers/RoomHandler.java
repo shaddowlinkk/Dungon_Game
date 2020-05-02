@@ -9,6 +9,16 @@ import java.util.ArrayList;
 public class RoomHandler {
     private Room room = new Room();
     private Point spawn;
+    private Boolean cleard;
+
+    public Boolean getCleard() {
+        return room.getCleard();
+    }
+
+    public void setCleard(Boolean cleard) {
+        room.setCleard(cleard);
+    }
+
     int[] doors;
     EnviromentGenerator enGen = new EnviromentGenerator();
     public RoomHandler(){

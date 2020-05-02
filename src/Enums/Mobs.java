@@ -1,5 +1,7 @@
 package Enums;
 
+import Abstracts.ControlableObject;
+
 public enum Mobs {
     Slime(0,9);
 
