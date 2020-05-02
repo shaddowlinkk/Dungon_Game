@@ -77,15 +77,15 @@ public class Player extends AnimatedObject implements KeyListener {
     }
 
    public void collision(Door d){
-        if(heldItem==null||!(((BaseItem)heldItem).getName().equals("Key"))){
+       if(!d.getLocked()){
+           indor=d.getDoorNum();
+           heldItem=null;
+       } else if(heldItem==null||!(((BaseItem)heldItem).getName().equals("Key"))){
             super.setDY((super.getDY()*(-1)));
             super.setDX((super.getDX()*(-1)));
             super.move();
             super.setDY((super.getDY()*(-1)));
             super.setDX((super.getDX()*(-1)));
-        } else if(!d.getLocked()){
-            indor=d.getDoorNum();
-            heldItem=null;
         }else{
             d.Unlock();
        }

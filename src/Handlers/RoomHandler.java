@@ -31,6 +31,7 @@ public class RoomHandler {
         room=room.enterRoom(inddor);
         doors=room.getDoor();
         spawn=enGen.getSpawnLocations()[room.getDoorCon()[inddor]];
+        enGen.setInDoor(inddor);
         return enGen.genGround("lay01",doors);
     }
 

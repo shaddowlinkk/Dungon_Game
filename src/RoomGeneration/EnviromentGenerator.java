@@ -88,9 +88,9 @@ public class EnviromentGenerator {
                         b = new BaseGround("DoorFacade02.png");
                         b.setName("Wall");
                     }
-/*                    if(inDoor==1){
+                    if(inDoor==1){
                         ((Door)b).Unlock();
-                    }*/
+                    }
                     b.setBoundingbox("\\Ground\\Door-Points01.png");
                     b.setloc((i * 32), (j * 32));
                     roomLayout.add(b);
@@ -104,9 +104,9 @@ public class EnviromentGenerator {
                         b = new BaseGround("DoorFacade01.png");
                         b.setName("Wall");
                     }
-/*                    if(inDoor==2){
+                    if(inDoor==2){
                         ((Door)b).Unlock();
-                    }*/
+                    }
 
                     b.setBoundingbox("\\Ground\\Door-Points02.png");
                     j--;
@@ -122,9 +122,9 @@ public class EnviromentGenerator {
                         b = new BaseGround("DoorFacade02.png");
                         b.setName("Wall");
                     }
-/*                    if(inDoor==3){
+                    if(inDoor==3){
                         ((Door)b).Unlock();
-                    }*/
+                    }
                     b.setBoundingbox("\\Ground\\Door-Points01.png");
                     b.setloc((i * 32), (j * 32));
                     roomLayout.add(b);
@@ -138,9 +138,9 @@ public class EnviromentGenerator {
                         b = new BaseGround("DoorFacade01.png");
                         b.setName("Wall");
                     }
-/*                    if(inDoor==0){
+                    if(inDoor==0){
                         ((Door)b).Unlock();
-                    }*/
+                    }
                     b.setBoundingbox("\\Ground\\Door-Points02.png");
                     j--;
                     b.setloc((i * 32), (j * 32));
@@ -180,5 +180,9 @@ public class EnviromentGenerator {
             }
         }
         return spawns;
+    }
+
+    public void setInDoor(int inDoor) {
+        this.inDoor = inDoor;
     }
 }
