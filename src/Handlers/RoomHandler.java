@@ -1,5 +1,6 @@
 package Handlers;
 
+import Abstracts.StandardCollidableObject;
 import RoomGeneration.EnviromentGenerator;
 import RoomGeneration.Room;
 import Utils.Point;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 
 public class RoomHandler {
     private Room room = new Room();
-    private Point spawn;
+    private Point spawn=new Point(0,0);
     private Boolean cleard;
 
     public Boolean getCleard() {
@@ -25,14 +26,13 @@ public class RoomHandler {
         doors=room.getDoor();
     }
     public ArrayList getEnvironment(){
-        return enGen.genGround("lay01",doors);
+        return room.getEvno();
+       /* return enGen.genGround("lay01",doors);*/
     }
-    public ArrayList getEndvironment(int inddor){
+    public ArrayList<StandardCollidableObject> getEndvironment(int inddor){
         room=room.enterRoom(inddor);
-        doors=room.getDoor();
-        spawn=enGen.getSpawnLocations()[room.getDoorCon()[inddor]];
-        enGen.setInDoor(inddor);
-        return enGen.genGround("lay01",doors);
+        spawn=enGen.findSpawnlocatins("lay01")[room.getDoorCon()[inddor]];
+        return room.getEvno();
     }
 
     public Point getSpawn() {

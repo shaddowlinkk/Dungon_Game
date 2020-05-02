@@ -35,15 +35,9 @@ public class Rendering {
             mainFrame.getContentPane().add(c);
         }
     }
-    protected void addSingleToScreen(StandardCollidableObject o){
-        mainFrame.getContentPane().add(o);
 
-    }
-    protected void addMovingToScreen(){
-
-    }
-    protected void addGroundToScreen(){
-
+    protected void setGroundObject(ArrayList<StandardCollidableObject> groundObject) {
+        GroundObject = groundObject;
     }
 /*    protected void runAnimation(){
         for (int i =0; i<mainFrame.getContentPane().getComponentCount();i++) {

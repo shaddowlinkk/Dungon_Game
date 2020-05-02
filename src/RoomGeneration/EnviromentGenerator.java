@@ -154,7 +154,7 @@ public class EnviromentGenerator {
         }
     }
 
-    private Point[] findSpawnlocatins(String layoutname){
+    public Point[] findSpawnlocatins(String layoutname){
         Point[] spawns = new Point[4];
         BufferedImage img=null;
         try {

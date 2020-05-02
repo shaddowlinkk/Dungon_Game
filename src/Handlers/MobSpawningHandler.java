@@ -15,8 +15,8 @@ public class MobSpawningHandler {
         entity=entityList;
     }
     public void spawnMobs(){
-        int low = 1;
-        int high = 2;
+        int low = 0;
+        int high = 1;
         int g= rand.nextInt(high-low) + low;
         System.out.println(g);
         low=35;

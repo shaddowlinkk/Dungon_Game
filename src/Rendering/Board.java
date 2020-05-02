@@ -86,10 +86,10 @@ public class Board extends JFrame{
 
             if(((Player)MovingEntitys.get(0)).getIndoor()>=0){
                 GroundEntity.clear();
-                getContentPane().removeAll();
-                GroundEntity=roomController.getEndvironment(((Player)MovingEntitys.get(0)).getIndoor());
+                GroundEntity.addAll(roomController.getEndvironment(((Player)MovingEntitys.get(0)).getIndoor()));
                 ((Player)MovingEntitys.get(0)).setloc(roomController.getSpawn().getX(),roomController.getSpawn().getY());
                 ((Player)MovingEntitys.get(0)).resetIndoor();
+                getContentPane().removeAll();
                 rend.addAllToScreen();
                 getContentPane().revalidate();
             }
@@ -144,34 +144,25 @@ public class Board extends JFrame{
      */
 
  private class KeyEventHandler implements KeyListener {
-        @Override
-        public void keyTyped(KeyEvent e) {
+     @Override
+     public void keyTyped(KeyEvent e) {
 
-        }
+     }
 
-        @Override
-        public void keyPressed(KeyEvent e) {
-            if(e.getKeyCode()==KeyEvent.VK_F1){
-                GroundEntity.clear();
-                getContentPane().removeAll();
-                GroundEntity=roomController.getEndvironment(0);
-                rend.addAllToScreen();
-                getContentPane().revalidate();
-            }
-            if(e.getKeyCode()==KeyEvent.VK_F2){
-                GroundEntity.clear();
-                GroundEntity=roomController.getEndvironment(2);
-                getContentPane().removeAll();
-                rend.addAllToScreen();
-                getContentPane().revalidate();
+     @Override
+     public void keyPressed(KeyEvent e) {
+         if (e.getKeyCode() == KeyEvent.VK_F1) {
+             System.out.println();
+         }
+         if (e.getKeyCode() == KeyEvent.VK_F2) {
 
-            }
-        }
+         }
+     }
 
-        @Override
-        public void keyReleased(KeyEvent e) {
+     @Override
+     public void keyReleased(KeyEvent e) {
 
-        }
-    }
+     }
+ }
 
 }

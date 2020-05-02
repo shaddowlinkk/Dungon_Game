@@ -1,5 +1,9 @@
 package RoomGeneration;
 
+import Abstracts.StandardCollidableObject;
+import Utils.Point;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -16,7 +20,10 @@ public class Room {
     private int[] doorCon = {2, 3, 0, 1};
     private Room[] rooms = new Room[4];
     private int[] door = new int[4];
+    private Point spawn;
     private Boolean cleard =false;
+    private EnviromentGenerator enGen = new EnviromentGenerator();
+    private ArrayList<StandardCollidableObject> evno;
 
     public void setCleard(Boolean cleard) {
         this.cleard = cleard;
@@ -66,6 +73,7 @@ public class Room {
             rooms[doorNum] = (door[doorNum] == 1) ?  rooms[doorNum]: new Room(doorNum, this);
             door[doorNum] = 1;
         }
+
     }
 
     /**
@@ -77,6 +85,7 @@ public class Room {
             rooms[i] = new Room(i, this);
             door[i] = 1;
         }
+        evno=enGen.genGround("lay01",door);
     }
 
     /** used to tell whe strucher what dorr you are entering
@@ -86,11 +95,23 @@ public class Room {
      */
     public Room enterRoom(int door) {
         rooms[door].genRoom();
-
+        rooms[door].genEvno(door);
         return rooms[door];
     }
 
     public int[] getDoorCon() {
         return doorCon;
+    }
+
+    public ArrayList<StandardCollidableObject> getEvno() {
+        return evno;
+    }
+    private void genEvno(int door){
+        enGen.setInDoor(door);
+        evno=enGen.genGround("lay01",this.door);
+        spawn=enGen.findSpawnlocatins("lay01")[doorCon[door]];
+    }
+    public Point getSpawn(){
+        return spawn;
     }
 }
