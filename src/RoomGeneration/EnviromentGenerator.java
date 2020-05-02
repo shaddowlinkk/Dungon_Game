@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class EnviromentGenerator {
     private ArrayList<StandardCollidableObject>roomLayout= new ArrayList<>();
     private Point[] spawnLocations= new Point[4];
+    private int inDoor=-1;
     public ArrayList<StandardCollidableObject> genGround(String layoutName,int[] doors){
         setRoomLayout(layoutName, doors);
         spawnLocations=findSpawnlocatins(layoutName);
@@ -87,6 +88,9 @@ public class EnviromentGenerator {
                         b = new BaseGround("DoorFacade02.png");
                         b.setName("Wall");
                     }
+/*                    if(inDoor==1){
+                        ((Door)b).Unlock();
+                    }*/
                     b.setBoundingbox("\\Ground\\Door-Points01.png");
                     b.setloc((i * 32), (j * 32));
                     roomLayout.add(b);
@@ -100,6 +104,9 @@ public class EnviromentGenerator {
                         b = new BaseGround("DoorFacade01.png");
                         b.setName("Wall");
                     }
+/*                    if(inDoor==2){
+                        ((Door)b).Unlock();
+                    }*/
 
                     b.setBoundingbox("\\Ground\\Door-Points02.png");
                     j--;
@@ -115,6 +122,9 @@ public class EnviromentGenerator {
                         b = new BaseGround("DoorFacade02.png");
                         b.setName("Wall");
                     }
+/*                    if(inDoor==3){
+                        ((Door)b).Unlock();
+                    }*/
                     b.setBoundingbox("\\Ground\\Door-Points01.png");
                     b.setloc((i * 32), (j * 32));
                     roomLayout.add(b);
@@ -128,6 +138,9 @@ public class EnviromentGenerator {
                         b = new BaseGround("DoorFacade01.png");
                         b.setName("Wall");
                     }
+/*                    if(inDoor==0){
+                        ((Door)b).Unlock();
+                    }*/
                     b.setBoundingbox("\\Ground\\Door-Points02.png");
                     j--;
                     b.setloc((i * 32), (j * 32));

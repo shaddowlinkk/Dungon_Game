@@ -35,8 +35,8 @@ public  class BaseMob extends AnimatedObject {
         targetY=object.getY();
         double d =Math.sqrt(Math.pow((targetX-getX()),2)+Math.pow((targetY-getY()),2));
         if(d<=150) {
-            super.setDX((int) Math.signum((targetX - getX()) * 1.0));
-            super.setDY((int) Math.signum((targetY - getY()) * 1.0));
+            super.setDX((int) Math.signum(((targetX+16) - getX()) * 1.0));
+            super.setDY((int) Math.signum(((targetY+18)- getY()) * 1.0));
         }
     }
 }

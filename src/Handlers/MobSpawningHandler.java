@@ -20,7 +20,7 @@ public class MobSpawningHandler {
         int g= rand.nextInt(high-low) + low;
         System.out.println(g);
         low=35;
-        high=565;
+        high=555;
         for (int i=0;i<=g;i++){
             BaseMob s = new BaseMob(Mobs.Slime);
             s.setloc(rand.nextInt(high-low)+low,rand.nextInt(high-low)+low);

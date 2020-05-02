@@ -85,6 +85,7 @@ public class Player extends AnimatedObject implements KeyListener {
             super.setDX((super.getDX()*(-1)));
         } else if(!d.getLocked()){
             indor=d.getDoorNum();
+            heldItem=null;
         }else{
             d.Unlock();
        }
