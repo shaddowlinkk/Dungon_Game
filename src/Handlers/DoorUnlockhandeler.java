@@ -1,9 +1,6 @@
 package Handlers;
 
 import Abstracts.StandardCollidableObject;
-import Objects.Door;
-import Objects.Player;
-import RoomGeneration.Room;
 
 import java.util.ArrayList;
 

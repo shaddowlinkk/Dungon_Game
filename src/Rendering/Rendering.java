@@ -7,11 +7,11 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class Rendering {
-    JFrame mainFrame;
+    JComponent mainFrame;
     ArrayList<StandardCollidableObject> movingObject = new ArrayList<StandardCollidableObject>();
     ArrayList<StandardCollidableObject> staticObject = new ArrayList<StandardCollidableObject>();
     ArrayList<StandardCollidableObject> GroundObject = new ArrayList<StandardCollidableObject>();
-    public Rendering(JFrame frame){
+    public Rendering(JComponent frame){
         mainFrame=frame;
     }
     public void setObject(ArrayList<StandardCollidableObject> movingObject,ArrayList<StandardCollidableObject> staticObject,ArrayList<StandardCollidableObject> GroundObject) {
@@ -20,19 +20,19 @@ public class Rendering {
         this.GroundObject= GroundObject;
     }
     protected void addAllToScreen(){
-        for (int i = mainFrame.getContentPane().getComponentCount(); i < movingObject.size(); i++) {
+        for (int i = mainFrame.getComponentCount(); i < movingObject.size(); i++) {
             if (movingObject.get(i).getName().equals("player")) {
                 mainFrame.addKeyListener((Player) movingObject.get(i));
             }
-            mainFrame.getContentPane().add(movingObject.get(i));
+            mainFrame.add(movingObject.get(i));
         }
-        for (int i = mainFrame.getContentPane().getComponentCount(); i < (movingObject.size()+staticObject.size()); i++) {
-            mainFrame.getContentPane().add(staticObject.get(i-movingObject.size()));
+        for (int i = mainFrame.getComponentCount(); i < (movingObject.size()+staticObject.size()); i++) {
+            mainFrame.add(staticObject.get(i-movingObject.size()));
         }
-        for (int i = mainFrame.getContentPane().getComponentCount(); i < (movingObject.size()+staticObject.size()+GroundObject.size()); i++) {
+        for (int i = mainFrame.getComponentCount(); i < (movingObject.size()+staticObject.size()+GroundObject.size()); i++) {
             StandardCollidableObject c =GroundObject.get(i-(movingObject.size()+staticObject.size()));
-           // c.setScale(mainFrame.getWidth(),mainFrame.getHeight());
-            mainFrame.getContentPane().add(c);
+            // c.setScale(mainFrame.getWidth(),mainFrame.getHeight());
+            mainFrame.add(c);
         }
     }
 

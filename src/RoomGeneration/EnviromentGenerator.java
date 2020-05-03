@@ -1,6 +1,5 @@
 package RoomGeneration;
 
-import Abstracts.GroundObject;
 import Abstracts.StandardCollidableObject;
 import Objects.BaseGround;
 import Objects.Door;
