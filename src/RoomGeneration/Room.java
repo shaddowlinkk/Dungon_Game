@@ -23,7 +23,7 @@ public class Room {
     private Point spawn;
     private Boolean cleard =false;
     private EnviromentGenerator enGen = new EnviromentGenerator();
-    private ArrayList<StandardCollidableObject> evno;
+    private ArrayList<StandardCollidableObject> evno = new ArrayList<>();
 
     public void setCleard(Boolean cleard) {
         this.cleard = cleard;
@@ -74,6 +74,7 @@ public class Room {
             door[doorNum] = 1;
         }
 
+
     }
 
     /**
@@ -85,7 +86,7 @@ public class Room {
             rooms[i] = new Room(i, this);
             door[i] = 1;
         }
-        evno=enGen.genGround("lay01",door);
+        genEvno();
     }
 
     /** used to tell whe strucher what dorr you are entering
@@ -108,8 +109,13 @@ public class Room {
     }
     private void genEvno(int door){
         enGen.setInDoor(door);
-        evno=enGen.genGround("lay01",this.door);
+        if(evno.size()==0){
+            evno.addAll(enGen.genGround("lay01",this.door));
+        }
         spawn=enGen.findSpawnlocatins("lay01")[doorCon[door]];
+    }
+    private void genEvno(){
+        evno.addAll(enGen.genGround("lay01",this.door));
     }
     public Point getSpawn(){
         return spawn;
