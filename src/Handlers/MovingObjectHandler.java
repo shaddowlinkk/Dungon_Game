@@ -5,7 +5,7 @@ import Abstracts.ControlableObject;
 import java.util.ArrayList;
 
 //to do find out why objects not rendering rightK
-public class MovingObjectHandler {
+public class MovingObjectHandler{
 
      private ArrayList<ControlableObject> objects = new ArrayList<ControlableObject>();
     public MovingObjectHandler(ArrayList<ControlableObject> objects){

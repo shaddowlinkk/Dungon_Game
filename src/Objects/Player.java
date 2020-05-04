@@ -29,7 +29,6 @@ public class Player extends AnimatedObject implements KeyListener {
         super.setDelay(6);
         super.setFrameState(state,9);
         setName("player");
-        setBackground(new Color(0,0,0,200));
     }
 
     private void getSockets(){
