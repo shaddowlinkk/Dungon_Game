@@ -20,6 +20,7 @@ public class Board extends JFrame{
 
     public Board() {
         MainScreen m = new MainScreen();
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
        add(m);
        setSize(m.getWidth(),m.getHeight());
        setVisible(true);
