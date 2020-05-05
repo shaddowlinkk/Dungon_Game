@@ -39,10 +39,12 @@ public class MainScreen extends JComponent {
         addKeyListener( new KeyEventHandler());
         StaticEntity.add(new BaseItem(Items.Dagger));
         StaticEntity.add(new BaseItem(Items.Claymore));
+        StaticEntity.add(new BaseItem(Items.Taco));
         MovingEntitys.add(new Player());
         MovingEntitys.get(0).setloc(50,50);
         StaticEntity.get(0).setloc(100,100);
         StaticEntity.get(1).setloc(100,150);
+        StaticEntity.get(2).setloc(150,150);
 
         setSize(622,642);
         setVisible(true);
