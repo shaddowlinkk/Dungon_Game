@@ -26,7 +26,7 @@ public class Player extends AnimatedObject implements KeyListener {
         setBoundingbox("Player-Points.png");
         getSockets();
         activeSocket=Sockets.get(1);
-        super.setDelay(6);
+        super.setDelay(7);
         super.setFrameState(state,9);
         setName("player");
         setBackground(new Color(0,0,0,200));
