@@ -3,13 +3,14 @@ package Enums;
 public enum SpriteConfig {
     Player(32,48),
     Slime(32,32),
+    Greenslime(16,32),
     Dagger(16,11);
 
 
     int width,hight;
-    SpriteConfig(int i, int i1) {
-        width=i;
-        hight=i1;
+    SpriteConfig(int width, int hight) {
+        this.width=width;
+        this.hight=hight;
     }
 
     public int getWidth() {

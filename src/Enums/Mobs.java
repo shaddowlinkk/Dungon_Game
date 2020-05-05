@@ -3,7 +3,8 @@ package Enums;
 import Abstracts.ControlableObject;
 
 public enum Mobs {
-    Slime(0,9);
+    Slime(0,9),
+    Greenslime(0,11);
 
 
     private int startState,numFrames;

@@ -22,7 +22,7 @@ public class MobSpawningHandler {
         low=35;
         high=555;
         for (int i=0;i<=g;i++){
-            BaseMob s = new BaseMob(Mobs.Slime);
+            BaseMob s = new BaseMob(Mobs.Greenslime);
             s.setloc(rand.nextInt(high-low)+low,rand.nextInt(high-low)+low);
             if(entity.get(0).hasCollided(s)){
                 s.setloc(rand.nextInt(high-low)+low,rand.nextInt(high-low)+low);

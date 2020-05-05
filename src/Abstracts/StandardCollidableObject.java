@@ -106,14 +106,14 @@ public abstract class StandardCollidableObject extends JLabel implements BaseCol
        if(im!=null) {
             g.drawImage(im,0,0,null);
         }
-        if(box!=null){
+/*        if(box!=null){
             Polygon hitbox = new Polygon();
             for (Point p : drawbox.getPolygon()){
                 hitbox.addPoint(p.getX(),p.getY());
             }
             g.setColor(Color.blue);
             g.drawPolygon(hitbox);
-        }
+        }*/
 
         super.paintComponent(g);
     }
