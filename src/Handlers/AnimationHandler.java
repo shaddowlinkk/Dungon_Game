@@ -1,6 +1,8 @@
 package Handlers;
 
+import Abstracts.AnimatedGround;
 import Abstracts.AnimatedObject;
+import Abstracts.StandardCollidableObject;
 
 import java.util.ArrayList;
 
@@ -24,5 +26,16 @@ public class AnimationHandler {
                 }
                 o.setCount(o.getCount()+1);
             }
+    }
+    public void animategroundObject(ArrayList<AnimatedGround> objects){
+        for (StandardCollidableObject o : objects) {
+            if (o.getName()!=null&&o.getName().equals("groundpuddle")) {
+                if (!(((AnimatedGround)o).getCount() < ((AnimatedGround)o).getDelay())) {
+                    ((AnimatedGround)o).nextFrame();
+                    ((AnimatedGround)o).setCount(0);
+                }
+                ((AnimatedGround)o).setCount(((AnimatedGround)o).getCount() + 1);
+            }
+        }
     }
 }

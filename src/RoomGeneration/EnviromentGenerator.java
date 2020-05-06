@@ -1,5 +1,7 @@
 package RoomGeneration;
 
+import Abstracts.AnimatedGround;
+import Abstracts.AnimatedObject;
 import Abstracts.StandardCollidableObject;
 import Objects.BaseGround;
 import Objects.Door;
@@ -10,6 +12,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class EnviromentGenerator {
     private ArrayList<StandardCollidableObject>roomLayout= new ArrayList<>();
@@ -145,9 +148,18 @@ public class EnviromentGenerator {
                     b.setloc((i * 32), (j * 32));
                     roomLayout.add(b);
                 }else {
-                    BaseGround g = new BaseGround("Ground02.png");
-                    g.setloc((i * 32), (j * 32));
-                    roomLayout.add(g);
+                    Random rand = new Random();
+                    if(rand.nextInt(400)==10){
+                        AnimatedGround g = new AnimatedGround("groundpuddle");
+                        g.setFrameState(0,7);
+                        g.setDelay(7);
+                        g.setloc((i * 32), (j * 32));
+                        roomLayout.add(g);
+                        }else {
+                        BaseGround g = new BaseGround("Ground02.png");
+                        g.setloc((i * 32), (j * 32));
+                        roomLayout.add(g);
+                    }
                 }
             }
         }

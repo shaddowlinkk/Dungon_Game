@@ -29,6 +29,7 @@ public class MainScreen extends JComponent {
     private MovingObjectHandler motionController = new MovingObjectHandler((ArrayList) MovingEntitys);
     private MobSpawningHandler mobSpawner = new MobSpawningHandler(MovingEntitys);
     private AnimationHandler animationController = new AnimationHandler((ArrayList) MovingEntitys);
+    private AnimationHandler groundanimationController = new AnimationHandler((ArrayList) GroundEntity);
     private CollisionHandler collisionController = new CollisionHandler((ArrayList) MovingEntitys,StaticEntity,GroundEntity);
     private ItemSocketingHandler SocketController = new ItemSocketingHandler((ArrayList) MovingEntitys);
     private MobHandler mobController = new MobHandler(this);
@@ -76,12 +77,14 @@ public class MainScreen extends JComponent {
                 removeAll();
                 rend.addAllToScreen();
                 revalidate();
+                groundanimationController.animategroundObject((ArrayList) GroundEntity);
             }
 
             /*Action controllers*/
             motionController.moveObjects();
             SocketController.AttachToSocket();
             animationController.animateObject();
+            groundanimationController.animategroundObject((ArrayList) GroundEntity);
             mobController.checkMobDeath((ArrayList) MovingEntitys);
             //collisions need to be last
             collisionController.checkCollisions();
