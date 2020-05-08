@@ -1,5 +1,7 @@
 package Main;
 
+import Enums.Items;
+
 public class driver {
     // Trello board for this project https://trello.com/b/W1yWWj6V/game-redesing
     public static void main(String[] args){
