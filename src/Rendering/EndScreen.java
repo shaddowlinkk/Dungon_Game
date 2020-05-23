@@ -8,13 +8,15 @@ import java.awt.event.MouseListener;
 
 public class EndScreen extends JPanel {
     private JLabel endtext = new JLabel("You Have Died");
-    private JLabel score = new JLabel();
+    private JLabel score = new JLabel("Score:");
+    private JLabel num = new JLabel();
     private JLabel retrun = new JLabel("Back to main menu");
     private JLabel respawn = new JLabel("Respawn");
     private Border b = BorderFactory.createLineBorder(Color.blue,5);
+    private boolean respaenState=false;
     public EndScreen(int width,int height) {
         //Panel parameters
-        setFocusable(true);
+        setFocusable(false);
         setLayout(null);
         setVisible(true);
         setBackground(Color.black);
@@ -22,7 +24,7 @@ public class EndScreen extends JPanel {
         // End text parameters
         endtext.setFont(endtext.getFont().deriveFont(52f));
         endtext.setSize(500,75);
-        endtext.setBorder(b);
+        //endtext.setBorder(b);
         endtext.setVerticalAlignment(SwingConstants.CENTER);
         endtext.setHorizontalAlignment(SwingConstants.CENTER);
         endtext.setForeground(Color.white);
@@ -35,11 +37,11 @@ public class EndScreen extends JPanel {
         retrun.setVerticalAlignment(SwingConstants.CENTER);
         retrun.setHorizontalAlignment(SwingConstants.CENTER);
         retrun.setForeground(Color.white);
-        retrun.setLocation(((width/2)-(retrun.getWidth()/2)),150);
+        retrun.setLocation(((width/2)-(retrun.getWidth()/2)),250);
         retrun.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                System.out.println("test2");
             }
 
             @Override
@@ -56,7 +58,7 @@ public class EndScreen extends JPanel {
             public void mouseEntered(MouseEvent e) {
                 retrun.setSize(275,50);
                 retrun.setText(">Back to main menu<");
-                retrun.setLocation(((width/2)-(retrun.getWidth()/2)),150);
+                retrun.setLocation(((width/2)-(retrun.getWidth()/2)),250);
 
             }
 
@@ -64,7 +66,7 @@ public class EndScreen extends JPanel {
             public void mouseExited(MouseEvent e) {
                 retrun.setSize(250,50);
                 retrun.setText("Back to main menu");
-                retrun.setLocation(((width/2)-(retrun.getWidth()/2)),150);
+                retrun.setLocation(((width/2)-(retrun.getWidth()/2)),250);
 
             }
         });
@@ -76,11 +78,11 @@ public class EndScreen extends JPanel {
         respawn.setVerticalAlignment(SwingConstants.CENTER);
         respawn.setHorizontalAlignment(SwingConstants.CENTER);
         respawn.setForeground(Color.white);
-        respawn.setLocation(((width/2)-(respawn.getWidth()/2)),200);
+        respawn.setLocation(((width/2)-(respawn.getWidth()/2)),300);
         respawn.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                System.out.println("test1");
             }
 
             @Override
@@ -97,7 +99,7 @@ public class EndScreen extends JPanel {
             public void mouseEntered(MouseEvent e) {
                 respawn.setSize(175,50);
                 respawn.setText(">Respawn<");
-                respawn.setLocation(((width/2)-(respawn.getWidth()/2)),200);
+                respawn.setLocation(((width/2)-(respawn.getWidth()/2)),300);
 
             }
 
@@ -105,14 +107,36 @@ public class EndScreen extends JPanel {
             public void mouseExited(MouseEvent e) {
                 respawn.setSize(150,50);
                 respawn.setText("Respawn");
-                respawn.setLocation(((width/2)-(respawn.getWidth()/2)),200);
+                respawn.setLocation(((width/2)-(respawn.getWidth()/2)),300);
 
             }
         });
+
+        //Score
+        score.setFont(score.getFont().deriveFont(25f));
+        score.setSize(125,50);
+        //score.setBorder(b);
+        score.setVerticalAlignment(SwingConstants.CENTER);
+        score.setHorizontalAlignment(SwingConstants.CENTER);
+        score.setForeground(Color.white);
+        score.setLocation(((width/2)-(score.getWidth()/2)),125);
+        
+        //num
+        num.setText("500");
+        num.setFont(num.getFont().deriveFont(25f));
+        num.setSize(125,30);
+        //num.setBorder(b);
+        num.setVerticalAlignment(SwingConstants.CENTER);
+        num.setHorizontalAlignment(SwingConstants.CENTER);
+        num.setForeground(Color.white);
+        num.setLocation(((width/2)-(num.getWidth()/2)),175);
+
         
         
         
         // adds
+        add(num);
+        add(score);
         add(respawn);
         add(retrun);
         add(endtext);

@@ -89,7 +89,7 @@ public class Room {
         genEvno();
     }
 
-    /** used to tell whe strucher what dorr you are entering
+    /** used to tell whe strucher what door you are entering
      *
      * @param door door number you are entering
      * @return the new room

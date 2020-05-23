@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 public class MainScreen extends JComponent {
     Timer time;
+    private Boolean dead=false;
     private ArrayList<ControlableObject> MovingEntitys= new ArrayList<>();
     private ArrayList<StandardCollidableObject> StaticEntity = new ArrayList<>();
     private EnviromentGenerator enviromentController = new EnviromentGenerator();
@@ -45,13 +46,14 @@ public class MainScreen extends JComponent {
         StaticEntity.get(1).setloc(100,150);
 
         setSize(622,642);
-        setVisible(true);
         setLayout(null);
         rend.setObject((ArrayList) MovingEntitys,StaticEntity,GroundEntity);
         // rend.addToScreen();
         time = new Timer( 10, new TimerHandler());
         time.start();
-
+    }
+    public boolean getDead(){
+        return dead;
     }
 
 
@@ -99,6 +101,7 @@ public class MainScreen extends JComponent {
             }
             //Death trigger
             if(!((Player)MovingEntitys.get(0)).isAlive()){
+                dead=true;
                 MovingEntitys.clear();
                 StaticEntity.clear();
                 GroundEntity.clear();
@@ -130,5 +133,6 @@ public class MainScreen extends JComponent {
         public void keyReleased(KeyEvent e) {
 
         }
+
     }
 }

@@ -20,6 +20,7 @@ public class Board extends JFrame{
     int width,height;
 
     public Board() {
+        int i=1;
         MainScreen m = new MainScreen();
 /*        width=m.getWidth();
         height=m.getHeight();*/
@@ -27,8 +28,22 @@ public class Board extends JFrame{
         EndScreen e = new EndScreen(622,642);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
        add(m);
-       //add(e);
+       m.setVisible(true);
        setVisible(true);
+       while (true){
+           try {
+               Thread.sleep(0,1);
+           } catch (InterruptedException interruptedException) {
+               interruptedException.printStackTrace();
+           }
+           if(m.getDead()){
+               add(e);
+               m.setVisible(false);
+               remove(m);
+               e.setVisible(true);
+               repaint();
+           }
+       }
     }
 
 }
