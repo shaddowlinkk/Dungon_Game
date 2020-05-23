@@ -1,0 +1,121 @@
+package Rendering;
+
+import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+public class EndScreen extends JPanel {
+    private JLabel endtext = new JLabel("You Have Died");
+    private JLabel score = new JLabel();
+    private JLabel retrun = new JLabel("Back to main menu");
+    private JLabel respawn = new JLabel("Respawn");
+    private Border b = BorderFactory.createLineBorder(Color.blue,5);
+    public EndScreen(int width,int height) {
+        //Panel parameters
+        setFocusable(true);
+        setLayout(null);
+        setVisible(true);
+        setBackground(Color.black);
+        setSize(width,height);
+        // End text parameters
+        endtext.setFont(endtext.getFont().deriveFont(52f));
+        endtext.setSize(500,75);
+        endtext.setBorder(b);
+        endtext.setVerticalAlignment(SwingConstants.CENTER);
+        endtext.setHorizontalAlignment(SwingConstants.CENTER);
+        endtext.setForeground(Color.white);
+        endtext.setLocation(((width/2)-(endtext.getWidth()/2)),50);
+        
+        //return
+        retrun.setFont(retrun.getFont().deriveFont(25f));
+        retrun.setSize(250,50);
+        retrun.setBorder(b);
+        retrun.setVerticalAlignment(SwingConstants.CENTER);
+        retrun.setHorizontalAlignment(SwingConstants.CENTER);
+        retrun.setForeground(Color.white);
+        retrun.setLocation(((width/2)-(retrun.getWidth()/2)),150);
+        retrun.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                retrun.setSize(275,50);
+                retrun.setText(">Back to main menu<");
+                retrun.setLocation(((width/2)-(retrun.getWidth()/2)),150);
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                retrun.setSize(250,50);
+                retrun.setText("Back to main menu");
+                retrun.setLocation(((width/2)-(retrun.getWidth()/2)),150);
+
+            }
+        });
+        
+        //respawn
+        respawn.setFont(respawn.getFont().deriveFont(25f));
+        respawn.setSize(150,50);
+        respawn.setBorder(b);
+        respawn.setVerticalAlignment(SwingConstants.CENTER);
+        respawn.setHorizontalAlignment(SwingConstants.CENTER);
+        respawn.setForeground(Color.white);
+        respawn.setLocation(((width/2)-(respawn.getWidth()/2)),200);
+        respawn.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                respawn.setSize(175,50);
+                respawn.setText(">Respawn<");
+                respawn.setLocation(((width/2)-(respawn.getWidth()/2)),200);
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                respawn.setSize(150,50);
+                respawn.setText("Respawn");
+                respawn.setLocation(((width/2)-(respawn.getWidth()/2)),200);
+
+            }
+        });
+        
+        
+        
+        // adds
+        add(respawn);
+        add(retrun);
+        add(endtext);
+        repaint();
+    }
+}

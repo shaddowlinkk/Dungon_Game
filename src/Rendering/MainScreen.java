@@ -46,8 +46,6 @@ public class MainScreen extends JComponent {
 
         setSize(622,642);
         setVisible(true);
-
-        setLayout(null);
         setLayout(null);
         rend.setObject((ArrayList) MovingEntitys,StaticEntity,GroundEntity);
         // rend.addToScreen();
@@ -99,17 +97,13 @@ public class MainScreen extends JComponent {
                 rend.addAllToScreen();
                 revalidate();
             }
+            //Death trigger
             if(!((Player)MovingEntitys.get(0)).isAlive()){
                 MovingEntitys.clear();
                 StaticEntity.clear();
                 GroundEntity.clear();
-                JPanel endScreen = new JPanel();
                 removeAll();
-                add(endScreen);
                 revalidate();
-                endScreen.setSize(622,642);
-                endScreen.setBackground(Color.black);
-                endScreen.setVisible(true);
                 repaint();
                 time.stop();
             }
