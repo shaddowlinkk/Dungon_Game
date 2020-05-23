@@ -27,9 +27,11 @@ public class AnimationHandler {
                 o.setCount(o.getCount()+1);
             }
     }
+
+    //todo make this cheack the ground type
     public void animategroundObject(ArrayList<AnimatedGround> objects){
         for (StandardCollidableObject o : objects) {
-            if (o.getName()!=null&&o.getName().equals("groundpuddle")) {
+            if (o.getName()!=null&&o.getName().equals("groundpuddlebig")) {
                 if (!(((AnimatedGround)o).getCount() < ((AnimatedGround)o).getDelay())) {
                     ((AnimatedGround)o).nextFrame();
                     ((AnimatedGround)o).setCount(0);

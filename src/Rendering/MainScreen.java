@@ -61,7 +61,7 @@ public class MainScreen extends JComponent {
     private class TimerHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            // player opening door
             if(((Player)MovingEntitys.get(0)).getIndoor()>=0){
                 GroundEntity.clear();
                 GroundEntity.addAll(roomController.getEndvironment(((Player)MovingEntitys.get(0)).getIndoor()));
@@ -75,16 +75,16 @@ public class MainScreen extends JComponent {
             if(!mobSpawner.getSpawned()&& !roomController.getCleard()) {
                 mobSpawner.spawnMobs();
                 removeAll();
+                animationController.animategroundObject((ArrayList) GroundEntity);
                 rend.addAllToScreen();
                 revalidate();
-                groundanimationController.animategroundObject((ArrayList) GroundEntity);
             }
 
             /*Action controllers*/
             motionController.moveObjects();
             SocketController.AttachToSocket();
             animationController.animateObject();
-            groundanimationController.animategroundObject((ArrayList) GroundEntity);
+            animationController.animategroundObject((ArrayList) GroundEntity);
             mobController.checkMobDeath((ArrayList) MovingEntitys);
             //collisions need to be last
             collisionController.checkCollisions();
