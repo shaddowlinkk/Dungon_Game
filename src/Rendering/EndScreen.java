@@ -13,7 +13,7 @@ public class EndScreen extends JPanel {
     private JLabel retrun = new JLabel("Back to main menu");
     private JLabel respawn = new JLabel("Respawn");
     private Border b = BorderFactory.createLineBorder(Color.blue,5);
-    private boolean respaenState=false;
+    private boolean respawnState =false, outState=false;
     public EndScreen(int width,int height) {
         //Panel parameters
         setFocusable(false);
@@ -41,7 +41,7 @@ public class EndScreen extends JPanel {
         retrun.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("test2");
+                outState=true;
             }
 
             @Override
@@ -82,7 +82,8 @@ public class EndScreen extends JPanel {
         respawn.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("test1");
+                outState=true;
+                respawnState =true;
             }
 
             @Override
@@ -141,5 +142,13 @@ public class EndScreen extends JPanel {
         add(retrun);
         add(endtext);
         repaint();
+    }
+
+    public boolean isOutState() {
+        return outState;
+    }
+
+    public boolean isRespawnState() {
+        return respawnState;
     }
 }

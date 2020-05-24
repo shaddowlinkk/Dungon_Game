@@ -43,6 +43,20 @@ public class Board extends JFrame{
                e.setVisible(true);
                repaint();
            }
+           if(e.isOutState()){
+               if (e.isRespawnState()){
+                   m=new MainScreen();
+                   e.setVisible(false);
+                   remove(e);
+                   add(m);
+                   m.setFocusable(true);
+                   m.setVisible(true);
+                   repaint();
+               }else {
+                   e.setVisible(false);
+                   remove(e);
+               }
+           }
        }
     }
 
