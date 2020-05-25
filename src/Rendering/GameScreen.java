@@ -17,8 +17,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
-public class MainScreen extends JComponent {
+public class GameScreen extends JComponent {
     Timer time;
+    private Boolean dead=false;
+    private  int score =0;
     private ArrayList<ControlableObject> MovingEntitys= new ArrayList<>();
     private ArrayList<StandardCollidableObject> StaticEntity = new ArrayList<>();
     private EnviromentGenerator enviromentController = new EnviromentGenerator();
@@ -34,8 +36,8 @@ public class MainScreen extends JComponent {
     private MobHandler mobController = new MobHandler(this);
     private Rendering rend = new Rendering(this);
 
-    public MainScreen(){
-        setFocusable(true);
+    public GameScreen(){
+        setFocusable(false);
         addKeyListener( new KeyEventHandler());
         StaticEntity.add(new BaseItem(Items.Dagger));
         StaticEntity.add(new BaseItem(Items.Claymore));
@@ -45,17 +47,19 @@ public class MainScreen extends JComponent {
         StaticEntity.get(1).setloc(100,150);
 
         setSize(622,642);
-        setVisible(true);
-
-        setLayout(null);
         setLayout(null);
         rend.setObject((ArrayList) MovingEntitys,StaticEntity,GroundEntity);
         // rend.addToScreen();
         time = new Timer( 10, new TimerHandler());
         time.start();
-
+    }
+    public boolean getDead(){
+        return dead;
     }
 
+    public int getScore() {
+        return score;
+    }
 
     private class TimerHandler implements ActionListener {
         @Override
@@ -82,14 +86,13 @@ public class MainScreen extends JComponent {
             motionController.moveObjects();
             SocketController.AttachToSocket();
             animationController.animateObject();
-            mobController.checkMobDeath((ArrayList) MovingEntitys);
+            score+= (100*mobController.checkMobDeath((ArrayList) MovingEntitys));
             //collisions need to be last
             collisionController.checkCollisions();
             repaint();
 
             /*game states*/
             if(mobController.getMobCount()==0 && !roomController.getCleard()){
-                System.out.println("test");
                 roomController.setCleard(true);
                 mobSpawner.resetSpawned();
                 BaseItem item = new BaseItem(Items.Key);
@@ -99,17 +102,14 @@ public class MainScreen extends JComponent {
                 rend.addAllToScreen();
                 revalidate();
             }
+            //Death trigger
             if(!((Player)MovingEntitys.get(0)).isAlive()){
+                dead=true;
                 MovingEntitys.clear();
                 StaticEntity.clear();
                 GroundEntity.clear();
-                JPanel endScreen = new JPanel();
                 removeAll();
-                add(endScreen);
                 revalidate();
-                endScreen.setSize(622,642);
-                endScreen.setBackground(Color.black);
-                endScreen.setVisible(true);
                 repaint();
                 time.stop();
             }
@@ -125,7 +125,6 @@ public class MainScreen extends JComponent {
         @Override
         public void keyPressed(KeyEvent e) {
             if (e.getKeyCode() == KeyEvent.VK_F1) {
-                System.out.println();
             }
             if (e.getKeyCode() == KeyEvent.VK_F2) {
 
@@ -136,5 +135,6 @@ public class MainScreen extends JComponent {
         public void keyReleased(KeyEvent e) {
 
         }
+
     }
 }

@@ -8,6 +8,6 @@ public class driver {
         active[0].start();
         while (active[0].isAlive()){
         }
-        System.out.println(active[0].getState());
+        //System.out.println(active[0].getState());
     }
 }
