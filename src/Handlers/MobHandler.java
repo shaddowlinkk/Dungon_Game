@@ -12,19 +12,22 @@ public class MobHandler {
     public MobHandler(JComponent F){
         screen=F;
     }
-    public void checkMobDeath(ArrayList<ControlableObject> obj){
+    public int checkMobDeath(ArrayList<ControlableObject> obj){
         mobCount=0;
+        int numDead=0;
         for (int i =0; i<obj.size();i++ ) {
             if (obj.get(i).getName().equals("Mob")){
                 if(!((BaseMob)obj.get(i)).isAlive()){
                     screen.remove(obj.get(i));
                     obj.remove(i);
+                    numDead++;
                 }else{
                     ((BaseMob) obj.get(i)).pathTo(obj.get(0));
                 }
                 mobCount++;
             }
         }
+        return numDead;
     }
 
     public int getMobCount() {

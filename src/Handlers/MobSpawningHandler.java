@@ -18,7 +18,7 @@ public class MobSpawningHandler {
         int low = 0;
         int high = 1;
         int g= rand.nextInt(high-low) + low;
-        System.out.println(g);
+        //System.out.println(g);
         low=35;
         high=555;
         for (int i=0;i<=g;i++){

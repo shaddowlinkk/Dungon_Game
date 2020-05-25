@@ -14,6 +14,7 @@ public class EndScreen extends JPanel {
     private JLabel respawn = new JLabel("Respawn");
     private Border b = BorderFactory.createLineBorder(Color.blue,5);
     private boolean respawnState =false, outState=false;
+    private int scorenum=0;
     public EndScreen(int width,int height) {
         //Panel parameters
         setFocusable(false);
@@ -123,7 +124,7 @@ public class EndScreen extends JPanel {
         score.setLocation(((width/2)-(score.getWidth()/2)),125);
         
         //num
-        num.setText("500");
+
         num.setFont(num.getFont().deriveFont(25f));
         num.setSize(125,30);
         //num.setBorder(b);
@@ -152,6 +153,11 @@ public class EndScreen extends JPanel {
         respawnState=false;
         setFocusable(false);
     }
+
+    public void setScore(int score) {
+        num.setText(""+score);
+    }
+
     public boolean isRespawnState() {
         return respawnState;
     }

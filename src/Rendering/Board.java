@@ -1,27 +1,13 @@
 package Rendering;
 
-
-
-import Enums.Items;
-import Handlers.*;
-import Abstracts.ControlableObject;
-import Abstracts.StandardCollidableObject;
-import Objects.BaseItem;
-import Objects.Player;
-import RoomGeneration.EnviromentGenerator;
-
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
-
 
 public class Board extends JFrame{
     int width,height;
 
     public Board() {
         int i=1;
-        MainScreen m = new MainScreen();
+        GameScreen m = new GameScreen();
 /*        width=m.getWidth();
         height=m.getHeight();*/
         setSize(622,642);
@@ -40,6 +26,7 @@ public class Board extends JFrame{
            if(m!=null&&m.getDead()){
                add(e);
                m.setVisible(false);
+               e.setScore(m.getScore());
                remove(m);
                e.setVisible(true);
                repaint();
@@ -47,7 +34,7 @@ public class Board extends JFrame{
            }
            if(e!=null&&e.isOutState()){
                if (e.isRespawnState()){
-                   m=new MainScreen();
+                   m=new GameScreen();
                    e.setVisible(false);
                    remove(e);
                    add(m);
