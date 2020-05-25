@@ -4,7 +4,7 @@ import Interfaces.BaseUncollidableObject;
 
 import javax.swing.*;
 
-public abstract class GroundObject implements BaseUncollidableObject {
+public abstract class StaticObject implements BaseUncollidableObject {
     @Override
     public void setTexture(Icon img) {
 
