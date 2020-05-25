@@ -28,6 +28,7 @@ public class Board extends JFrame{
         EndScreen e = new EndScreen(622,642);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
        add(m);
+       m.setFocusable(true);
        m.setVisible(true);
        setVisible(true);
        while (true){
@@ -36,25 +37,29 @@ public class Board extends JFrame{
            } catch (InterruptedException interruptedException) {
                interruptedException.printStackTrace();
            }
-           if(m.getDead()){
+           if(m!=null&&m.getDead()){
                add(e);
                m.setVisible(false);
                remove(m);
                e.setVisible(true);
                repaint();
+               m=null;
            }
-           if(e.isOutState()){
+           if(e!=null&&e.isOutState()){
                if (e.isRespawnState()){
                    m=new MainScreen();
                    e.setVisible(false);
                    remove(e);
                    add(m);
                    m.setFocusable(true);
+                   m.requestFocusInWindow();
                    m.setVisible(true);
                    repaint();
+                   e.reset();
                }else {
                    e.setVisible(false);
                    remove(e);
+                   e.reset();
                }
            }
        }

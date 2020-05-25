@@ -147,7 +147,11 @@ public class EndScreen extends JPanel {
     public boolean isOutState() {
         return outState;
     }
-
+    public void reset(){
+        outState=false;
+        respawnState=false;
+        setFocusable(false);
+    }
     public boolean isRespawnState() {
         return respawnState;
     }

@@ -36,7 +36,7 @@ public class MainScreen extends JComponent {
     private Rendering rend = new Rendering(this);
 
     public MainScreen(){
-        setFocusable(true);
+        setFocusable(false);
         addKeyListener( new KeyEventHandler());
         StaticEntity.add(new BaseItem(Items.Dagger));
         StaticEntity.add(new BaseItem(Items.Claymore));
