@@ -5,7 +5,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
+//todo make items persistent to the room thay spawn in
 public class MainMenuScreen extends JPanel {
     private JLabel title = new JLabel("Untitled game");
     private JLabel play = new JLabel("play");
