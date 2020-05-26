@@ -9,19 +9,20 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public abstract class StaticElements extends JPanel implements BaseUncollidableObject {
+public abstract class StaticElements extends JLabel implements BaseUncollidableObject {
     int x,y;
     private BufferedImage im;
     private StandardCollidableObject[] inventory = new StandardCollidableObject[6];
 
     public StaticElements(){
-
+        setVisible(false);
     }
 
     @Override
     public void setTexture(String fileName) {
         try {
             im = ImageIO.read(new File(".\\Assets\\Elements\\"+fileName));
+            setSize(im.getWidth(),im.getHeight());
         } catch (IOException e) {
             e.printStackTrace();
         }

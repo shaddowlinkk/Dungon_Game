@@ -2,15 +2,15 @@ package Rendering;
 
 import Abstracts.ControlableObject;
 import Abstracts.StandardCollidableObject;
+import Abstracts.StaticElements;
 import Enums.Items;
 import Handlers.*;
+import Inventory.Inventory;
 import Objects.BaseItem;
 import Objects.Player;
-import Rendering.Rendering;
 import RoomGeneration.EnviromentGenerator;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -25,6 +25,8 @@ public class GameScreen extends JComponent {
     private ArrayList<StandardCollidableObject> StaticEntity = new ArrayList<>();
     private EnviromentGenerator enviromentController = new EnviromentGenerator();
 
+    private StaticElements inventory = new Inventory();
+
     private RoomHandler roomController = new RoomHandler();
     private ArrayList<StandardCollidableObject> GroundEntity = roomController.getEnvironment();
 
@@ -38,6 +40,10 @@ public class GameScreen extends JComponent {
 
     public GameScreen(){
         setFocusable(false);
+
+        inventory.setTexture("INV.png");
+        inventory.setloc(5,5);
+        add(inventory);
         addKeyListener( new KeyEventHandler());
         StaticEntity.add(new BaseItem(Items.Dagger));
         StaticEntity.add(new BaseItem(Items.Claymore));
@@ -51,7 +57,7 @@ public class GameScreen extends JComponent {
         rend.setObject((ArrayList) MovingEntitys,StaticEntity,GroundEntity);
         // rend.addToScreen();
         time = new Timer( 10, new TimerHandler());
-        time.start();
+        //time.start();
     }
     public boolean getDead(){
         return dead;
@@ -117,16 +123,28 @@ public class GameScreen extends JComponent {
     }
 
     private class KeyEventHandler implements KeyListener {
+        private boolean invToggle= false;
         @Override
-        public void keyTyped(KeyEvent e) {
+        public void keyTyped(KeyEvent en) {
 
         }
 
         @Override
-        public void keyPressed(KeyEvent e) {
-            if (e.getKeyCode() == KeyEvent.VK_F1) {
+        public void keyPressed(KeyEvent en) {
+            if (en.getKeyCode() == KeyEvent.VK_F1) {
+                if(invToggle){
+                    System.out.println("t");
+                    inventory.setVisible(false);
+                    invToggle=false;
+                }else {
+                    System.out.println("f");
+                    inventory.setVisible(true);
+                    invToggle=true;
+                }
+                revalidate();
+                repaint();
             }
-            if (e.getKeyCode() == KeyEvent.VK_F2) {
+            if (en.getKeyCode() == KeyEvent.VK_F2) {
 
             }
         }

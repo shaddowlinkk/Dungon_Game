@@ -1,6 +1,8 @@
 package Rendering;
 
 import Abstracts.StandardCollidableObject;
+import Abstracts.StaticElements;
+import Inventory.Inventory;
 import Objects.Player;
 
 import javax.swing.*;
