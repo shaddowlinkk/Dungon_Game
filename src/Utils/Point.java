@@ -17,4 +17,12 @@ public class Point {
     public java.awt.Point getAwt(){
         return new java.awt.Point(x,y);
     }
+
+    @Override
+    public String toString() {
+        return "Point{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }

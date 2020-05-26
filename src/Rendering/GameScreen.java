@@ -30,7 +30,7 @@ public class GameScreen extends JComponent {
     private ArrayList<StandardCollidableObject> StaticEntity = new ArrayList<>();
     private EnviromentGenerator enviromentController = new EnviromentGenerator();
 
-    private StaticElements inventory = new Inventory();
+    private Inventory inventory = new Inventory("INV");
 
     private RoomHandler roomController = new RoomHandler();
     private ArrayList<StandardCollidableObject> GroundEntity = roomController.getEnvironment();
@@ -46,9 +46,7 @@ public class GameScreen extends JComponent {
     public GameScreen(){
         setFocusable(false);
 
-        inventory.setTexture("INV.png");
         inventory.setloc(5,5);
-        add(inventory);
         addKeyListener( new KeyEventHandler());
         StaticEntity.add(new BaseItem(Items.Dagger));
         StaticEntity.add(new BaseItem(Items.Claymore));
@@ -62,7 +60,7 @@ public class GameScreen extends JComponent {
         rend.setObject((ArrayList) MovingEntitys,StaticEntity,GroundEntity);
         // rend.addToScreen();
         time = new Timer( 10, new TimerHandler());
-        //time.start();
+        time.start();
     }
     public boolean getDead(){
         return dead;
@@ -139,8 +137,10 @@ public class GameScreen extends JComponent {
             if (en.getKeyCode() == KeyEvent.VK_F1) {
                 if(invToggle){
                     inventory.setVisible(false);
+                    remove(inventory);
                     invToggle=false;
                 }else {
+                    add(inventory,2,0);
                     inventory.setVisible(true);
                     invToggle=true;
                 }
