@@ -11,6 +11,7 @@ import Objects.Player;
 import RoomGeneration.EnviromentGenerator;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -133,11 +134,9 @@ public class GameScreen extends JComponent {
         public void keyPressed(KeyEvent en) {
             if (en.getKeyCode() == KeyEvent.VK_F1) {
                 if(invToggle){
-                    System.out.println("t");
                     inventory.setVisible(false);
                     invToggle=false;
                 }else {
-                    System.out.println("f");
                     inventory.setVisible(true);
                     invToggle=true;
                 }

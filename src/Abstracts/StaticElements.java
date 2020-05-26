@@ -12,6 +12,7 @@ import java.io.IOException;
 public abstract class StaticElements extends JLabel implements BaseUncollidableObject {
     int x,y;
     private BufferedImage im;
+    private int nextSlot=1;
     private StandardCollidableObject[] inventory = new StandardCollidableObject[6];
 
     public StaticElements(){
@@ -50,5 +51,8 @@ public abstract class StaticElements extends JLabel implements BaseUncollidableO
             g.drawImage(im,0,0,null);
         }
         super.paintComponent(g);
+    }
+    public void addToInventory(StandardCollidableObject item){
+
     }
 }
