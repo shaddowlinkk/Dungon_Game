@@ -2,6 +2,7 @@ package Inventory;
 
 import Abstracts.StandardCollidableObject;
 import Abstracts.StaticElements;
+import Objects.BaseItem;
 import Utils.Point;
 
 import javax.imageio.ImageIO;
@@ -16,19 +17,31 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class Inventory extends StaticElements {
-    private int nextSlot=1;
+    private int nextSlot=0;
+    private boolean added= false;
     private int selcted;
-    private JLabel[] slots = new JLabel[6];
+    private InventorySlot[] slots = new InventorySlot[7];
     private Point[] locations = new Point[6];
     private Border b = BorderFactory.createLineBorder(Color.gray,1);
 
-    public Inventory(String name){
-        setTexture(name);
-        getPoints(name);
+    public Inventory(){
+        setTexture("INV");
+        getPoints("INV");
     }
 
-    public void addToInventory(StandardCollidableObject item){
-
+    public void addToInventory(BaseItem item){
+        for (int i =0;i<6;i++) {
+            if(slots[i].getItem()==null&& !added) {
+                slots[i].setItem(item);
+                added=true;
+                break;
+            }else if(slots[i].getItem()==item){
+                break;
+            }
+        }
+    }
+    public StandardCollidableObject getItem(){
+        return slots[selcted].getItem();
     }
 
     private Point[] getPoints(String fileName){
@@ -53,8 +66,8 @@ public class Inventory extends StaticElements {
         return spawns;
     }
     public void makeSlot(int index,Point location){
-        slots[index]=new JLabel();
-        add(slots[index]);
+        slots[index]=new InventorySlot();
+        super.add(slots[index],6,0);
         slots[index].setSize(32,32);
         slots[index].setLocation(location.getX(),location.getY());
         slots[index].setBorder(b);
@@ -95,5 +108,8 @@ public class Inventory extends StaticElements {
 
             }
         });
+    }
+    public void resetAdd(){
+        added=false;
     }
 }

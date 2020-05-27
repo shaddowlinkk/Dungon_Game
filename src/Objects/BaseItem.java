@@ -74,7 +74,7 @@ public class BaseItem extends StandardCollidableObject {
 
     public void collision(Player ply) {
         if(ply.isPickingUpItem()){
-            ply.setHeldItem(this);
+            ply.addToInventory(this);
         }
     }
 }

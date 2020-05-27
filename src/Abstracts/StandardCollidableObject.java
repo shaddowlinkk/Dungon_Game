@@ -112,7 +112,7 @@ public abstract class StandardCollidableObject extends JLabel implements BaseCol
                 hitbox.addPoint(p.getX(),p.getY());
             }
             g.setColor(Color.blue);
-           // g.drawPolygon(hitbox);
+            g.drawPolygon(hitbox);
         }
 
         super.paintComponent(g);

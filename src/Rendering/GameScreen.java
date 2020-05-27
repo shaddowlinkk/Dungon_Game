@@ -30,7 +30,7 @@ public class GameScreen extends JComponent {
     private ArrayList<StandardCollidableObject> StaticEntity = new ArrayList<>();
     private EnviromentGenerator enviromentController = new EnviromentGenerator();
 
-    private Inventory inventory = new Inventory("INV");
+    private Inventory inventory = null;
 
     private RoomHandler roomController = new RoomHandler();
     private ArrayList<StandardCollidableObject> GroundEntity = roomController.getEnvironment();
@@ -46,11 +46,14 @@ public class GameScreen extends JComponent {
     public GameScreen(){
         setFocusable(false);
 
+
+        Player player = new Player();
+        inventory=player.getInventory();
         inventory.setloc(5,5);
         addKeyListener( new KeyEventHandler());
         StaticEntity.add(new BaseItem(Items.Dagger));
         StaticEntity.add(new BaseItem(Items.Claymore));
-        MovingEntitys.add(new Player());
+        MovingEntitys.add(player);
         MovingEntitys.get(0).setloc(50,50);
         StaticEntity.get(0).setloc(100,100);
         StaticEntity.get(1).setloc(100,150);
@@ -139,10 +142,14 @@ public class GameScreen extends JComponent {
                     inventory.setVisible(false);
                     remove(inventory);
                     invToggle=false;
+                    revalidate();
+                    repaint();
                 }else {
                     add(inventory,2,0);
                     inventory.setVisible(true);
                     invToggle=true;
+                    revalidate();
+                    repaint();
                 }
                 revalidate();
                 repaint();
