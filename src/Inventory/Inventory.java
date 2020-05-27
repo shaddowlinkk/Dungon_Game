@@ -2,6 +2,8 @@ package Inventory;
 
 import Abstracts.StandardCollidableObject;
 import Abstracts.StaticElements;
+import Objects.BaseElement;
+import Objects.BaseGround;
 import Objects.BaseItem;
 import Utils.Point;
 
@@ -16,7 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class Inventory extends StaticElements {
+public class Inventory extends BaseElement {
     private int nextSlot=0;
     private boolean added= false;
     private int selcted;
@@ -25,7 +27,7 @@ public class Inventory extends StaticElements {
     private Border b = BorderFactory.createLineBorder(Color.gray,1);
 
     public Inventory(){
-        setTexture("INV");
+        super("INV.png");
         getPoints("INV");
     }
 
