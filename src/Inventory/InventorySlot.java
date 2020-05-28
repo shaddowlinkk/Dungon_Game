@@ -8,6 +8,8 @@ import java.awt.*;
 
 public class InventorySlot extends JLabel {
     BaseItem item = null;
+    private Image im;
+
     public InventorySlot(){
     }
 
@@ -16,9 +18,20 @@ public class InventorySlot extends JLabel {
     }
 
     public void setItem(BaseItem item) {
+        System.out.println(item);
         this.item = item;
-        add(item,3,0);
-        setText("f");
+        this.item.setLocation(0,0);
+        repaint();
+    }
+    public void textr(){
+        this.add(item);
     }
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        if(im!=null) {
+            g.drawImage(im,0,0,null);
+        }
+        repaint();
+    }
 }

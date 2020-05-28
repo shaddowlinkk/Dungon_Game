@@ -33,6 +33,7 @@ public class Player extends AnimatedObject implements KeyListener {
         super.setFrameState(state,9);
         setName("player");
         setBackground(new Color(0,0,0,200));
+        setVisible(true);
     }
 
     public void setIn(Inventory in) {

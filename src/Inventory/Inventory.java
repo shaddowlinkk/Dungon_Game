@@ -2,6 +2,7 @@ package Inventory;
 
 import Abstracts.StandardCollidableObject;
 import Abstracts.StaticElements;
+import Enums.Items;
 import Objects.BaseElement;
 import Objects.BaseGround;
 import Objects.BaseItem;
@@ -24,11 +25,13 @@ public class Inventory extends BaseElement {
     private int selcted;
     private InventorySlot[] slots = new InventorySlot[7];
     private Point[] locations = new Point[6];
-    private Border b = BorderFactory.createLineBorder(Color.gray,1);
+    private Border b = BorderFactory.createLineBorder(Color.orange,1);
 
     public Inventory(){
         super("INV.png");
         getPoints("INV");
+        setBorder(b);
+        setVisible(false);
     }
 
     public void addToInventory(BaseItem item){
@@ -67,13 +70,15 @@ public class Inventory extends BaseElement {
         }
         return spawns;
     }
-    public void makeSlot(int index,Point location){
+    //todo remake how inventory slots are created
+/*    public void makeSlot(int index,Point location){
         slots[index]=new InventorySlot();
         super.add(slots[index],6,0);
         slots[index].setSize(32,32);
         slots[index].setLocation(location.getX(),location.getY());
         slots[index].setBorder(b);
         slots[index].setVisible(true);
+        slots[index].setItem(new BaseItem(Items.Dagger));
         slots[index].addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -82,6 +87,7 @@ public class Inventory extends BaseElement {
                 b = BorderFactory.createLineBorder(Color.green,1);
                 selcted=index;
                 slots[index].setBorder(b);
+                slots[index].textr();
 
             }
 
@@ -99,6 +105,7 @@ public class Inventory extends BaseElement {
             public void mouseEntered(MouseEvent e) {
                 b = BorderFactory.createLineBorder(Color.blue,1);
                 slots[index].setBorder(b);
+                slots[index].textr();
             }
 
             @Override
@@ -106,11 +113,12 @@ public class Inventory extends BaseElement {
                 if(index!=selcted) {
                     b = BorderFactory.createLineBorder(Color.gray, 1);
                     slots[index].setBorder(b);
+                    slots[index].textr();
                 }
 
             }
         });
-    }
+    }*/
     public void resetAdd(){
         added=false;
     }

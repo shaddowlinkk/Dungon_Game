@@ -13,13 +13,15 @@ public class Rendering {
     ArrayList<StandardCollidableObject> movingObject = new ArrayList<StandardCollidableObject>();
     ArrayList<StandardCollidableObject> staticObject = new ArrayList<StandardCollidableObject>();
     ArrayList<StandardCollidableObject> GroundObject = new ArrayList<StandardCollidableObject>();
+    ArrayList<StandardCollidableObject> staticElement = new ArrayList<StandardCollidableObject>();
     public Rendering(JComponent frame){
         mainFrame=frame;
     }
-    public void setObject(ArrayList<StandardCollidableObject> movingObject,ArrayList<StandardCollidableObject> staticObject,ArrayList<StandardCollidableObject> GroundObject) {
+    public void setObject(ArrayList<StandardCollidableObject> movingObject,ArrayList<StandardCollidableObject> staticObject,ArrayList<StandardCollidableObject> GroundObject,ArrayList<StandardCollidableObject> staticElement) {
         this.movingObject = movingObject;
         this.staticObject =staticObject;
         this.GroundObject= GroundObject;
+        this.staticElement= staticElement;
     }
     protected void addAllToScreen(){
         for (int i = mainFrame.getComponentCount(); i < movingObject.size(); i++) {
@@ -33,8 +35,11 @@ public class Rendering {
         }
         for (int i = mainFrame.getComponentCount(); i < (movingObject.size()+staticObject.size()+GroundObject.size()); i++) {
             StandardCollidableObject c =GroundObject.get(i-(movingObject.size()+staticObject.size()));
-            // c.setScale(mainFrame.getWidth(),mainFrame.getHeight());
             mainFrame.add(c);
+        }
+        for (int i = mainFrame.getComponentCount(); i < (movingObject.size()+staticObject.size()+GroundObject.size()+staticElement.size()); i++) {
+            StandardCollidableObject c =staticElement.get(i-(movingObject.size()+staticObject.size()+GroundObject.size()));
+            mainFrame.add(c,3,0);
         }
     }
 
