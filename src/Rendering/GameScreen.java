@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class GameScreen extends JComponent {
-    Timer time;
+    public Timer time;
     private Boolean dead=false;
     private boolean invToggle= false;
 
@@ -48,6 +48,8 @@ public class GameScreen extends JComponent {
         Player player = new Player();
         player.setIn(inventory);
         inventory.setloc(5,5);
+        inventory.setItemEntity(itemEntity);
+        inventory.setMainscreen(this);
         staticElement.add(inventory);
         addKeyListener( new KeyEventHandler());
         itemEntity.add(new BaseItem(Items.Dagger));
@@ -148,7 +150,7 @@ public class GameScreen extends JComponent {
                 revalidate();
             }
             if (en.getKeyCode() == KeyEvent.VK_F2) {
-                System.out.println(Arrays.asList(getComponents()).contains(inventory));
+                System.out.println(((Player)MovingEntitys.get(0)).getHeldItem());
             }
         }
 
@@ -157,5 +159,10 @@ public class GameScreen extends JComponent {
 
         }
 
+    }
+    public void rerender(){
+        removeAll();
+        rend.addAllToScreen();
+        revalidate();
     }
 }

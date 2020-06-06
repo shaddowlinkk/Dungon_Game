@@ -16,8 +16,11 @@ import java.util.ArrayList;
 public class BaseItem extends StandardCollidableObject {
     private String type,name;
     private Items item;
+
     private ArrayList<Point> balls =new ArrayList<>();
     private Point activeBall;
+    private boolean colidability=true;
+    private boolean held=false;
     public BaseItem(Items item){
         this.item=item;
         this.type=item.getType();
@@ -29,11 +32,16 @@ public class BaseItem extends StandardCollidableObject {
         setVisible(true);
 
         try {
-            setTexture(new ImageIcon(ImageIO.read(new File(".\\Assets\\"+item.name()+".png"))));
+            setTexture(ImageIO.read(new File(".\\Assets\\"+item.name()+".png")));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    public void setColidability(boolean colidability) {
+        this.colidability = colidability;
+    }
+
     private void getBall(){
         BufferedImage img=null;
         try {
@@ -72,9 +80,13 @@ public class BaseItem extends StandardCollidableObject {
         return item;
     }
 
+    public void setHeld(boolean held) {
+        this.held = held;
+    }
+
     public void collision(Player ply) {
-        if(ply.isPickingUpItem()){
-            ply.setHeldItem(this);
+        if(ply.isPickingUpItem()&&!held){
+            ply.addToInventory(this);
         }
     }
 }

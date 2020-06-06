@@ -6,6 +6,8 @@ import Enums.Items;
 import Objects.BaseElement;
 import Objects.BaseGround;
 import Objects.BaseItem;
+import Objects.Player;
+import Rendering.GameScreen;
 import Utils.Point;
 
 import javax.imageio.ImageIO;
@@ -17,109 +19,77 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Inventory extends BaseElement {
-    private int nextSlot=0;
-    private boolean added= false;
+    private int nextSlot = 0;
+    private boolean added = false;
     private int selcted;
+    private int nextslot=0;
     private InventorySlot[] slots = new InventorySlot[7];
     private Point[] locations = new Point[6];
-    private Border b = BorderFactory.createLineBorder(Color.orange,1);
+    private Border b = BorderFactory.createLineBorder(Color.orange, 1);
 
-    public Inventory(){
+    public Inventory() {
         super("INV.png");
         getPoints("INV");
         setBorder(b);
         setVisible(false);
     }
-
-    public void addToInventory(BaseItem item){
-        for (int i =0;i<6;i++) {
-            if(slots[i].getItem()==null&& !added) {
-                slots[i].setItem(item);
+    public void addToInventory(BaseItem item) {
+            if (slots[nextSlot].getItem() == null && !added) {
+                slots[nextSlot].setItem(item);
                 added=true;
-                break;
-            }else if(slots[i].getItem()==item){
-                break;
+                nextSlot++;
+            } else if (slots[nextSlot-1].getItem() != item) {
+                restAdd();
             }
-        }
     }
-    public StandardCollidableObject getItem(){
+
+    public StandardCollidableObject getItem() {
         return slots[selcted].getItem();
     }
+    public void setMainscreen(GameScreen mainscreen) {
+        for(int i =0;i<6;i++) {
+            slots[i].setMainscreen(mainscreen);
+        }
+    }
+    public void setPlayer(Player player) {
+        for(int i =0;i<6;i++) {
+            slots[i].setPlayer(player);
+        }
+    }
 
-    private Point[] getPoints(String fileName){
+    public void setItemEntity(ArrayList<StandardCollidableObject> itemEntity) {
+        for(int i =0;i<6;i++) {
+            slots[i].setItemEntity(itemEntity);
+        }
+    }
+
+    private Point[] getPoints(String fileName) {
         Point[] spawns = new Point[6];
-        BufferedImage img=null;
+        BufferedImage img = null;
         try {
-            img = ImageIO.read(new File(".\\Assets\\Elements\\"+fileName+"-points.png"));
+            img = ImageIO.read(new File(".\\Assets\\Elements\\" + fileName + "-points.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        int g=0;
+        int g = 0;
         for (int i = 0; i < img.getWidth(); i++) {
             for (int j = img.getHeight() - 1; j >= 0; j--) {
                 int clr = img.getRGB(i, j);
-                if (clr == -5955038){
-                    spawns[g]=new Point(i,j);
-                    makeSlot(g,spawns[g]);
+                if (clr == -5955038) {
+                    spawns[g] = new Point(i, j);
+                    slots[g] = new InventorySlot(spawns[g]);
+                    add(slots[g],6,0);
                     g++;
                 }
             }
         }
         return spawns;
     }
-    //todo remake how inventory slots are created
-/*    public void makeSlot(int index,Point location){
-        slots[index]=new InventorySlot();
-        super.add(slots[index],6,0);
-        slots[index].setSize(32,32);
-        slots[index].setLocation(location.getX(),location.getY());
-        slots[index].setBorder(b);
-        slots[index].setVisible(true);
-        slots[index].setItem(new BaseItem(Items.Dagger));
-        slots[index].addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                b = BorderFactory.createLineBorder(Color.gray, 1);
-                slots[selcted].setBorder(b);
-                b = BorderFactory.createLineBorder(Color.green,1);
-                selcted=index;
-                slots[index].setBorder(b);
-                slots[index].textr();
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                b = BorderFactory.createLineBorder(Color.blue,1);
-                slots[index].setBorder(b);
-                slots[index].textr();
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                if(index!=selcted) {
-                    b = BorderFactory.createLineBorder(Color.gray, 1);
-                    slots[index].setBorder(b);
-                    slots[index].textr();
-                }
-
-            }
-        });
-    }*/
-    public void resetAdd(){
+    public void restAdd(){
         added=false;
     }
 }

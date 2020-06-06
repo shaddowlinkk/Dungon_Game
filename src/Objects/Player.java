@@ -21,6 +21,7 @@ public class Player extends AnimatedObject implements KeyListener {
     private Point activeSocket;
      private int state=0;
      private StandardCollidableObject heldItem = null;
+     private BaseItem[] refItem= new BaseItem[1];
      private Boolean alive=true,pickingUpItem=false;
      private int indor =-1;
 
@@ -34,10 +35,12 @@ public class Player extends AnimatedObject implements KeyListener {
         setName("player");
         setBackground(new Color(0,0,0,200));
         setVisible(true);
+
     }
 
     public void setIn(Inventory in) {
         this.in = in;
+        in.setPlayer(this);
     }
 
     private void getSockets(){
@@ -114,16 +117,17 @@ public class Player extends AnimatedObject implements KeyListener {
         return pickingUpItem;
     }
     public void setHeldItem(StandardCollidableObject heldItem) {
-        in.addToInventory((BaseItem) heldItem);
-        //this.heldItem = heldItem;
+        this.heldItem = heldItem;
     }
+    public void addToInventory(StandardCollidableObject heldItem){
+        in.addToInventory((BaseItem) heldItem);
 
+    }
     public StandardCollidableObject getHeldItem() {
         return heldItem;
     }
 
     public Boolean hasItem(){
-        heldItem=in.getItem();
         return heldItem != null;
     }
 
@@ -240,7 +244,7 @@ public class Player extends AnimatedObject implements KeyListener {
             pickingUpItem=false;
         }
         if(key==KeyEvent.VK_Q){
-            heldItem=null;
+            heldItem=new NullObject();
         }
     }
 
