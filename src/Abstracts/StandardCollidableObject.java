@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public abstract class StandardCollidableObject extends JLabel implements BaseCol
     private int _x,_y,angle;
     private int scaledWidth=0;
     private int scaledHeight=0;
+    private String texture;
     private BoundingBox  box;
     private BoundingBox  drawbox;
     private CollisionDetectorHandler Collision= new CollisionDetectorHandler();
@@ -58,6 +60,7 @@ public abstract class StandardCollidableObject extends JLabel implements BaseCol
         setSize(i.getWidth(),i.getHeight());
     }
     public void setTexture(String fileName) {
+        texture=fileName;
         try {
             im = ImageIO.read(new File(".\\Assets\\"+fileName));
         } catch (IOException e) {
@@ -66,7 +69,9 @@ public abstract class StandardCollidableObject extends JLabel implements BaseCol
         setSize(im.getWidth(null),im.getHeight(null));
         //setScale(im.getWidth(null),im.getHeight(null));
     }
-
+    public Image getTexture(){
+        return im;
+    }
     @Override
     public void setloc(int x, int y) {
         _x=x;

@@ -4,26 +4,31 @@ import Abstracts.ControlableObject;
 import Abstracts.StandardCollidableObject;
 import Enums.Items;
 import Handlers.*;
+import Inventory.Inventory;
 import Objects.BaseItem;
 import Objects.Player;
-import Rendering.Rendering;
 import RoomGeneration.EnviromentGenerator;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GameScreen extends JComponent {
-    Timer time;
+    public Timer time;
     private Boolean dead=false;
+    private boolean invToggle= false;
+
     private  int score =0;
     private ArrayList<ControlableObject> MovingEntitys= new ArrayList<>();
-    private ArrayList<StandardCollidableObject> StaticEntity = new ArrayList<>();
+    private ArrayList<StandardCollidableObject> itemEntity = new ArrayList<>();
+    private ArrayList<StandardCollidableObject> staticElement = new ArrayList<>();
     private EnviromentGenerator enviromentController = new EnviromentGenerator();
+
+    private Inventory inventory = new Inventory();
 
     private RoomHandler roomController = new RoomHandler();
     private ArrayList<StandardCollidableObject> GroundEntity = roomController.getEnvironment();
@@ -31,25 +36,33 @@ public class GameScreen extends JComponent {
     private MovingObjectHandler motionController = new MovingObjectHandler((ArrayList) MovingEntitys);
     private MobSpawningHandler mobSpawner = new MobSpawningHandler(MovingEntitys);
     private AnimationHandler animationController = new AnimationHandler((ArrayList) MovingEntitys);
-    private CollisionHandler collisionController = new CollisionHandler((ArrayList) MovingEntitys,StaticEntity,GroundEntity);
+    private CollisionHandler collisionController = new CollisionHandler((ArrayList) MovingEntitys, itemEntity,GroundEntity);
     private ItemSocketingHandler SocketController = new ItemSocketingHandler((ArrayList) MovingEntitys);
     private MobHandler mobController = new MobHandler(this);
     private Rendering rend = new Rendering(this);
 
     public GameScreen(){
         setFocusable(false);
+
+
+        Player player = new Player();
+        player.setIn(inventory);
+        inventory.setloc(5,5);
+        inventory.setItemEntity(itemEntity);
+        inventory.setMainscreen(this);
+        staticElement.add(inventory);
         addKeyListener( new KeyEventHandler());
-        StaticEntity.add(new BaseItem(Items.Dagger));
-        StaticEntity.add(new BaseItem(Items.Claymore));
-        MovingEntitys.add(new Player());
+        itemEntity.add(new BaseItem(Items.Dagger));
+        itemEntity.add(new BaseItem(Items.Claymore));
+        MovingEntitys.add(player);
         MovingEntitys.get(0).setloc(50,50);
-        StaticEntity.get(0).setloc(100,100);
-        StaticEntity.get(1).setloc(100,150);
+        itemEntity.get(0).setloc(100,100);
+        itemEntity.get(1).setloc(100,150);
 
         setSize(622,642);
         setLayout(null);
-        rend.setObject((ArrayList) MovingEntitys,StaticEntity,GroundEntity);
-        // rend.addToScreen();
+        rend.setObject((ArrayList) MovingEntitys, itemEntity,GroundEntity, staticElement);
+        animationController.animateObject();
         time = new Timer( 10, new TimerHandler());
         time.start();
     }
@@ -97,7 +110,7 @@ public class GameScreen extends JComponent {
                 mobSpawner.resetSpawned();
                 BaseItem item = new BaseItem(Items.Key);
                 item.setloc(getHeight()/2,getWidth()/2);
-                StaticEntity.add(item);
+                itemEntity.add(item);
                 removeAll();
                 rend.addAllToScreen();
                 revalidate();
@@ -106,7 +119,7 @@ public class GameScreen extends JComponent {
             if(!((Player)MovingEntitys.get(0)).isAlive()){
                 dead=true;
                 MovingEntitys.clear();
-                StaticEntity.clear();
+                itemEntity.clear();
                 GroundEntity.clear();
                 removeAll();
                 revalidate();
@@ -118,16 +131,26 @@ public class GameScreen extends JComponent {
 
     private class KeyEventHandler implements KeyListener {
         @Override
-        public void keyTyped(KeyEvent e) {
+        public void keyTyped(KeyEvent en) {
 
         }
 
         @Override
-        public void keyPressed(KeyEvent e) {
-            if (e.getKeyCode() == KeyEvent.VK_F1) {
+        public void keyPressed(KeyEvent en) {
+            if (en.getKeyCode() == KeyEvent.VK_F1) {
+                if(invToggle){
+                    inventory.setVisible(false);
+                    invToggle=false;
+                }else {
+                    inventory.setVisible(true);
+                    invToggle=true;
+                }
+                removeAll();
+                rend.addAllToScreen();
+                revalidate();
             }
-            if (e.getKeyCode() == KeyEvent.VK_F2) {
-
+            if (en.getKeyCode() == KeyEvent.VK_F2) {
+                System.out.println(((Player)MovingEntitys.get(0)).getHeldItem());
             }
         }
 
@@ -136,5 +159,10 @@ public class GameScreen extends JComponent {
 
         }
 
+    }
+    public void rerender(){
+        removeAll();
+        rend.addAllToScreen();
+        revalidate();
     }
 }

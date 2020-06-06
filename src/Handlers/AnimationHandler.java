@@ -5,6 +5,9 @@ import Abstracts.AnimatedObject;
 import java.util.ArrayList;
 
 public class AnimationHandler {
+    /*TODO lag in animation controller in screen rendering
+    *   dont know what is causing it*/
+
     private ArrayList<AnimatedObject> objects = new ArrayList<AnimatedObject>();
 
     public AnimationHandler (ArrayList<AnimatedObject> entityList){

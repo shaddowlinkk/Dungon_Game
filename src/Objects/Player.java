@@ -2,6 +2,7 @@ package Objects;
 
 import Abstracts.AnimatedObject;
 import Abstracts.StandardCollidableObject;
+import Inventory.Inventory;
 import Utils.Point;
 
 import javax.imageio.ImageIO;
@@ -14,10 +15,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Player extends AnimatedObject implements KeyListener {
+    private boolean invOpen=false;
+    private Inventory in;
     private ArrayList<Point> Sockets=new ArrayList<>();
     private Point activeSocket;
      private int state=0;
      private StandardCollidableObject heldItem = null;
+     private BaseItem[] refItem= new BaseItem[1];
      private Boolean alive=true,pickingUpItem=false;
      private int indor =-1;
 
@@ -30,6 +34,13 @@ public class Player extends AnimatedObject implements KeyListener {
         super.setFrameState(state,9);
         setName("player");
         setBackground(new Color(0,0,0,200));
+        setVisible(true);
+
+    }
+
+    public void setIn(Inventory in) {
+        this.in = in;
+        in.setPlayer(this);
     }
 
     private void getSockets(){
@@ -105,11 +116,13 @@ public class Player extends AnimatedObject implements KeyListener {
     public Boolean isPickingUpItem() {
         return pickingUpItem;
     }
-
     public void setHeldItem(StandardCollidableObject heldItem) {
         this.heldItem = heldItem;
     }
+    public void addToInventory(StandardCollidableObject heldItem){
+        in.addToInventory((BaseItem) heldItem);
 
+    }
     public StandardCollidableObject getHeldItem() {
         return heldItem;
     }
@@ -182,8 +195,6 @@ public class Player extends AnimatedObject implements KeyListener {
         if(key==KeyEvent.VK_F){
             pickingUpItem=true;
         }
-
-
     }
 
     @Override
@@ -233,7 +244,9 @@ public class Player extends AnimatedObject implements KeyListener {
             pickingUpItem=false;
         }
         if(key==KeyEvent.VK_Q){
-            heldItem=null;
+            heldItem=new NullObject();
         }
     }
+
+
 }
