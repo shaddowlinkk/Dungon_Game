@@ -2,8 +2,6 @@ package Handlers;
 
 import Abstracts.StandardCollidableObject;
 import Enums.ItemTypes;
-import Enums.Items;
-import Objects.BaseGround;
 import Objects.BaseItem;
 import Objects.Door;
 import Objects.Player;
@@ -12,11 +10,11 @@ import java.util.ArrayList;
 
 public class CollisionHandler {
     public ArrayList<StandardCollidableObject> movingEntitys = new ArrayList<>();
-    public ArrayList<StandardCollidableObject> staticEntitys = new ArrayList<>();
+    public ArrayList<StandardCollidableObject> itemEntitys = new ArrayList<>();
     public ArrayList<StandardCollidableObject> groundEntitys = new ArrayList<>();
     public CollisionHandler(ArrayList<StandardCollidableObject> moving,ArrayList<StandardCollidableObject> staticEn,ArrayList<StandardCollidableObject> groundEntitys){
         movingEntitys =moving;
-        staticEntitys=staticEn;
+        itemEntitys =staticEn;
         this.groundEntitys=groundEntitys;
     }
     public void checkCollisions(){
@@ -31,13 +29,14 @@ public class CollisionHandler {
 
         }
         for (StandardCollidableObject o : movingEntitys){
-            for (StandardCollidableObject b : staticEntitys){
+            for (StandardCollidableObject b : itemEntitys){
                 if(o!=b){
                     if(o.hasCollided(b)) {
                         if(ItemTypes.valueOf(b.getName())!=null && o.getName().equals("player")){
                             ((BaseItem)b).collision((Player) o);
                         }else {
                             o.collision(b.getName());
+
                         }
                     }
                 }
@@ -51,7 +50,7 @@ public class CollisionHandler {
                         if (o.hasCollided(b)) {
                             if(o.getName().equals("player")&&b.getName().equals("Door")){
                                 ((Player)o).collision((Door)b);
-                                staticEntitys.remove(((Player)o).getHeldItem());
+                                itemEntitys.remove(((Player)o).getHeldItem());
                             }
                                 o.collision(b.getName());
                         }

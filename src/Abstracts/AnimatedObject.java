@@ -18,7 +18,7 @@ public abstract class AnimatedObject extends ControlableObject implements Object
             if (numFrame % animationLength == 0) {
                 numFrame = 0;
             }
-            if(numFrame<frames.length) {
+            if(numFrame<animationLength) {
                 setTexture((frames[numFrame]));
                 numFrame++;
             }

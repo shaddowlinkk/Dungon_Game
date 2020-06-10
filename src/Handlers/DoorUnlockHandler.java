@@ -4,10 +4,10 @@ import Abstracts.StandardCollidableObject;
 
 import java.util.ArrayList;
 
-public class DoorUnlockhandeler {
+public class DoorUnlockHandler {
     private  ArrayList<StandardCollidableObject> groundEntitys;
 
-    public DoorUnlockhandeler(ArrayList<StandardCollidableObject> groundEntitys){
+    public DoorUnlockHandler(ArrayList<StandardCollidableObject> groundEntitys){
         this.groundEntitys=groundEntitys;
     }
     public void unlock() {
