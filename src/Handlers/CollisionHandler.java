@@ -7,6 +7,7 @@ import Objects.Door;
 import Objects.Player;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 
 public class CollisionHandler {
     public ArrayList<StandardCollidableObject> movingEntitys = new ArrayList<>();
@@ -28,20 +29,25 @@ public class CollisionHandler {
             }
 
         }
-        for (StandardCollidableObject o : movingEntitys){
-            for (StandardCollidableObject b : itemEntitys){
-                if(o!=b){
-                    if(o.hasCollided(b)) {
-                        if(ItemTypes.valueOf(b.getName())!=null && o.getName().equals("player")){
-                            ((BaseItem)b).collision((Player) o);
-                        }else {
-                            o.collision(b.getName());
+        try {
+            for (StandardCollidableObject o : movingEntitys) {
+                for (StandardCollidableObject b : itemEntitys) {
+                    if (o != b) {
+                        if (o.hasCollided(b)) {
+                            if (ItemTypes.valueOf(b.getName()) != null && o.getName().equals("player")) {
+                                ((BaseItem) b).collision((Player) o);
+                            } else {
+                                o.collision(b.getName());
 
+                            }
                         }
                     }
                 }
             }
-
+        }catch (ConcurrentModificationException e){
+            e.printStackTrace();
+            System.out.println(e.getLocalizedMessage());
+            System.out.println(e.getCause());
         }
         for (StandardCollidableObject o : movingEntitys){
             for (StandardCollidableObject b : groundEntitys){
