@@ -38,8 +38,13 @@ public class Rendering {
             mainFrame.add(c);
         }
         for (int i = mainFrame.getComponentCount(); i < (movingObject.size()+staticObject.size()+GroundObject.size()+staticElement.size()); i++) {
-            StandardCollidableObject c =staticElement.get(i-(movingObject.size()+staticObject.size()+GroundObject.size()));
-            mainFrame.add(c,3,0);
+            try {
+                StandardCollidableObject c = staticElement.get(i - (movingObject.size() + staticObject.size() + GroundObject.size()));
+                mainFrame.add(c,3,0);
+            }catch (IndexOutOfBoundsException e){
+                //todo findout why this is happening
+            }
+
         }
     }
 

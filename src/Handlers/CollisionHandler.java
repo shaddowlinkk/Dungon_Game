@@ -45,9 +45,7 @@ public class CollisionHandler {
                 }
             }
         }catch (ConcurrentModificationException e){
-            e.printStackTrace();
-            System.out.println(e.getLocalizedMessage());
-            System.out.println(e.getCause());
+            //todo why does it throw this error
         }
         for (StandardCollidableObject o : movingEntitys){
             for (StandardCollidableObject b : groundEntitys){
