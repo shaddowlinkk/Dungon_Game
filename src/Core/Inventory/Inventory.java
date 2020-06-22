@@ -5,7 +5,7 @@ import Core.Objects.BaseElement;
 import Core.Objects.BaseItem;
 import Core.Objects.Player;
 import Core.Rendering.GameScreen;
-import Utils.Point;
+import Core.Utils.Point;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

@@ -3,7 +3,7 @@ package Core.Objects;
 import Core.Abstracts.AnimatedObject;
 import Core.Abstracts.StandardCollidableObject;
 import Core.Inventory.Inventory;
-import Utils.Point;
+import Core.Utils.Point;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

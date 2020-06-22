@@ -3,7 +3,7 @@ package Core.RoomGeneration;
 import Core.Abstracts.StandardCollidableObject;
 import Core.Objects.BaseGround;
 import Core.Objects.Door;
-import Utils.Point;
+import Core.Utils.Point;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

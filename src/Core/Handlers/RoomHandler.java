@@ -3,7 +3,7 @@ package Core.Handlers;
 import Core.Abstracts.StandardCollidableObject;
 import Core.RoomGeneration.EnviromentGenerator;
 import Core.RoomGeneration.Room;
-import Utils.Point;
+import Core.Utils.Point;
 
 import java.util.ArrayList;
 

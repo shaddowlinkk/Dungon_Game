@@ -2,8 +2,8 @@ package Core.Abstracts;
 
 import Core.Handlers.CollisionDetectorHandler;
 import Core.Interfaces.BaseCollidableObject;
-import Utils.BoundingBox;
-import Utils.Point;
+import Core.Utils.BoundingBox;
+import Core.Utils.Point;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

@@ -1,4 +1,4 @@
-package Utils;
+package Core.Utils;
 
 public class Point {
     private int x,y;

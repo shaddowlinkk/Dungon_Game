@@ -1,7 +1,7 @@
 package Core.Handlers;
 
 import Core.Abstracts.StandardCollidableObject;
-import Utils.Point;
+import Core.Utils.Point;
 
 public class CollisionDetectorHandler {
     private boolean onSegment(Point p, Point q, Point r)

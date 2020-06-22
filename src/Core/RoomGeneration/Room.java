@@ -1,7 +1,7 @@
 package Core.RoomGeneration;
 
 import Core.Abstracts.StandardCollidableObject;
-import Utils.Point;
+import Core.Utils.Point;
 
 import java.util.ArrayList;
 import java.util.Random;

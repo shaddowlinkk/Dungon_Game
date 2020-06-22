@@ -2,7 +2,7 @@ package Core.Objects;
 
 import Core.Abstracts.StandardCollidableObject;
 import Core.Enums.Items;
-import Utils.Point;
+import Core.Utils.Point;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

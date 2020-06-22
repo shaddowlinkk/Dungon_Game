@@ -1,7 +1,7 @@
 package Core.Handlers;
 
 import Core.Enums.SpriteConfig;
-import Utils.Configeration;
+import Core.Utils.Configeration;
 
 import javax.imageio.ImageIO;
 

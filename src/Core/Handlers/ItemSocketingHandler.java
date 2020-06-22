@@ -4,7 +4,7 @@ package Core.Handlers;
 import Core.Objects.BaseItem;
 import Core.Abstracts.StandardCollidableObject;
 import Core.Objects.Player;
-import Utils.Point;
+import Core.Utils.Point;
 
 import java.util.ArrayList;
 //to do find out why images not rendering rightK

@@ -1,6 +1,6 @@
 package Core.Interfaces;
 
-import Utils.BoundingBox;
+import Core.Utils.BoundingBox;
 import javax.swing.*;
 
 public interface BaseCollidableObject {
