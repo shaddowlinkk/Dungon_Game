@@ -13,7 +13,7 @@ public class ObjectScreen extends JPanel {
     JPanel mainPanel = new JPanel();
     JScrollPane scrollPane = new JScrollPane(mainPanel);
     private ObjectTiles selected=null;
-    private int numSelected=0;
+    private int numSelected=-1;
     ArrayList<String>t;
     public ObjectScreen(){
         mainPanel.setBackground(Color.white);
@@ -64,6 +64,10 @@ public class ObjectScreen extends JPanel {
         }
     }
     public String GetSelectedTexture(){
-        return t.get(numSelected);
+        if(numSelected!=-1) {
+            return t.get(numSelected);
+        }else {
+            return null;
+        }
     }
 }

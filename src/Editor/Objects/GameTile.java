@@ -66,7 +66,13 @@ public class GameTile extends JLabel {
             e.printStackTrace();
         }
     }
-
+    public String getTextureName(){
+        try {
+            return obj.GetSelectedTexture().split(":")[0];
+        }catch (NullPointerException e){
+            return null;
+        }
+    }
     @Override
     protected void paintComponent(Graphics g) {
         if(im!=null) {
