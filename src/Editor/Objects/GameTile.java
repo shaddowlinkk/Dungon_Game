@@ -16,6 +16,7 @@ public class GameTile extends JLabel {
     private Border border= BorderFactory. createLineBorder(Color.RED);
     private BufferedImage im;
     private ObjectScreen obj;
+    private String textureName=null;
 
     public GameTile(ObjectScreen obj){
         this.obj=obj;
@@ -62,16 +63,13 @@ public class GameTile extends JLabel {
     public void setTexture() {
         try {
             im = ImageIO.read(new File(obj.GetSelectedTexture().split(":")[1]));
+            textureName=obj.GetSelectedTexture().split(":")[0];
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     public String getTextureName(){
-        try {
-            return obj.GetSelectedTexture().split(":")[0];
-        }catch (NullPointerException e){
-            return null;
-        }
+            return textureName;
     }
     @Override
     protected void paintComponent(Graphics g) {
