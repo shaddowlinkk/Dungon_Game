@@ -68,6 +68,15 @@ public class GameTile extends JLabel {
             e.printStackTrace();
         }
     }
+    public void setTexture(int i) {
+        try {
+            im = ImageIO.read(new File(obj.getTecture(i).split(":")[1]));
+            textureName=obj.getTecture(i).split(":")[0];
+            repaint();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public String getTextureName(){
             return textureName;
     }

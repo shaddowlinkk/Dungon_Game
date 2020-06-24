@@ -63,6 +63,9 @@ public class ObjectScreen extends JPanel {
             mainPanel.add(tile);
         }
     }
+    public String getTecture(int i){
+            return t.get(i);
+    }
     public String GetSelectedTexture(){
         if(numSelected!=-1) {
             return t.get(numSelected);

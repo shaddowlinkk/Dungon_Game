@@ -34,7 +34,7 @@ public class Room {
     }
 
     public Room() {
-        System.out.println(this);
+        //System.out.println(this);
         this.genRoom(4);
     }
 
@@ -98,7 +98,7 @@ public class Room {
     public Room enterRoom(int door) {
         rooms[door].genRoom();
         rooms[door].genEvno(door);
-        System.out.println(rooms[door]);
+        //System.out.println(rooms[door]);
         return rooms[door];
     }
 

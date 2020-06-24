@@ -10,6 +10,7 @@ import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class MapFile {
@@ -20,14 +21,18 @@ public class MapFile {
     private final int MapContentOffset=1444;
     private final int SpawnLocationOffset=12;
     private String mapPath,recPath;
-    private int recNum=1,count=0;
+    private int count=0;
 
 
-    public MapFile(String recPath, String mapPath){
+    public MapFile( String mapPath){
         this.mapPath=mapPath;
         loadMapFile(mapPath);
     }
-    private void loadMapFile(String Path){
+    public MapFile(){
+
+    }
+    public void loadMapFile(String Path){
+        mapPath=Path;
         try {
             OUT=new RandomAccessFile(Path,"rw");
             IN=new RandomAccessFile(Path,"r");
@@ -41,13 +46,13 @@ public class MapFile {
         try {
             new FileWriter(mapPath, false).close();
             OUT.seek(16);
-            OUT.writeInt(3456);
+            OUT.writeInt(0x4c00a12f);
             OUT.writeInt(1444);
             OUT.writeInt(2);
             for (int i =0;i<tiles.size();i++) {
                 String text=tiles.get(i).getTextureName();
                 if(text!=null) {
-                    if((TileTypes.valueOf(text).getID())==2){
+                    if((TileTypes.valueOf(text).getID())==3){
                         addSpawnlocation(3,i);
                         OUT.seek(i*4+FileHeaderOffset+MapFileRecordOffset);
                         OUT.writeInt(0xf0000000);
@@ -76,14 +81,13 @@ public class MapFile {
             e.printStackTrace();
         }
     }
-    public void addSpawnlocation(int spawnType, int index){
+    private void addSpawnlocation(int spawnType, int index){
         try {
             OUT.seek(1472+(count*24));
-            OUT.writeInt(recNum);
-            OUT.writeInt(24);
+            OUT.writeInt(0x3fb4cc11);
+            OUT.writeInt(12);
             OUT.writeInt(1);
             OUT.writeInt(spawnType);
-            System.out.println(index);
             OUT.writeInt(index%19);
             OUT.writeInt((index)/19);
             count++;
@@ -92,14 +96,39 @@ public class MapFile {
 
         }
     }
-    public ArrayList<Point> getItemSpawnLocation(){
+    public void LoadMapFromFile(ArrayList<GameTile> tiles){
+        int pos=28;
         try {
-                    System.out.println(IN.readInt()+"t");
-                    System.out.println(IN.readInt()+"s");
+            IN.seek(28);
+            int count=0;
+            for (int i =pos;i<1444;i+=4) {
+                int in =IN.readInt();
+                if (in!=0) {
+                    tiles.get(count).setTexture(in-1);
+                    count++;
+                }else {
+                    count++;
+                }
+            }
         }catch (IOException e){
             e.printStackTrace();
         }
-        return null;
+    }
+    public ArrayList<Point> getItemSpawnLocation(){
+        int dataOffset=16,typeOffset=12,RecordOffset=24,position=1472;
+        ArrayList<Point> spawnPosition= new ArrayList<>();
+        try {
+            for (int i =position;i<IN.length();i+=RecordOffset){
+                IN.seek(i+typeOffset);
+                if(IN.readInt()==3){
+                    IN.seek(i+dataOffset);
+                    spawnPosition.add(new Point(IN.readInt(),IN.readInt()));
+                }
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return spawnPosition;
     }
 
 }

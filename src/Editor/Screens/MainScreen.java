@@ -4,17 +4,26 @@ import Editor.Util.LoadTextures;
 import Editor.Util.MapFile;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainScreen extends JFrame {
     ObjectScreen objects = new ObjectScreen();
     BoardScreen board = new BoardScreen(objects);
     JMenuBar menuBar= new JMenuBar();
+    JFileChooser fileChooser = new JFileChooser();
     JMenuItem saveMap= new JMenuItem("Save Map");
+    JMenuItem loadMap= new JMenuItem("Load Map");
+    JMenuItem spawn= new JMenuItem("Extract SpawnPoints");
     JMenu file = new JMenu("File");
     JTextArea text = new JTextArea();
+    MapFile me = new MapFile();
+
     ArrayList<String> textures =  new LoadTextures().getTextures();
     public MainScreen(){
         //setting up the jframe
@@ -28,6 +37,10 @@ public class MainScreen extends JFrame {
         //setting up the menu
         menuBar.add(file);
         file.add(saveMap);
+        file.add(loadMap);
+        file.add(spawn);
+        loadMap.addActionListener(this::actionPerformed);
+        spawn.addActionListener(this::actionPerformed);
         saveMap.addActionListener(this::actionPerformed);
         setJMenuBar(menuBar);
 
@@ -43,11 +56,42 @@ public class MainScreen extends JFrame {
         text.setLocation(50,682);
         text.setEditable(false);
         add(text);
+
     }
+
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==saveMap){
-            MapFile me = new MapFile(".\\Saves\\test.rec",".\\Saves\\test.map");
-            me.saveMap(board.getTiles());
+            fileChooser.setDialogTitle("Select a file to save to");
+            fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Dungeon map file","map"));
+            fileChooser.setAcceptAllFileFilterUsed(true);
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            int selected=fileChooser.showSaveDialog(this);
+            if(selected== JFileChooser.APPROVE_OPTION){
+                File save = fileChooser.getSelectedFile();
+                String fname = save.getAbsolutePath();
+                if(!fname.endsWith(".map") ) {
+                    save = new File(fname + ".map");
+                }
+                me.loadMapFile(save.getAbsolutePath());
+                me.saveMap(board.getTiles());
+            }
+
+        }
+        if(e.getSource()==loadMap){
+            fileChooser.setDialogTitle("Select a file to open");
+            fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Dungeon map file","map"));
+            fileChooser.setAcceptAllFileFilterUsed(true);
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            int selected=fileChooser.showOpenDialog(this);
+            if(selected== JFileChooser.APPROVE_OPTION){
+                me.loadMapFile(fileChooser.getSelectedFile().getAbsolutePath());
+                me.LoadMapFromFile(board.getTiles());
+                repaint();
+            }
+
+        }
+        if(e.getSource()==spawn){
+            text.append(Arrays.toString(me.getItemSpawnLocation().toArray()));
         }
     }
 }
