@@ -93,7 +93,7 @@ public class MapFile {
             count++;
 
         }catch (IOException e){
-
+            e.printStackTrace();
         }
     }
     public void LoadMapFromFile(ArrayList<GameTile> tiles){
@@ -104,9 +104,12 @@ public class MapFile {
             for (int i =pos;i<1444;i+=4) {
                 int in =IN.readInt();
                 if (in!=0) {
+                    tiles.get(count).resetBorder();
                     tiles.get(count).setTexture(in-1);
                     count++;
                 }else {
+                    tiles.get(count).resetBorder();
+                    tiles.get(count).resetTexture();
                     count++;
                 }
             }

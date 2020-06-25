@@ -17,6 +17,8 @@ public class GameTile extends JLabel {
     private BufferedImage im;
     private ObjectScreen obj;
     private String textureName=null;
+    private Graphics c;
+    private int reset=0;
 
     public GameTile(ObjectScreen obj){
         this.obj=obj;
@@ -68,6 +70,14 @@ public class GameTile extends JLabel {
             e.printStackTrace();
         }
     }
+    public void resetBorder(){
+        setBorder(BorderFactory. createLineBorder(Color.RED));
+    }
+    public void resetTexture(){
+        im=null;
+        textureName=null;
+        repaint();
+    }
     public void setTexture(int i) {
         try {
             im = ImageIO.read(new File(obj.getTecture(i).split(":")[1]));
@@ -80,11 +90,11 @@ public class GameTile extends JLabel {
     public String getTextureName(){
             return textureName;
     }
+
     @Override
     protected void paintComponent(Graphics g) {
-        if(im!=null) {
-            g.drawImage(im,0,0,null);
-        }
+            g.drawImage(im, 0, 0,null);
         super.paintComponent(g);
+
     }
 }

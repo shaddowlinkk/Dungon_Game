@@ -55,7 +55,9 @@ public class MainScreen extends JFrame {
         text.setSize(622,200);
         text.setLocation(50,682);
         text.setEditable(false);
-        add(text);
+        add(text,6,0);
+        revalidate();
+        repaint();
 
     }
 
