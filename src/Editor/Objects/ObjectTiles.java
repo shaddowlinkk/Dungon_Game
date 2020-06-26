@@ -18,6 +18,8 @@ public class ObjectTiles extends JLabel {
         setPreferredSize(new Dimension(32,32));
         try {
             im = ImageIO.read(new File(textures.split(":")[1]));
+            setSize(im.getWidth(),im.getHeight());
+            setPreferredSize(new Dimension(im.getWidth(),im.getHeight()));
         } catch (IOException e) {
             e.printStackTrace();
         }

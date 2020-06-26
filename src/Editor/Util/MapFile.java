@@ -20,7 +20,7 @@ public class MapFile {
     private final int MapFileRecordOffset=12;
     private final int MapContentOffset=1444;
     private final int SpawnLocationOffset=12;
-    private String mapPath,recPath;
+    private String mapPath;
     private int count=0;
 
 

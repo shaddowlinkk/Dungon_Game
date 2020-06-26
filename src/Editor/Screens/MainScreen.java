@@ -1,6 +1,6 @@
 package Editor.Screens;
 
-import Editor.Util.LoadTextures;
+import Editor.Util.AssetURLs;
 import Editor.Util.MapFile;
 
 import javax.swing.*;
@@ -8,7 +8,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -19,12 +18,13 @@ public class MainScreen extends JFrame {
     JFileChooser fileChooser = new JFileChooser();
     JMenuItem saveMap= new JMenuItem("Save Map");
     JMenuItem loadMap= new JMenuItem("Load Map");
+    JMenuItem loadtexture= new JMenuItem("Load Texture");
     JMenuItem spawn= new JMenuItem("Extract SpawnPoints");
     JMenu file = new JMenu("File");
     JTextArea text = new JTextArea();
     MapFile me = new MapFile();
 
-    ArrayList<String> textures =  new LoadTextures().getTextures();
+    ArrayList<String> textures =  new AssetURLs().getTextures();
     public MainScreen(){
         //setting up the jframe
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -38,7 +38,9 @@ public class MainScreen extends JFrame {
         menuBar.add(file);
         file.add(saveMap);
         file.add(loadMap);
+        file.add(loadtexture);
         file.add(spawn);
+        loadtexture.addActionListener(this::actionPerformed);
         loadMap.addActionListener(this::actionPerformed);
         spawn.addActionListener(this::actionPerformed);
         saveMap.addActionListener(this::actionPerformed);
@@ -78,6 +80,24 @@ public class MainScreen extends JFrame {
                 me.saveMap(board.getTiles());
             }
 
+        }
+        if(e.getSource()==loadtexture){
+            fileChooser.setDialogTitle("Select a file to open");
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            int selected=fileChooser.showOpenDialog(this);
+            if(selected== JFileChooser.APPROVE_OPTION){
+                AssetURLs o =new AssetURLs();
+                o.addNewGroundAsset(fileChooser.getSelectedFile());
+                textures =  new AssetURLs().getTextures();
+                objects.loadTextures(textures);
+/*                this.remove(objects);
+                objects=new ObjectScreen();
+                objects.setLocation(700,26);
+                objects.loadTextures(textures);
+                add(objects);*/
+                revalidate();
+                repaint();
+            }
         }
         if(e.getSource()==loadMap){
             fileChooser.setDialogTitle("Select a file to open");

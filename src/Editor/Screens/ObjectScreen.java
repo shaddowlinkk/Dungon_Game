@@ -13,11 +13,11 @@ public class ObjectScreen extends JPanel {
     JPanel mainPanel = new JPanel();
     JScrollPane scrollPane = new JScrollPane(mainPanel);
     private ObjectTiles selected=null;
-    private int numSelected=-1;
+    private int numSelected=0;
     ArrayList<String>t;
     public ObjectScreen(){
         mainPanel.setBackground(Color.white);
-        mainPanel.setPreferredSize(new Dimension(300,2000));
+        mainPanel.setPreferredSize(new Dimension(275,2000));
         mainPanel.setAutoscrolls(true);
         scrollPane.setPreferredSize(new Dimension(300,900));
         add(scrollPane);
@@ -25,6 +25,7 @@ public class ObjectScreen extends JPanel {
         setVisible(true);
     }
     public void loadTextures(ArrayList<String> list ){
+        mainPanel.removeAll();
         t=list;
         for(int i = 0;i<list.size();i++) {
             ObjectTiles tile = new ObjectTiles(list.get(i));

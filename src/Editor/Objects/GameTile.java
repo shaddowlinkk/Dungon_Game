@@ -1,5 +1,6 @@
 package Editor.Objects;
 
+import Editor.Screens.BoardScreen;
 import Editor.Screens.ObjectScreen;
 
 import javax.imageio.ImageIO;
@@ -17,11 +18,13 @@ public class GameTile extends JLabel {
     private BufferedImage im;
     private ObjectScreen obj;
     private String textureName=null;
-    private Graphics c;
+    private BoardScreen board;
+    private int ID=-1;
     private int reset=0;
 
-    public GameTile(ObjectScreen obj){
+    public GameTile(ObjectScreen obj,BoardScreen board){
         this.obj=obj;
+        this.board=board;
         setSize(32,32);
         setPreferredSize(new Dimension(32,32));
         setVisible(true);
@@ -64,11 +67,25 @@ public class GameTile extends JLabel {
     }
     public void setTexture() {
         try {
+
             im = ImageIO.read(new File(obj.GetSelectedTexture().split(":")[1]));
             textureName=obj.GetSelectedTexture().split(":")[0];
+            if(im.getWidth()>32){
+                board.getTiles().get(ID+1).setTexture(im.getSubimage(32,0,32,32));
+            }
+            if(im.getHeight()>32){
+                board.getTiles().get(ID-19).setTexture(im.getSubimage(0,0,32,32));
+                im=im.getSubimage(0,32,32,32);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public void setTexture(BufferedImage mi) {
+            im = mi;
+            setBorder(BorderFactory. createLineBorder(Color.blue));
+            repaint();
     }
     public void resetBorder(){
         setBorder(BorderFactory. createLineBorder(Color.RED));
@@ -87,8 +104,17 @@ public class GameTile extends JLabel {
             e.printStackTrace();
         }
     }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
     public String getTextureName(){
             return textureName;
+    }
+
+    public void setTextureName(String textureName) {
+        this.textureName = textureName;
     }
 
     @Override
