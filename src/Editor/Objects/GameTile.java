@@ -19,7 +19,7 @@ public class GameTile extends JLabel {
     private ObjectScreen obj;
     private String textureName=null;
     private BoardScreen board;
-    private int ID=-1;
+    private int Position =-1,ID=-1;
     private int reset=0;
 
     public GameTile(ObjectScreen obj,BoardScreen board){
@@ -70,11 +70,12 @@ public class GameTile extends JLabel {
 
             im = ImageIO.read(new File(obj.GetSelectedTexture().split(":")[1]));
             textureName=obj.GetSelectedTexture().split(":")[0];
+            ID=Integer.parseInt(obj.GetSelectedTexture().split(":")[2]);
             if(im.getWidth()>32){
-                board.getTiles().get(ID+1).setTexture(im.getSubimage(32,0,32,32));
+                board.getTiles().get(Position +1).setTexture(im.getSubimage(32,0,32,32));
             }
             if(im.getHeight()>32){
-                board.getTiles().get(ID-19).setTexture(im.getSubimage(0,0,32,32));
+                board.getTiles().get(Position -19).setTexture(im.getSubimage(0,0,32,32));
                 im=im.getSubimage(0,32,32,32);
             }
 
@@ -93,24 +94,30 @@ public class GameTile extends JLabel {
     public void resetTexture(){
         im=null;
         textureName=null;
+        ID=-1;
         repaint();
     }
     public void setTexture(int i) {
         try {
             im = ImageIO.read(new File(obj.getTecture(i).split(":")[1]));
             textureName=obj.getTecture(i).split(":")[0];
+            ID=Integer.parseInt(obj.getTecture(i).split(":")[2]);
             repaint();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setPosition(int position) {
+        this.Position = position;
     }
 
     public String getTextureName(){
             return textureName;
+    }
+
+    public int getID() {
+        return ID;
     }
 
     public void setTextureName(String textureName) {

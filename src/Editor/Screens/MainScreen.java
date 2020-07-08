@@ -1,6 +1,6 @@
 package Editor.Screens;
 
-import Editor.Util.AssetURLs;
+import Editor.Util.AssetManager;
 import Editor.Util.MapFile;
 
 import javax.swing.*;
@@ -24,7 +24,7 @@ public class MainScreen extends JFrame {
     JTextArea text = new JTextArea();
     MapFile me = new MapFile();
 
-    ArrayList<String> textures =  new AssetURLs().getTextures();
+    ArrayList<String> textures =  new AssetManager().getTextures();
     public MainScreen(){
         //setting up the jframe
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -86,9 +86,9 @@ public class MainScreen extends JFrame {
             fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
             int selected=fileChooser.showOpenDialog(this);
             if(selected== JFileChooser.APPROVE_OPTION){
-                AssetURLs o =new AssetURLs();
+                AssetManager o =new AssetManager();
                 o.addNewGroundAsset(fileChooser.getSelectedFile());
-                textures =  new AssetURLs().getTextures();
+                textures =  new AssetManager().getTextures();
                 objects.loadTextures(textures);
 /*                this.remove(objects);
                 objects=new ObjectScreen();

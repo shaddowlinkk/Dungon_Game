@@ -52,12 +52,12 @@ public class MapFile {
             for (int i =0;i<tiles.size();i++) {
                 String text=tiles.get(i).getTextureName();
                 if(text!=null) {
-                    if((TileTypes.valueOf(text).getID())==3){
+                    if(tiles.get(i).getID()==-2){
                         addSpawnlocation(3,i);
                         OUT.seek(i*4+FileHeaderOffset+MapFileRecordOffset);
                         OUT.writeInt(0xf0000000);
                     }else {
-                        OUT.writeInt((TileTypes.valueOf(text).getID()));
+                        OUT.writeInt(tiles.get(i).getID());
                     }
                 }else {
                     OUT.writeInt(0);

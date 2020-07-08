@@ -10,10 +10,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class AssetURLs {
+public class AssetManager {
     ArrayList<String> textures = new ArrayList<>();
     int currentID;
-    public AssetURLs() {
+    public AssetManager() {
         try {
             Scanner scan = new Scanner(new File(".\\Config\\Tile.txt"));
             while (scan.hasNext()){
@@ -31,7 +31,7 @@ public class AssetURLs {
         File dest = new File(".\\Assets\\Ground\\"+source.getName());
         try {
             List<String> lines = Files.readAllLines(Paths.get(".\\Config\\Tile.txt"));
-            lines.add(currentID,source.getName().split("\\.(?=[^\\.]+$)")[0]+":"+".\\Assets\\Ground\\"+source.getName());
+            lines.add(currentID,source.getName().split("\\.(?=[^\\.]+$)")[0]+":"+".\\Assets\\Ground\\"+source.getName()+":"+(currentID+1));
             Files.write(Paths.get(".\\Config\\Tile.txt"),lines);
             Files.copy(source.toPath(),dest.toPath());
         } catch (IOException e) {

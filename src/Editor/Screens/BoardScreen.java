@@ -1,14 +1,9 @@
 package Editor.Screens;
 
 import Editor.Objects.GameTile;
-import Editor.Util.MapFile;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 public class BoardScreen extends JPanel {
@@ -22,7 +17,7 @@ public class BoardScreen extends JPanel {
         for (int y=0;y<19;y++){
             for(int x=0;x<19;x++) {
                 GameTile tile =new GameTile(obj,this);
-                tile.setID(count);
+                tile.setPosition(count);
                 tiles.add(tile);
                 tile.setLocation((32*x)+6,(32*y)+15);
                 add(tile,6,0);
