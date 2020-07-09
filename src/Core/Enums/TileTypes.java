@@ -1,6 +1,7 @@
 package Core.Enums;
 //DO NOT CHANGE THE LOCATION OF THE STAR OF THE DATA USED IN OTHER PROGRAME
 public enum TileTypes {
+	GroundCorner03(".\\Assets\\Ground\\GroundCorner03.png",13),
 	GroundCorner02(".\\Assets\\Ground\\GroundCorner02.png",12),
 	GroundCorner01(".\\Assets\\Ground\\GroundCorner01.png",11),
 	Door04(".\\Assets\\Ground\\Door04.png",10),

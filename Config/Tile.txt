@@ -10,3 +10,4 @@ Door03:.\Assets\Ground\Door03.png:9
 Door04:.\Assets\Ground\Door04.png:10
 GroundCorner01:.\Assets\Ground\GroundCorner01.png:11
 GroundCorner02:.\Assets\Ground\GroundCorner02.png:12
+GroundCorner03:.\Assets\Ground\GroundCorner03.png:13
