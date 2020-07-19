@@ -150,8 +150,8 @@ public class EnviromentGenerator {
                 }else {
                     Random rand = new Random();
                     if(rand.nextInt(400)==10){
-                        AnimatedGround g = new AnimatedGround("groundpuddle");
-                        g.setFrameState(0,7);
+                        AnimatedGround g = new AnimatedGround("groundpuddlebig");
+                        g.setFrameState(0,9);
                         g.setDelay(7);
                         g.setloc((i * 32), (j * 32));
                         roomLayout.add(g);

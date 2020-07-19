@@ -30,9 +30,7 @@ public class Rendering {
             mainFrame.add(staticObject.get(i-movingObject.size()));
         }
         for (int i = mainFrame.getComponentCount(); i < (movingObject.size()+staticObject.size()+GroundObject.size()); i++) {
-            StandardCollidableObject c =GroundObject.get(i-(movingObject.size()+staticObject.size()));
-            // c.setScale(mainFrame.getWidth(),mainFrame.getHeight());
-            mainFrame.add(c);
+            mainFrame.add(GroundObject.get(i-(movingObject.size()+staticObject.size())));
         }
     }
 

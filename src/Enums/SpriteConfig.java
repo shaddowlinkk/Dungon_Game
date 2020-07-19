@@ -5,6 +5,7 @@ public enum SpriteConfig {
     Slime(32,32),
     Greenslime(16,32),
     groundpuddle(32,32),
+    groundpuddlebig(32,32),
     Dagger(16,11);
 
 
