@@ -1,40 +1,32 @@
 package Editor.Screens;
 
-import Editor.Util.AssetManager;
-import Editor.Util.MapFile;
-
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class MainScreen extends JFrame {
-    ObjectScreen objects = new ObjectScreen();
-    BoardScreen board = new BoardScreen(objects);
-    JMenuBar menuBar= new JMenuBar();
-    JFileChooser fileChooser = new JFileChooser();
-    JMenuItem saveMap= new JMenuItem("Save Map");
-    JMenuItem loadMap= new JMenuItem("Load Map");
-    JMenuItem loadtexture= new JMenuItem("Load Texture");
-    JMenuItem spawn= new JMenuItem("Extract SpawnPoints");
-    JMenu file = new JMenu("File");
-    JTextArea text = new JTextArea();
-    MapFile me = new MapFile();
-
-    ArrayList<String> textures =  new AssetManager().getTextures();
+    private MapEditor Map;
+    private JMenuBar menuBar= new JMenuBar();
+    private JFileChooser fileChooser = new JFileChooser();
+    private JMenuItem saveMap= new JMenuItem("Save Map");
+    private JMenuItem loadMap= new JMenuItem("Load Map");
+    private  JMenuItem loadtexture= new JMenuItem("Load Texture");
+    private JMenuItem spawn= new JMenuItem("Extract SpawnPoints");
+    private  JMenuItem runGame= new JMenuItem("Run Game");
+    private  JMenu file = new JMenu("File");
+    private JMenu run = new JMenu("Run");
     public MainScreen(){
-        //setting up the jframe
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
         setVisible(true);
-        setSize(1025,1000);
+        setSize(1025,1050);
         setLayout(null);
-        setBackground(Color.gray);
+         Map =new MapEditor();
+        JTabbedPane editors = new JTabbedPane();
+        editors.setBounds(0,0,1025,1000);
+        editors.add("Map", Map);
 
+        add(editors);
 
-        //setting up the menu
         menuBar.add(file);
         file.add(saveMap);
         file.add(loadMap);
@@ -44,25 +36,14 @@ public class MainScreen extends JFrame {
         loadMap.addActionListener(this::actionPerformed);
         spawn.addActionListener(this::actionPerformed);
         saveMap.addActionListener(this::actionPerformed);
+
+        //setting up the menu for running
+        menuBar.add(run);
+        run.add(runGame);
+        runGame.addActionListener(this::actionPerformed);
         setJMenuBar(menuBar);
 
-
-        //setting up the components
-        board.setLocation(50,30);
-        board.setLayout(null);
-        add(board);
-        objects.setLocation(700,26);
-        objects.loadTextures(textures);
-        add(objects);
-        text.setSize(622,200);
-        text.setLocation(50,682);
-        text.setEditable(false);
-        add(text,6,0);
-        revalidate();
-        repaint();
-
     }
-
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==saveMap){
             fileChooser.setDialogTitle("Select a file to save to");
@@ -71,13 +52,7 @@ public class MainScreen extends JFrame {
             fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
             int selected=fileChooser.showSaveDialog(this);
             if(selected== JFileChooser.APPROVE_OPTION){
-                File save = fileChooser.getSelectedFile();
-                String fname = save.getAbsolutePath();
-                if(!fname.endsWith(".map") ) {
-                    save = new File(fname + ".map");
-                }
-                me.loadMapFile(save.getAbsolutePath());
-                me.saveMap(board.getTiles());
+                Map.saveMap(fileChooser.getSelectedFile());
             }
 
         }
@@ -86,17 +61,7 @@ public class MainScreen extends JFrame {
             fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
             int selected=fileChooser.showOpenDialog(this);
             if(selected== JFileChooser.APPROVE_OPTION){
-                AssetManager o =new AssetManager();
-                o.addNewGroundAsset(fileChooser.getSelectedFile());
-                textures =  new AssetManager().getTextures();
-                objects.loadTextures(textures);
-/*                this.remove(objects);
-                objects=new ObjectScreen();
-                objects.setLocation(700,26);
-                objects.loadTextures(textures);
-                add(objects);*/
-                revalidate();
-                repaint();
+                Map.openMap(fileChooser.getSelectedFile());
             }
         }
         if(e.getSource()==loadMap){
@@ -106,14 +71,15 @@ public class MainScreen extends JFrame {
             fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
             int selected=fileChooser.showOpenDialog(this);
             if(selected== JFileChooser.APPROVE_OPTION){
-                me.loadMapFile(fileChooser.getSelectedFile().getAbsolutePath());
-                me.LoadMapFromFile(board.getTiles());
-                repaint();
+                Map.loadMap(fileChooser.getSelectedFile().getAbsolutePath());
             }
 
         }
         if(e.getSource()==spawn){
-            text.append(Arrays.toString(me.getItemSpawnLocation().toArray()));
+            Map.getSpawns();
+        }
+        if(e.getSource()==runGame){
+            TestGameBoard board = new TestGameBoard();
         }
     }
 }

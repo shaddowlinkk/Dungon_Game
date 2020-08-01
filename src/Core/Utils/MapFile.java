@@ -1,7 +1,11 @@
 package Core.Utils;
 
+import Editor.Objects.GameTile;
+
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
 
 public class MapFile {
     //todo finish
@@ -28,5 +32,28 @@ public class MapFile {
             e.printStackTrace();
         }
 
+    }
+
+    public void LoadMapFromFile(){
+        int pos=28;
+        try {
+            IN.seek(28);
+            int count=0;
+            for (int i =pos;i<1444;i+=4) {
+                int in =IN.readInt();
+
+/*                if (in!=0) {
+                    tiles.get(count).resetBorder();
+                    tiles.get(count).setTexture(in-1);
+                    count++;
+                }else {
+                    tiles.get(count).resetBorder();
+                    tiles.get(count).resetTexture();
+                    count++;
+                }*/
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }

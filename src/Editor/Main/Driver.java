@@ -1,13 +1,12 @@
 package Editor.Main;
 
 import Editor.Screens.MainScreen;
-import Editor.Util.EnumModifier;
-import Editor.Util.MapFile;
+import Editor.Screens.MapEditor;
 
 import javax.swing.*;
 
-public class Main {
-    public static void main(String[] args){
+public class Driver {
+    public Driver(){
         try {
             UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
         } catch (ClassNotFoundException e) {

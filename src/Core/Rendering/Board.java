@@ -1,21 +1,23 @@
 package Core.Rendering;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Board extends JFrame{
     int width,height;
 
     public Board() {
         int i=0;
+        requestFocus();
         GameScreen gameScreen =null;
         MainMenuScreen menuscreen = new MainMenuScreen(622,642);
         EndScreen endScreen = new EndScreen(622,642);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(622,642);
         setVisible(true);
+        setBackground(Color.cyan);
         add(menuscreen);
         menuscreen.setVisible(true);
-
        while (true) {
            try {
                Thread.sleep(0, 1);

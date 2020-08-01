@@ -41,7 +41,7 @@ public class GameScreen extends JComponent {
     private Rendering rend = new Rendering(this);
 
     public GameScreen(){
-        setFocusable(false);
+        setFocusable(true);
 
 
         Player player = new Player();
