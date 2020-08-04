@@ -1,7 +1,7 @@
 package Editor.Objects;
 
-import Editor.Screens.BoardScreen;
-import Editor.Screens.ObjectScreen;
+import Editor.Screens.MainScreens.BoardScreen;
+import Editor.Screens.MainScreens.ObjectScreen;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

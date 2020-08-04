@@ -1,4 +1,6 @@
-package Editor.Screens;
+package Editor.Screens.MainScreens;
+
+import Editor.Screens.Misc.TestGameBoard;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -6,6 +8,7 @@ import java.awt.event.ActionEvent;
 
 public class MainScreen extends JFrame {
     private MapEditor Map;
+    private MobCreatorScreen mob;
     private JMenuBar menuBar= new JMenuBar();
     private JFileChooser fileChooser = new JFileChooser();
     private JMenuItem saveMap= new JMenuItem("Save Map");
@@ -21,9 +24,11 @@ public class MainScreen extends JFrame {
         setSize(1025,1050);
         setLayout(null);
          Map =new MapEditor();
+         mob= new MobCreatorScreen();
         JTabbedPane editors = new JTabbedPane();
         editors.setBounds(0,0,1025,1000);
         editors.add("Map", Map);
+        editors.add("Mob Creator",mob);
 
         add(editors);
 

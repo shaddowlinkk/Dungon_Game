@@ -1,4 +1,4 @@
-package Editor.Util;
+package Editor.FileIO;
 
 import Core.Enums.TileTypes;
 import Editor.Objects.GameTile;

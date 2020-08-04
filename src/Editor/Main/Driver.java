@@ -1,7 +1,6 @@
 package Editor.Main;
 
-import Editor.Screens.MainScreen;
-import Editor.Screens.MapEditor;
+import Editor.Screens.MainScreens.MainScreen;
 
 import javax.swing.*;
 

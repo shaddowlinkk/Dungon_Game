@@ -1,4 +1,4 @@
-package Editor.Screens;
+package Editor.Screens.Misc;
 
 import Core.Rendering.EndScreen;
 import Core.Rendering.GameScreen;

@@ -1,0 +1,47 @@
+	main
+pos	name	size	type
+0	Amnimation.Idle	4	int
+4	Num of frames	4	int
+8	Amnimation.left	4	int
+12	Num of frames	4	int
+16	Amnimation.right	4	int
+20	Num of frames	4	int
+24	Amnimation.up	4	int
+28	Num of frames	4	int
+32	Amnimation.down	4	int
+36	Num of frames	4	int
+
+40	start of actions	4	int
+44	start of animation.anction	4	int
+48	start collisions	4	int
+52	start bounding box	4	int
+
+56	end of actions	4	int
+60	end of animation.anction	4	int
+64	end collisions	4	int
+68	end bounding box	4	int
+
+72 sprite height 4 int
+76 sprite width 4 int
+
+	actions
+pos	name	size	type
+	action.ID	4	int
+	action.type	4	int
+	actions.projectile (opt)	4	int
+
+	bounding box
+pos	name	size	type
+	x cord	4	int
+	y cord	4	int
+
+	action animation
+pos	name	size	type
+	animation location	4	int
+	Num of frames	4	int
+	link to action ID	4	int
+
+	collision
+pos	name	size	type
+	item type	4	int
+	action to be done	4	int

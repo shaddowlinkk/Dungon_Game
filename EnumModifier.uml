@@ -3,504 +3,163 @@
   <ID>JAVA</ID>
   <OriginalElement>Editor.Util.EnumModifier</OriginalElement>
   <nodes>
-    <node x="1801.188046276355" y="2419.0">Core.Abstracts.ControlableObject</node>
-    <node x="5420.46238788267" y="3413.0">Core.Main.BoardDriver</node>
-    <node x="3544.498110493392" y="3413.0">Editor.Main.Main</node>
-    <node x="5420.71238788267" y="3174.0">Core.Rendering.Board</node>
-    <node x="1612.174461055069" y="2975.0">Core.Rendering.GameScreen</node>
-    <node x="0.0" y="3914.0">Core.Handlers.ItemSpawningHandler</node>
-    <node x="1277.097139519838" y="1762.0">Core.Interfaces.BaseCollidableObject</node>
-    <node x="5573.94513049754" y="79.0">java.lang.Runnable</node>
-    <node x="3278.838586683868" y="2568.0">Editor.Screens.ObjectScreen</node>
-    <node x="3956.637604690014" y="168.0">java.awt.image.ImageObserver</node>
-    <node x="3415.9552533505343" y="2975.0">Editor.Util.MapFile</node>
-    <node x="1619.5213796096882" y="2200.0">Core.Rendering.Rendering</node>
-    <node x="2278.5197770455857" y="2419.0">Core.Handlers.SpriteHandler</node>
-    <node x="2221.746529988551" y="2687.0">Core.Handlers.AnimationHandler</node>
-    <node x="2442.8736038083343" y="1931.0">java.lang.Enum</node>
-    <node x="3012.1659596683694" y="2796.0">Editor.Util.EnumModifier</node>
-    <node x="2027.4364437122522" y="2687.0">Core.Objects.BaseMob</node>
-    <node x="5635.173926344209" y="168.0">java.lang.Thread</node>
-    <node x="5202.766991112805" y="2975.0">javax.swing.JFrame</node>
-    <node x="1098.7098069067667" y="2687.0">Core.RoomGeneration.Room</node>
-    <node x="3479.288586683868" y="2687.0">Editor.Screens.BoardScreen</node>
-    <node x="3511.7792713566805" y="168.0">java.awt.event.MouseListener</node>
-    <node x="2421.2069371416674" y="2200.0">Core.Enums.SpriteConfig</node>
-    <node x="4783.085448155731" y="746.0">java.awt.Frame</node>
-    <node x="73.9318522347321" y="3751.0">Core.Objects.BaseItem</node>
-    <node x="1636.0077943884025" y="3582.0">Core.Objects.Player</node>
-    <node x="625.0572453861942" y="2796.0">Core.Handlers.ItemSocketingHandler</node>
-    <node x="4590.744539064821" y="168.0">javax.accessibility.Accessible</node>
-    <node x="1071.8973069067667" y="2796.0">Core.Handlers.RoomHandler</node>
-    <node x="1029.097139519838" y="1762.0">Core.Handlers.CollisionDetectorHandler</node>
-    <node x="5386.020080190362" y="2568.0">Core.Rendering.MainMenuScreen</node>
-    <node x="3919.8322612941633" y="467.0">java.awt.Component</node>
-    <node x="4115.637604690014" y="168.0">java.io.Serializable</node>
-    <node x="3954.7593670218007" y="79.0">java.util.EventListener</node>
-    <node x="1170.2153711555834" y="2200.0">Core.Objects.BaseGround</node>
-    <node x="1911.491298877132" y="2568.0">Core.Enums.Mobs</node>
-    <node x="5640.857951010361" y="3582.0">Core.Main.driver</node>
-    <node x="1467.5440262724605" y="2568.0">Core.Handlers.MovingObjectHandler</node>
-    <node x="3957.788586683868" y="2419.0">javax.swing.JPanel</node>
-    <node x="4987.747352917635" y="2796.0">javax.swing.WindowConstants</node>
-    <node x="2148.189809550373" y="168.0">java.awt.event.KeyListener</node>
-    <node x="1245.0699058076414" y="1493.0">Core.Utils.BoundingBox</node>
-    <node x="3412.4552533505343" y="2796.0">Editor.Objects.GameTile</node>
-    <node x="52.92105263157919" y="2796.0">Core.Enums.Items</node>
-    <node x="1696.2577943884025" y="3751.0">Core.Handlers.InventoryHandler</node>
-    <node x="3012.1659596683694" y="2975.0">Editor.Util.AssetManager</node>
-    <node x="226.0" y="3914.0">Core.Utils.MapFile</node>
-    <node x="3773.927864430274" y="1184.0">javax.swing.TransferHandler.HasGetTransferHandler</node>
-    <node x="764.5572453861942" y="2200.0">Core.Objects.NullObject</node>
-    <node x="1846.6996322104653" y="2796.0">Core.Handlers.MobSpawningHandler</node>
-    <node x="5186.29280746309" y="1493.0">javax.swing.SwingConstants</node>
-    <node x="5535.44513049754" y="0.0">java.lang.FunctionalInterface</node>
-    <node x="4921.747352917635" y="2200.0">Core.Enums.ItemTypes</node>
-    <node x="2869.1659596683694" y="2200.0">Core.Enums.TileTypes</node>
-    <node x="2229.0651387226953" y="2200.0">Core.Utils.Configeration</node>
-    <node x="488.96633629528515" y="3413.0">Core.Inventory.Inventory</node>
-    <node x="4290.473705731487" y="1184.0">java.awt.Container</node>
-    <node x="895.1012448389804" y="1184.0">Core.Utils.Point</node>
-    <node x="1310.604260044472" y="2419.0">Core.Objects.Door</node>
-    <node x="5552.020080190362" y="2568.0">Core.Rendering.EndScreen</node>
-    <node x="1432.5213796096884" y="2200.0">Core.Handlers.DoorUnlockHandler</node>
-    <node x="3239.032626335036" y="1931.0">Editor.Objects.ObjectTiles</node>
-    <node x="2950.318132138413" y="1493.0">javax.swing.JComponent</node>
-    <node x="1750.5213796096882" y="2200.0">Core.Interfaces.MoveableObject</node>
-    <node x="2713.078545798827" y="3840.0">Core.Handlers.CollisionHandler</node>
-    <node x="3672.177864430274" y="1931.0">Core.Abstracts.StaticElements</node>
-    <node x="133.6710526315792" y="3174.0">Core.Inventory.InventorySlot</node>
-    <node x="4699.430483176297" y="935.0">java.awt.Window</node>
-    <node x="2228.746529988551" y="2568.0">Core.Abstracts.AnimatedObject</node>
-    <node x="3539.927864430274" y="1762.0">Core.Interfaces.BaseUncollidableObject</node>
-    <node x="4220.411205731487" y="746.0">javax.swing.RootPaneContainer</node>
-    <node x="4431.744539064821" y="168.0">java.awt.MenuContainer</node>
-    <node x="301.59962406015075" y="2975.0">Core.Objects.BaseElement</node>
-    <node x="3523.498110493392" y="3174.0">Editor.Screens.MainScreen</node>
-    <node x="1211.1027927999935" y="1931.0">Core.Abstracts.StandardCollidableObject</node>
-    <node x="4015.0864142138234" y="1762.0">javax.swing.JLabel</node>
-    <node x="1120.8483740985484" y="2568.0">Core.RoomGeneration.EnviromentGenerator</node>
-    <node x="2476.436443712252" y="2796.0">Core.Handlers.MobHandler</node>
-    <node x="2105.5197770455857" y="2419.0">Core.Interfaces.ObjectAnimation</node>
-    <node x="2387.1236038083343" y="1762.0">java.lang.Comparable</node>
+    <node x="2480.1528784247066" y="676.0">Core.Abstracts.ControlableObject</node>
+    <node x="1552.6605449945964" y="1818.0">Core.Main.BoardDriver</node>
+    <node x="1573.6605449945964" y="1739.0">Core.Rendering.Board</node>
+    <node x="1556.1605449945964" y="1650.0">Core.Rendering.GameScreen</node>
+    <node x="656.4897959183673" y="1971.0">Core.Handlers.ItemSpawningHandler</node>
+    <node x="1131.5695226713142" y="288.0">Core.Interfaces.BaseCollidableObject</node>
+    <node x="51.48979591836735" y="2050.0">Editor.Screens.ObjectScreen</node>
+    <node x="42.26530612244896" y="2297.0">Editor.Util.MapFile</node>
+    <node x="1802.9571510288965" y="1163.0">Core.Rendering.Rendering</node>
+    <node x="2352.9778784247064" y="964.0">Core.Handlers.AnimationHandler</node>
+    <node x="2138.7270560186444" y="676.0">Core.Handlers.SpriteHandler</node>
+    <node x="479.48979591836735" y="1971.0">Editor.Util.EnumModifier</node>
+    <node x="2252.627056018644" y="1302.0">Core.Objects.BaseMob</node>
+    <node x="0.0" y="2129.0">Editor.Screens.BoardScreen</node>
+    <node x="58.5" y="1163.0">Core.RoomGeneration.Room</node>
+    <node x="2237.042010511838" y="417.0">Core.Enums.SpriteConfig</node>
+    <node x="596.2629310344827" y="1163.0">Core.Objects.BaseItem</node>
+    <node x="1114.5946618037133" y="964.0">Core.Objects.Player</node>
+    <node x="1634.4395560186445" y="1302.0">Core.Handlers.ItemSocketingHandler</node>
+    <node x="883.5695226713141" y="288.0">Core.Handlers.CollisionDetectorHandler</node>
+    <node x="66.40372056802698" y="1302.0">Core.Handlers.RoomHandler</node>
+    <node x="1694.1605449945964" y="1650.0">Core.Rendering.MainMenuScreen</node>
+    <node x="1943.9303329179002" y="1163.0">Core.Enums.Mobs</node>
+    <node x="1570.1605449945964" y="1897.0">Core.Main.driver</node>
+    <node x="213.5" y="676.0">Core.Objects.BaseGround</node>
+    <node x="2574.1528784247066" y="805.0">Core.Handlers.MovingObjectHandler</node>
+    <node x="1084.3195226713142" y="209.0">Core.Utils.BoundingBox</node>
+    <node x="38.76530612244896" y="2218.0">Editor.Objects.GameTile</node>
+    <node x="499.84626436781593" y="964.0">Core.Enums.Items</node>
+    <node x="1242.0862624347324" y="1163.0">Core.Handlers.InventoryHandler</node>
+    <node x="479.48979591836735" y="2050.0">Editor.Util.AssetManager</node>
+    <node x="1201.4897959183672" y="1971.0">Core.Utils.MapFile</node>
+    <node x="964.3820226713141" y="676.0">Core.Objects.NullObject</node>
+    <node x="2047.8278784247068" y="1441.0">Core.Handlers.MobSpawningHandler</node>
+    <node x="464.2629310344827" y="1302.0">Core.Enums.ItemTypes</node>
+    <node x="1045.4897959183672" y="1971.0">Core.Enums.TileTypes</node>
+    <node x="2078.042010511838" y="417.0">Core.Utils.Configeration</node>
+    <node x="1278.3446618037133" y="1441.0">Core.Inventory.Inventory</node>
+    <node x="745.5893972379496" y="0.0">Core.Utils.Point</node>
+    <node x="254.75" y="805.0">Core.Objects.Door</node>
+    <node x="1425.1605449945964" y="1650.0">Core.Rendering.EndScreen</node>
+    <node x="54.98979591836735" y="1971.0">Editor.Objects.ObjectTiles</node>
+    <node x="1131.9445226713142" y="676.0">Core.Handlers.DoorUnlockHandler</node>
+    <node x="2486.8603893519776" y="417.0">Core.Interfaces.MoveableObject</node>
+    <node x="428.17149732501275" y="1441.0">Core.Handlers.CollisionHandler</node>
+    <node x="779.2917448935362" y="1302.0">Core.Inventory.InventorySlot</node>
+    <node x="260.48979591836735" y="2050.0">Core.Abstracts.StaticElements</node>
+    <node x="232.48979591836735" y="1971.0">Core.Interfaces.BaseUncollidableObject</node>
+    <node x="2149.637737907648" y="805.0">Core.Abstracts.AnimatedObject</node>
+    <node x="1422.0862624347324" y="1163.0">Core.Objects.BaseElement</node>
+    <node x="882.4897959183673" y="1971.0">Editor.Screens.MainScreen</node>
+    <node x="984.3195226713141" y="417.0">Core.Abstracts.StandardCollidableObject</node>
+    <node x="112.5" y="964.0">Core.RoomGeneration.EnviromentGenerator</node>
+    <node x="2470.146039917785" y="1441.0">Core.Handlers.MobHandler</node>
+    <node x="1964.7270560186444" y="676.0">Core.Interfaces.ObjectAnimation</node>
   </nodes>
   <notes />
   <edges>
     <edge source="Core.Inventory.InventorySlot" target="Core.Objects.BaseElement">
-      <point x="20.850000000000364" y="-14.5" />
-      <point x="224.02105263157955" y="3084.0" />
-      <point x="317.22462406015075" y="3084.0" />
+      <point x="46.333333333333485" y="-14.5" />
+      <point x="895.1250782268697" y="1272.0" />
+      <point x="1437.7112624347324" y="1272.0" />
       <point x="-46.875" y="14.5" />
-    </edge>
-    <edge source="java.awt.Component" target="java.awt.image.ImageObserver">
-      <point x="0.0" y="-14.5" />
-      <point x="3975.3322612941633" y="337.0" />
-      <point x="3991.387604690014" y="337.0" />
-      <point x="-34.75" y="14.5" />
-    </edge>
-    <edge source="Core.Inventory.Inventory" target="Core.Objects.BaseElement">
-      <point x="-11.892857142856883" y="-14.5" />
-      <point x="532.5734791524283" y="3313.0" />
-      <point x="379.72462406015075" y="3313.0" />
-      <point x="15.625" y="14.5" />
-    </edge>
-    <edge source="Editor.Objects.ObjectTiles" target="javax.swing.JLabel">
-      <point x="41.66666666666674" y="-14.5" />
-      <point x="3343.1992930017027" y="1891.0" />
-      <point x="4046.5864142138234" y="1891.0" />
-      <point x="-13.5" y="14.5" />
-    </edge>
-    <edge source="java.awt.event.MouseListener" target="java.util.EventListener">
-      <point x="0.0" y="-14.5" />
-      <point x="3581.2792713566805" y="138.0" />
-      <point x="3996.459367021801" y="138.0" />
-      <point x="-27.799999999999955" y="14.5" />
-    </edge>
-    <edge source="Core.Inventory.InventorySlot" target="java.awt.event.MouseListener">
-      <point x="-62.55000000000018" y="-14.5" />
-      <point x="140.621052631579" y="3154.0" />
-      <point x="146.4210526315792" y="3154.0" />
-      <point x="146.4210526315792" y="327.0" />
-      <point x="3521.707842785252" y="327.0" />
-      <point x="-59.57142857142867" y="14.5" />
-    </edge>
-    <edge source="Core.Enums.Items" target="java.lang.Enum">
-      <point x="0.0" y="-14.5" />
-      <point x="94.42105263157919" y="2170.0" />
-      <point x="2461.8736038083343" y="2170.0" />
-      <point x="-19.0" y="14.5" />
-    </edge>
-    <edge source="Core.Rendering.MainMenuScreen" target="javax.swing.JPanel">
-      <point x="-63.875" y="-14.5" />
-      <point x="5395.145080190362" y="2548.0" />
-      <point x="4028.5028723981536" y="2548.0" />
-      <point x="25.71428571428578" y="14.5" />
-    </edge>
-    <edge source="java.lang.Thread" target="java.lang.Runnable">
-      <point x="30.0" y="-14.5" />
-      <point x="5710.173926344209" y="128.0" />
-      <point x="5667.5451304975395" y="128.0" />
-      <point x="41.599999999999966" y="14.5" />
-    </edge>
-    <edge source="Core.Abstracts.AnimatedObject" target="Core.Abstracts.ControlableObject">
-      <point x="-60.833333333333485" y="-14.5" />
-      <point x="2240.9131966552177" y="2528.0" />
-      <point x="1940.3547129430215" y="2528.0" />
-      <point x="55.666666666666515" y="14.5" />
-    </edge>
-    <edge source="javax.swing.JPanel" target="javax.swing.JComponent">
-      <point x="-18.0" y="-14.5" />
-      <point x="3984.788586683868" y="2389.0" />
-      <point x="3940.163586683868" y="2389.0" />
-      <point x="3940.163586683868" y="1662.0" />
-      <point x="3043.3565936768746" y="1662.0" />
-      <point x="34.03846153846143" y="14.5" />
-    </edge>
-    <edge source="Core.Abstracts.StandardCollidableObject" target="Core.Interfaces.BaseCollidableObject">
-      <point x="0.0" y="-14.5" />
-      <point x="1319.1027927999935" y="1911.0" />
-      <point x="1324.097139519838" y="1911.0" />
-      <point x="-47.0" y="14.5" />
-    </edge>
-    <edge source="Core.Objects.BaseGround" target="Core.Abstracts.StandardCollidableObject">
-      <point x="29.5" y="-14.5" />
-      <point x="1258.7153711555834" y="2150.0" />
-      <point x="1315.7277927999935" y="2150.0" />
-      <point x="-3.375" y="14.5" />
-    </edge>
-    <edge source="Core.Enums.TileTypes" target="java.lang.Enum">
-      <point x="0.0" y="-14.5" />
-      <point x="2924.6659596683694" y="2010.0" />
-      <point x="2499.8736038083343" y="2010.0" />
-      <point x="19.0" y="14.5" />
-    </edge>
-    <edge source="java.awt.event.KeyListener" target="java.util.EventListener">
-      <point x="0.0" y="-14.5" />
-      <point x="2210.689809550373" y="128.0" />
-      <point x="3968.659367021801" y="128.0" />
-      <point x="-55.59999999999991" y="14.5" />
-    </edge>
-    <edge source="Core.Objects.Player" target="Core.Abstracts.AnimatedObject">
-      <point x="10.227272727272975" y="-14.5" />
-      <point x="1691.2350671156755" y="3482.0" />
-      <point x="2631.3208310640307" y="3482.0" />
-      <point x="2631.3208310640307" y="2647.0" />
-      <point x="2364.3179585599796" y="2647.0" />
-      <point x="62.57142857142844" y="14.5" />
-    </edge>
-    <edge source="java.awt.Frame" target="java.awt.MenuContainer">
-      <point x="27.666666666666742" y="-14.5" />
-      <point x="4852.252114822397" y="726.0" />
-      <point x="4850.585448155731" y="726.0" />
-      <point x="4850.585448155731" y="337.0" />
-      <point x="4535.994539064821" y="337.0" />
-      <point x="34.75" y="14.5" />
-    </edge>
-    <edge source="Editor.Screens.ObjectScreen" target="javax.swing.JPanel">
-      <point x="59.40000000000009" y="-14.5" />
-      <point x="3404.2385866838677" y="2548.0" />
-      <point x="4002.788586683868" y="2548.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="Core.Objects.Player" target="java.awt.event.KeyListener">
-      <point x="-22.5" y="-14.5" />
-      <point x="1658.5077943884025" y="3502.0" />
-      <point x="614.5572453861942" y="3502.0" />
-      <point x="614.5572453861942" y="317.0" />
-      <point x="2169.023142883706" y="317.0" />
-      <point x="-41.666666666666515" y="14.5" />
-    </edge>
-    <edge source="Core.Rendering.EndScreen" target="javax.swing.JPanel">
-      <point x="-48.5625" y="-14.5" />
-      <point x="5558.957580190362" y="2518.0" />
-      <point x="4041.3600152552963" y="2518.0" />
-      <point x="38.57142857142867" y="14.5" />
-    </edge>
-    <edge source="Core.Abstracts.StaticElements" target="javax.swing.JLabel">
-      <point x="54.75" y="-14.5" />
-      <point x="3799.927864430274" y="1901.0" />
-      <point x="4055.5864142138234" y="1901.0" />
-      <point x="-4.5" y="14.5" />
-    </edge>
-    <edge source="java.awt.Component" target="java.io.Serializable">
-      <point x="20.181818181818244" y="-14.5" />
-      <point x="3995.514079475982" y="377.0" />
-      <point x="4170.637604690014" y="377.0" />
-      <point x="-11.0" y="14.5" />
-    </edge>
-    <edge source="Core.Abstracts.StandardCollidableObject" target="javax.swing.JLabel">
-      <point x="99.69230769230762" y="-14.5" />
-      <point x="1418.7951004923011" y="1881.0" />
-      <point x="4037.5864142138234" y="1881.0" />
-      <point x="-22.5" y="14.5" />
-    </edge>
-    <edge source="java.lang.Enum" target="java.io.Serializable">
-      <point x="19.0" y="-14.5" />
-      <point x="2499.8736038083343" y="1861.0" />
-      <point x="2515.6236038083343" y="1861.0" />
-      <point x="2515.6236038083343" y="1602.0" />
-      <point x="2667.3016251308445" y="1602.0" />
-      <point x="2667.3016251308445" y="357.0" />
-      <point x="4126.637604690014" y="357.0" />
-      <point x="-55.0" y="14.5" />
-    </edge>
-    <edge source="Core.Objects.BaseMob" target="Core.Abstracts.AnimatedObject">
-      <point x="40.416666666666515" y="-14.5" />
-      <point x="2116.3531103789187" y="2657.0" />
-      <point x="2260.0322442742654" y="2657.0" />
-      <point x="-41.71428571428578" y="14.5" />
-    </edge>
-    <edge source="javax.swing.JFrame" target="javax.swing.RootPaneContainer">
-      <point x="8.181818181818016" y="-14.5" />
-      <point x="5255.948809294623" y="2915.0" />
-      <point x="5342.79280746309" y="2915.0" />
-      <point x="5342.79280746309" y="845.0" />
-      <point x="4366.536205731487" y="845.0" />
-      <point x="62.625" y="14.5" />
-    </edge>
-    <edge source="Core.Enums.Mobs" target="java.lang.Enum">
-      <point x="0.0" y="-14.5" />
-      <point x="1949.491298877132" y="2548.0" />
-      <point x="1978.688046276355" y="2548.0" />
-      <point x="1978.688046276355" y="2180.0" />
-      <point x="2474.5402704750013" y="2180.0" />
-      <point x="-6.33333333333303" y="14.5" />
-    </edge>
-    <edge source="java.awt.Window" target="java.awt.Container">
-      <point x="11.25" y="14.5" />
-      <point x="4755.680483176297" y="1154.0" />
-      <point x="4392.223705731487" y="1154.0" />
-      <point x="46.25" y="-14.5" />
-    </edge>
-    <edge source="Core.Objects.Door" target="Core.Objects.BaseGround">
-      <point x="19.0" y="-14.5" />
-      <point x="1367.604260044472" y="2389.0" />
-      <point x="1273.4653711555834" y="2389.0" />
-      <point x="44.25" y="14.5" />
-    </edge>
-    <edge source="javax.swing.JLabel" target="javax.swing.JComponent">
-      <point x="-38.57142857142867" y="-14.5" />
-      <point x="4021.514985642395" y="1652.0" />
-      <point x="3047.895055215336" y="1652.0" />
-      <point x="38.57692307692287" y="14.5" />
-    </edge>
-    <edge source="Editor.Screens.BoardScreen" target="javax.swing.JPanel">
-      <point x="25.0" y="-14.5" />
-      <point x="3566.788586683868" y="2657.0" />
-      <point x="4015.6457295410105" y="2657.0" />
-      <point x="12.85714285714289" y="14.5" />
-    </edge>
-    <edge source="javax.swing.JComponent" target="java.io.Serializable">
-      <point x="-53.09999999999991" y="-14.5" />
-      <point x="2956.2181321384132" y="1413.0" />
-      <point x="2940.5181321384134" y="1413.0" />
-      <point x="2940.5181321384134" y="367.0" />
-      <point x="4148.637604690014" y="367.0" />
-      <point x="-33.0" y="14.5" />
     </edge>
     <edge source="Core.Abstracts.ControlableObject" target="Core.Abstracts.StandardCollidableObject">
       <point x="0.0" y="-14.5" />
-      <point x="1884.688046276355" y="2399.0" />
-      <point x="1907.0213796096882" y="2399.0" />
-      <point x="1907.0213796096882" y="2090.0" />
-      <point x="1376.4777927999935" y="2090.0" />
-      <point x="57.375" y="14.5" />
+      <point x="2563.6528784247066" y="476.0" />
+      <point x="1196.9445226713142" y="476.0" />
+      <point x="104.625" y="14.5" />
     </edge>
-    <edge source="java.awt.Frame" target="java.awt.Window">
-      <point x="-9.222222222222172" y="14.5" />
-      <point x="4815.363225933508" y="895.0" />
-      <point x="4768.9759377217515" y="895.0" />
-      <point x="24.545454545454504" y="-14.5" />
-    </edge>
-    <edge source="Core.Rendering.GameScreen" target="javax.swing.JComponent">
-      <point x="46.17391304347848" y="-14.5" />
-      <point x="1717.3483740985475" y="2935.0" />
-      <point x="2604.936443712252" y="2935.0" />
-      <point x="2604.936443712252" y="2319.0" />
-      <point x="2653.410752012647" y="2319.0" />
-      <point x="2653.410752012647" y="1712.0" />
-      <point x="3002.5104398307208" y="1712.0" />
-      <point x="-6.807692307692378" y="14.5" />
-    </edge>
-    <edge source="java.awt.Window" target="javax.accessibility.Accessible">
-      <point x="0.0" y="-14.5" />
-      <point x="4744.430483176297" y="865.0" />
-      <point x="4708.661205731488" y="865.0" />
-      <point x="4708.661205731488" y="357.0" />
-      <point x="4659.577872398155" y="357.0" />
-      <point x="9.833333333333485" y="14.5" />
+    <edge source="Core.Inventory.Inventory" target="Core.Objects.BaseElement">
+      <point x="-8.538461538461434" y="-14.5" />
+      <point x="1325.3062002652518" y="1351.0" />
+      <point x="1500.2112624347324" y="1351.0" />
+      <point x="15.625" y="14.5" />
     </edge>
     <edge source="Core.Abstracts.ControlableObject" target="Core.Interfaces.MoveableObject">
-      <point x="-55.666666666666515" y="-14.5" />
-      <point x="1829.0213796096884" y="2399.0" />
-      <point x="1823.5213796096882" y="2399.0" />
+      <point x="55.66666666666674" y="-14.5" />
+      <point x="2619.319545091373" y="466.0" />
+      <point x="2559.8603893519776" y="466.0" />
       <point x="0.0" y="14.5" />
     </edge>
-    <edge source="Core.Main.BoardDriver" target="java.lang.Thread">
-      <point x="41.666666666666515" y="-14.5" />
-      <point x="5524.629054549336" y="3393.0" />
-      <point x="5701.673926344209" y="3393.0" />
-      <point x="22.5" y="14.5" />
-    </edge>
-    <edge source="Core.Rendering.Board" target="javax.swing.JFrame">
-      <point x="-12.769230769230774" y="-14.5" />
-      <point x="5449.443157113439" y="3044.0" />
-      <point x="5283.766991112805" y="3044.0" />
-      <point x="36.0" y="14.5" />
+    <edge source="Core.Abstracts.AnimatedObject" target="Core.Abstracts.ControlableObject">
+      <point x="58.40000000000009" y="-14.5" />
+      <point x="2281.037737907648" y="765.0" />
+      <point x="2507.9862117580396" y="765.0" />
+      <point x="-55.66666666666674" y="14.5" />
     </edge>
     <edge source="Core.Abstracts.StaticElements" target="Core.Interfaces.BaseUncollidableObject">
-      <point x="-54.75" y="-14.5" />
-      <point x="3690.427864430274" y="1861.0" />
-      <point x="3640.927864430274" y="1861.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="java.lang.Runnable" target="java.lang.FunctionalInterface">
       <point x="0.0" y="-14.5" />
       <point x="0.0" y="14.5" />
     </edge>
     <edge source="Core.Abstracts.AnimatedObject" target="Core.Interfaces.ObjectAnimation">
-      <point x="-12.166666666666515" y="-14.5" />
-      <point x="2289.5798633218847" y="2508.0" />
-      <point x="2182.0197770455857" y="2508.0" />
+      <point x="-58.40000000000009" y="-14.5" />
+      <point x="2164.237737907648" y="745.0" />
+      <point x="2041.2270560186444" y="745.0" />
       <point x="0.0" y="14.5" />
     </edge>
     <edge source="Core.Objects.NullObject" target="Core.Abstracts.StandardCollidableObject">
       <point x="0.0" y="-14.5" />
-      <point x="823.5572453861942" y="2090.0" />
-      <point x="1275.2277927999935" y="2090.0" />
-      <point x="-43.875" y="14.5" />
+      <point x="1023.3820226713141" y="656.0" />
+      <point x="1075.4445226713142" y="656.0" />
+      <point x="-16.875" y="14.5" />
     </edge>
-    <edge source="javax.swing.JFrame" target="java.awt.Frame">
-      <point x="24.545454545454504" y="-14.5" />
-      <point x="5272.312445658259" y="2935.0" />
-      <point x="5359.156443826726" y="2935.0" />
-      <point x="5359.156443826726" y="825.0" />
-      <point x="4861.4743370446195" y="825.0" />
-      <point x="36.888888888888914" y="14.5" />
+    <edge source="Core.Abstracts.StandardCollidableObject" target="Core.Interfaces.BaseCollidableObject">
+      <point x="24.0" y="-14.5" />
+      <point x="1116.3195226713142" y="367.0" />
+      <point x="1178.5695226713142" y="367.0" />
+      <point x="-47.0" y="14.5" />
     </edge>
-    <edge source="javax.swing.JLabel" target="javax.accessibility.Accessible">
-      <point x="12.85714285714289" y="-14.5" />
-      <point x="4072.9435570709666" y="1722.0" />
-      <point x="4136.523917519729" y="1722.0" />
-      <point x="4136.523917519729" y="407.0" />
-      <point x="4620.244539064821" y="407.0" />
-      <point x="-29.5" y="14.5" />
+    <edge source="Core.Objects.BaseGround" target="Core.Abstracts.StandardCollidableObject">
+      <point x="29.5" y="-14.5" />
+      <point x="302.0" y="576.0" />
+      <point x="1021.4445226713141" y="576.0" />
+      <point x="-70.875" y="14.5" />
     </edge>
-    <edge source="javax.swing.JFrame" target="javax.swing.TransferHandler.HasGetTransferHandler">
-      <point x="-16.363636363636488" y="-14.5" />
-      <point x="5231.403354749168" y="2925.0" />
-      <point x="5159.429171099453" y="2925.0" />
-      <point x="5159.429171099453" y="1413.0" />
-      <point x="3920.177864430274" y="1413.0" />
-      <point x="48.750000000000114" y="14.5" />
-    </edge>
-    <edge source="javax.swing.JComponent" target="java.awt.Container">
-      <point x="41.30000000000018" y="-14.5" />
-      <point x="3050.6181321384133" y="1433.0" />
-      <point x="4310.295134302916" y="1433.0" />
-      <point x="-35.67857142857133" y="14.5" />
-    </edge>
-    <edge source="javax.swing.JPanel" target="javax.accessibility.Accessible">
-      <point x="36.0" y="-14.5" />
-      <point x="4038.788586683868" y="2399.0" />
-      <point x="4876.585448155731" y="2399.0" />
-      <point x="4876.585448155731" y="327.0" />
-      <point x="4679.244539064821" y="327.0" />
-      <point x="29.5" y="14.5" />
-    </edge>
-    <edge source="javax.swing.JFrame" target="javax.accessibility.Accessible">
-      <point x="40.90909090909099" y="-14.5" />
-      <point x="5288.676082021895" y="2955.0" />
-      <point x="5375.520080190362" y="2955.0" />
-      <point x="5375.520080190362" y="317.0" />
-      <point x="4698.911205731487" y="317.0" />
-      <point x="49.166666666666515" y="14.5" />
-    </edge>
-    <edge source="java.lang.Enum" target="java.lang.Comparable">
-      <point x="-19.0" y="-14.5" />
-      <point x="2461.8736038083343" y="1861.0" />
-      <point x="2446.1236038083343" y="1861.0" />
-      <point x="0.0" y="14.5" />
+    <edge source="Core.Objects.Player" target="Core.Abstracts.AnimatedObject">
+      <point x="31.5" y="-14.5" />
+      <point x="1191.0946618037133" y="924.0" />
+      <point x="2160.066309336219" y="924.0" />
+      <point x="-62.57142857142867" y="14.5" />
     </edge>
     <edge source="Core.Objects.BaseElement" target="Core.Abstracts.StandardCollidableObject">
       <point x="31.25" y="-14.5" />
-      <point x="395.34962406015075" y="2945.0" />
-      <point x="344.4890570146208" y="2945.0" />
-      <point x="344.4890570146208" y="2050.0" />
-      <point x="1248.2277927999935" y="2050.0" />
-      <point x="-70.875" y="14.5" />
-    </edge>
-    <edge source="javax.swing.JLabel" target="javax.swing.SwingConstants">
-      <point x="38.57142857142867" y="-14.5" />
-      <point x="4098.657842785253" y="1742.0" />
-      <point x="5241.04280746309" y="1742.0" />
-      <point x="-18.25" y="14.5" />
+      <point x="1515.8362624347324" y="1143.0" />
+      <point x="1508.244489830542" y="1143.0" />
+      <point x="1508.244489830542" y="596.0" />
+      <point x="1122.6945226713142" y="596.0" />
+      <point x="30.375" y="14.5" />
     </edge>
     <edge source="Core.Objects.BaseItem" target="Core.Abstracts.StandardCollidableObject">
-      <point x="-16.421052631579187" y="-14.5" />
-      <point x="109.51079960315292" y="3671.0" />
-      <point x="36.94736842105249" y="3671.0" />
-      <point x="36.94736842105249" y="2000.0" />
-      <point x="1214.4777927999935" y="2000.0" />
-      <point x="-104.625" y="14.5" />
+      <point x="4.333333333333485" y="-14.5" />
+      <point x="652.5962643678162" y="616.0" />
+      <point x="1048.4445226713142" y="616.0" />
+      <point x="-43.875" y="14.5" />
     </edge>
-    <edge source="Core.Enums.ItemTypes" target="java.lang.Enum">
+    <edge source="Core.Objects.BaseMob" target="Core.Abstracts.AnimatedObject">
       <point x="0.0" y="-14.5" />
-      <point x="4977.247352917635" y="2000.0" />
-      <point x="2512.5402704750013" y="2000.0" />
-      <point x="31.66666666666697" y="14.5" />
+      <point x="2301.127056018644" y="1282.0" />
+      <point x="2309.527056018644" y="1282.0" />
+      <point x="2309.527056018644" y="894.0" />
+      <point x="2201.7805950505053" y="894.0" />
+      <point x="-20.85714285714289" y="14.5" />
     </edge>
-    <edge source="Editor.Screens.MainScreen" target="javax.swing.JFrame">
-      <point x="55.066666666666606" y="-14.5" />
-      <point x="3637.5647771600584" y="3154.0" />
-      <point x="5247.766991112805" y="3154.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="Core.Enums.SpriteConfig" target="java.lang.Enum">
-      <point x="0.0" y="-14.5" />
-      <point x="6.33333333333303" y="14.5" />
-    </edge>
-    <edge source="Editor.Objects.GameTile" target="javax.swing.JLabel">
-      <point x="4.3333333333332575" y="-14.5" />
-      <point x="3468.788586683868" y="2180.0" />
-      <point x="3929.163586683868" y="2180.0" />
-      <point x="3929.163586683868" y="1911.0" />
-      <point x="4064.5864142138234" y="1911.0" />
-      <point x="4.5" y="14.5" />
-    </edge>
-    <edge source="javax.swing.JComponent" target="javax.swing.TransferHandler.HasGetTransferHandler">
-      <point x="29.5" y="-14.5" />
-      <point x="3038.818132138413" y="1413.0" />
-      <point x="3822.677864430274" y="1413.0" />
-      <point x="-48.75" y="14.5" />
-    </edge>
-    <edge source="java.awt.Component" target="java.awt.MenuContainer">
-      <point x="30.272727272727252" y="-14.5" />
-      <point x="4005.604988566891" y="387.0" />
-      <point x="4466.494539064821" y="387.0" />
-      <point x="-34.75" y="14.5" />
-    </edge>
-    <edge source="javax.swing.JFrame" target="javax.swing.WindowConstants">
-      <point x="-32.72727272727275" y="-14.5" />
-      <point x="5215.039718385532" y="2945.0" />
-      <point x="5121.622352917635" y="2945.0" />
-      <point x="57.375" y="14.5" />
-    </edge>
-    <edge source="java.awt.Container" target="java.awt.Component">
-      <point x="-46.25" y="-14.5" />
-      <point x="4299.723705731487" y="1104.0" />
-      <point x="4153.690584186396" y="1104.0" />
-      <point x="4153.690584186396" y="676.0" />
-      <point x="3984.8465470084493" y="676.0" />
-      <point x="9.514285714285734" y="14.5" />
+    <edge source="Core.Objects.Door" target="Core.Objects.BaseGround">
+      <point x="19.0" y="-14.5" />
+      <point x="311.75" y="785.0" />
+      <point x="316.75" y="785.0" />
+      <point x="44.25" y="14.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.31087559929346453" x="2865.5" y="1971.5" />
+  <settings layout="Hierarchic Group" zoom="0.38940922190201727" x="1378.0" y="1163.0" />
   <SelectedNodes>
     <node>Editor.Util.EnumModifier</node>
   </SelectedNodes>
   <Categories />
-  <SCOPE>All</SCOPE>
+  <SCOPE>Project Files</SCOPE>
   <VISIBILITY>private</VISIBILITY>
 </Diagram>
 

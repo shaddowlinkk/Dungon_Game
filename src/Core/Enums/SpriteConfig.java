@@ -7,9 +7,9 @@ public enum SpriteConfig {
 
 
     int width,hight;
-    SpriteConfig(int i, int i1) {
-        width=i;
-        hight=i1;
+    SpriteConfig(int width, int hight) {
+        this.width=width;
+        this.hight=hight;
     }
 
     public int getWidth() {

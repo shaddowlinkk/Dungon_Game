@@ -1,4 +1,4 @@
-package Editor.Screens;
+package Editor.Screens.MainScreens;
 
 import Editor.Objects.ObjectTiles;
 

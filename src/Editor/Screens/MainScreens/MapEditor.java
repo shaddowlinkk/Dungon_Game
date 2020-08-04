@@ -1,20 +1,16 @@
-package Editor.Screens;
+package Editor.Screens.MainScreens;
 
-import Core.Main.driver;
 import Editor.Util.AssetManager;
-import Editor.Util.MapFile;
+import Editor.FileIO.MapFile;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MapEditor extends JPanel {
-    private  ObjectScreen objects = new ObjectScreen();
-    private  BoardScreen board = new BoardScreen(objects);
+    private ObjectScreen objects = new ObjectScreen();
+    private BoardScreen board = new BoardScreen(objects);
 
     private  JTextArea text = new JTextArea();
     private  MapFile me = new MapFile();
