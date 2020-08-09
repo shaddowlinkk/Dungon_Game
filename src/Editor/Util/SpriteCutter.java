@@ -27,4 +27,15 @@ public class SpriteCutter {
         }
         return animations;
     }
+    public int getFrameNum(BufferedImage ing , int width){
+        int i;
+        for ( i=0;i<ing.getWidth()/width;i++){
+            Color color2 = new Color(ing.getSubimage((i*width),0,width,height).getRGB(width/2, height/2), true);
+            if (color2.getAlpha()==0 &&color2.getRed()==0&&color2.getGreen()==0&&color2.getBlue()==0){
+                //System.out.println(i);
+                break;
+            }
+        }
+        return i;
+    }
 }

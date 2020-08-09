@@ -10,9 +10,10 @@ import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 
 public class CollisionHandler {
-    public ArrayList<StandardCollidableObject> movingEntitys = new ArrayList<>();
-    public ArrayList<StandardCollidableObject> itemEntitys = new ArrayList<>();
-    public ArrayList<StandardCollidableObject> groundEntitys = new ArrayList<>();
+    private boolean devloper =false;
+    private ArrayList<StandardCollidableObject> movingEntitys = new ArrayList<>();
+    private ArrayList<StandardCollidableObject> itemEntitys = new ArrayList<>();
+    private ArrayList<StandardCollidableObject> groundEntitys = new ArrayList<>();
     public CollisionHandler(ArrayList<StandardCollidableObject> moving,ArrayList<StandardCollidableObject> staticEn,ArrayList<StandardCollidableObject> groundEntitys){
         movingEntitys =moving;
         itemEntitys =staticEn;

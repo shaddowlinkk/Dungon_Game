@@ -19,12 +19,13 @@ public class MainScreen extends JFrame {
     private  JMenu file = new JMenu("File");
     private JMenu run = new JMenu("Run");
     public MainScreen(){
-
+        setResizable(false);
         setVisible(true);
         setSize(1025,1050);
         setLayout(null);
          Map =new MapEditor();
          mob= new MobCreatorScreen();
+         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         JTabbedPane editors = new JTabbedPane();
         editors.setBounds(0,0,1025,1000);
         editors.add("Map", Map);
@@ -47,7 +48,8 @@ public class MainScreen extends JFrame {
         run.add(runGame);
         runGame.addActionListener(this::actionPerformed);
         setJMenuBar(menuBar);
-
+        repaint();
+        revalidate();
     }
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==saveMap){

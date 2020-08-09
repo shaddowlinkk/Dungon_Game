@@ -1,4 +1,4 @@
-package Editor.Objects;
+package Editor.DataTypes;
 
 import Core.Utils.BoundingBox;
 

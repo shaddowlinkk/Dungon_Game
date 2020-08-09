@@ -11,8 +11,10 @@ public class AddRemoveButton extends JPanel {
     private JButton listAdd = new JButton("Add");
     private JButton listRemove = new JButton("Remove");
     private ListAction act;
+    private ListObject list;
     private ArrayList<ListAction> elementInlist = new ArrayList<>();
     public AddRemoveButton(ListObject list){
+        this.list=list;
         setLayout(null);
         setVisible(true);
                 listRemove.addActionListener(new ActionListener() {
@@ -36,7 +38,7 @@ public class AddRemoveButton extends JPanel {
         listAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                act.runAction();
+                act.runAction(list);
                 elementInlist.add(act);
             }
         });
